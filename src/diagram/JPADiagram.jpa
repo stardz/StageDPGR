@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings persistenceUnitName="ProjetPU" jaxb-support="false" id="_14341039308141516" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="AvoirFctMemCs" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308151519">
+        <jpa:table name="avoir_fct_mem_cs"/>
+        <jpa:attributes>
+            <jpa:id name="idMembreCs" attribute-type="int" visibile="true" id="_14341039308241549">
+                <jpa:column name="id_membre_cs" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_fct_mem_cs"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idFonction" attribute-type="int" visibile="true" id="_14341039308241550">
+                <jpa:column name="id_fonction" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_fct_mem_cs"/>
+            </jpa:id>
+            <jpa:basic name="dateAvoirGradeMemCs" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308241551">
+                <jpa:column name="date_avoir_grade_mem_cs" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_fct_mem_cs"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="fonction" target-entity="Fonction" optional="false" primaryKey="false" connected-entity-id="_14341039308231546" connected-attribute-id="_14341039308281718" visibile="true" id="_14341039308241552">
+                <jpa:join-column name="id_fonction" referenced-column-name="id_fonction" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="membreCs" target-entity="MembreCs" optional="false" primaryKey="false" connected-entity-id="_14341039308201530" connected-attribute-id="_14341039308261625" visibile="true" id="_14341039308241553">
+                <jpa:join-column name="id_membre_cs" referenced-column-name="id_membre_cs" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirFraiStage" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308171520">
+        <jpa:table name="avoir_frai_stage"/>
+        <jpa:attributes>
+            <jpa:id name="idStage" attribute-type="int" visibile="true" id="_14341039308241554">
+                <jpa:column name="id_stage" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_frai_stage"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idFraiStage" attribute-type="int" visibile="true" id="_14341039308241555">
+                <jpa:column name="id_frai_stage" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_frai_stage"/>
+            </jpa:id>
+            <jpa:basic name="totalFraisStage" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308241556">
+                <jpa:column name="total_frais_stage" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_frai_stage"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fraisStage" target-entity="FraisStage" optional="false" primaryKey="false" connected-entity-id="_14341039308191525" connected-attribute-id="_14341039308251599" visibile="true" id="_14341039308241557">
+                <jpa:join-column name="id_frai_stage" referenced-column-name="id_frai_stage" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stage" target-entity="Stage" optional="false" primaryKey="false" connected-entity-id="_14341039308231542" connected-attribute-id="_14341039308271696" visibile="true" id="_14341039308241558">
+                <jpa:join-column name="id_stage" referenced-column-name="id_stage" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Inviteur" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308181521">
+        <jpa:table name="inviteur"/>
+        <jpa:attributes>
+            <jpa:id name="idInviteur" attribute-type="java.lang.Integer" visibile="true" id="_14341039308241559">
+                <jpa:column name="id_inviteur" unique="false" nullable="false" insertable="true" updatable="true" table="inviteur"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nomInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251560">
+                <jpa:column name="nom_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="prenomInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251561">
+                <jpa:column name="prenom_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="gradeInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251562">
+                <jpa:column name="grade_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="emailInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251563">
+                <jpa:column name="email_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="telInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251564">
+                <jpa:column name="tel_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="etablissementInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251565">
+                <jpa:column name="etablissement_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="laboInviteur" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251566">
+                <jpa:column name="labo_inviteur" unique="false" nullable="true" insertable="true" updatable="true" table="inviteur" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="inviteManifestationCollection" target-entity="InviteManifestation" mapped-by="inviteur" connected-entity-id="_14341039308191524" connected-attribute-id="_14341039308251591" visibile="true" id="_14341039308251567"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Pv" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308181522">
+        <jpa:table name="pv"/>
+        <jpa:attributes>
+            <jpa:id name="idPv" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251568">
+                <jpa:column name="id_pv" unique="false" nullable="false" insertable="true" updatable="true" table="pv"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="datePv" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251569">
+                <jpa:column name="date_pv" unique="false" nullable="true" insertable="true" updatable="true" table="pv"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="lieuPv" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251570">
+                <jpa:column name="lieu_pv" unique="false" nullable="true" insertable="true" updatable="true" table="pv" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="heureDebut" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251571">
+                <jpa:column name="heure_debut" unique="false" nullable="true" insertable="true" updatable="true" table="pv"/>
+            </jpa:basic>
+            <jpa:basic name="heureFin" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251572">
+                <jpa:column name="heure_fin" unique="false" nullable="true" insertable="true" updatable="true" table="pv"/>
+            </jpa:basic>
+            <jpa:basic name="decisionPv" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251573">
+                <jpa:column name="decision_pv" unique="false" nullable="true" insertable="true" updatable="true" table="pv" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="remarquesPv" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251574">
+                <jpa:column name="remarques_pv" unique="false" nullable="true" insertable="true" updatable="true" table="pv" length="256"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirPvCollection" target-entity="AvoirPv" mapped-by="pv" connected-entity-id="_14341039308191528" connected-attribute-id="_14341039308251617" visibile="true" id="_14341039308251575"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirFonction" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308181523">
+        <jpa:table name="avoir_fonction"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308251576">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_fonction"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idFonction" attribute-type="int" visibile="true" id="_14341039308251577">
+                <jpa:column name="id_fonction" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_fonction"/>
+            </jpa:id>
+            <jpa:basic name="dateAvoirFonction" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251578">
+                <jpa:column name="date_avoir_fonction" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_fonction"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="fonction" target-entity="Fonction" optional="false" primaryKey="false" connected-entity-id="_14341039308231546" connected-attribute-id="_14341039308281719" visibile="true" id="_14341039308251579">
+                <jpa:join-column name="id_fonction" referenced-column-name="id_fonction" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261655" visibile="true" id="_14341039308251580">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="InviteManifestation" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308191524">
+        <jpa:table name="invite_manifestation"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308251581">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="invite_manifestation"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idManifestation" attribute-type="int" visibile="true" id="_14341039308251582">
+                <jpa:column name="id_manifestation" unique="false" nullable="false" insertable="true" updatable="true" table="invite_manifestation"/>
+            </jpa:id>
+            <jpa:id name="idInviteur" attribute-type="int" visibile="true" id="_14341039308251583">
+                <jpa:column name="id_inviteur" unique="false" nullable="false" insertable="true" updatable="true" table="invite_manifestation"/>
+            </jpa:id>
+            <jpa:basic name="dateDebut" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251584">
+                <jpa:column name="date_debut" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dateFin" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251585">
+                <jpa:column name="date_fin" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dureCongeScientifique" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251586">
+                <jpa:column name="dure_conge_scientifique" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="autorisationDeManif" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251587">
+                <jpa:column name="autorisation_de_manif" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="avisDadpgrManif" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251588">
+                <jpa:column name="avis_dadpgr_manif" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="avisCsManif" optional="true" attribute-type="java.lang.Boolean" visibile="true" id="_14341039308251589">
+                <jpa:column name="avis_cs_manif" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation"/>
+            </jpa:basic>
+            <jpa:basic name="dateInviteManifestation" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251590">
+                <jpa:column name="date_invite_manifestation" unique="false" nullable="true" insertable="true" updatable="true" table="invite_manifestation"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="inviteur" target-entity="Inviteur" optional="false" primaryKey="false" connected-entity-id="_14341039308181521" connected-attribute-id="_14341039308251567" visibile="true" id="_14341039308251591">
+                <jpa:join-column name="id_inviteur" referenced-column-name="id_inviteur" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="manifestation" target-entity="Manifestation" optional="false" primaryKey="false" connected-entity-id="_14341039308201532" connected-attribute-id="_14341039308261633" visibile="true" id="_14341039308251592">
+                <jpa:join-column name="id_manifestation" referenced-column-name="id_manifestation" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261656" visibile="true" id="_14341039308251593">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="FraisStage" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308191525">
+        <jpa:table name="frais_stage"/>
+        <jpa:attributes>
+            <jpa:id name="idFraiStage" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251594">
+                <jpa:column name="id_frai_stage" unique="false" nullable="false" insertable="true" updatable="true" table="frais_stage"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="montantSejourFraiStage" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251595">
+                <jpa:column name="montant_sejour_frai_stage" unique="false" nullable="true" insertable="true" updatable="true" table="frais_stage"/>
+            </jpa:basic>
+            <jpa:basic name="montantTransportFraiStage" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251596">
+                <jpa:column name="montant_transport_frai_stage" unique="false" nullable="true" insertable="true" updatable="true" table="frais_stage"/>
+            </jpa:basic>
+            <jpa:basic name="montantVisaFraiStage" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251597">
+                <jpa:column name="montant_visa_frai_stage" unique="false" nullable="true" insertable="true" updatable="true" table="frais_stage"/>
+            </jpa:basic>
+            <jpa:basic name="montantAssurranceFraiStage" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251598">
+                <jpa:column name="montant_assurrance_frai_stage" unique="false" nullable="true" insertable="true" updatable="true" table="frais_stage"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirFraiStageCollection" target-entity="AvoirFraiStage" mapped-by="fraisStage" connected-entity-id="_14341039308171520" connected-attribute-id="_14341039308241557" visibile="true" id="_14341039308251599"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirGrade" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308191526">
+        <jpa:table name="avoir_grade"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308251600">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_grade"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idGrade" attribute-type="int" visibile="true" id="_14341039308251601">
+                <jpa:column name="id_grade" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_grade"/>
+            </jpa:id>
+            <jpa:basic name="dateAvoirGrade" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251602">
+                <jpa:column name="date_avoir_grade" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_grade"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="grade" target-entity="Grade" optional="false" primaryKey="false" connected-entity-id="_14341039308231544" connected-attribute-id="_14341039308271709" visibile="true" id="_14341039308251603">
+                <jpa:join-column name="id_grade" referenced-column-name="id_grade" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261657" visibile="true" id="_14341039308251604">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="EncadrePar" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308191527">
+        <jpa:table name="encadre_par"/>
+        <jpa:attributes>
+            <jpa:id name="idEncadrant" attribute-type="int" visibile="true" id="_14341039308251605">
+                <jpa:column name="id_encadrant" unique="false" nullable="false" insertable="true" updatable="true" table="encadre_par"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308251606">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="encadre_par"/>
+            </jpa:id>
+            <jpa:basic name="sujetThese" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251607">
+                <jpa:column name="sujet_these" unique="false" nullable="true" insertable="true" updatable="true" table="encadre_par" length="256"/>
+            </jpa:basic>
+            <jpa:basic name="travauxAccomplis" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251608">
+                <jpa:column name="travaux_accomplis" unique="false" nullable="true" insertable="true" updatable="true" table="encadre_par" length="256"/>
+            </jpa:basic>
+            <jpa:basic name="objectifs" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251609">
+                <jpa:column name="objectifs" unique="false" nullable="true" insertable="true" updatable="true" table="encadre_par" length="256"/>
+            </jpa:basic>
+            <jpa:basic name="dateEncadrePar" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308251610">
+                <jpa:column name="date_encadre_par" unique="false" nullable="true" insertable="true" updatable="true" table="encadre_par"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="encadrant" target-entity="Encadrant" optional="false" primaryKey="false" connected-entity-id="_14341039308221541" connected-attribute-id="_14341039308271689" visibile="true" id="_14341039308251611">
+                <jpa:join-column name="id_encadrant" referenced-column-name="id_encadrant" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261658" visibile="true" id="_14341039308251612">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirPv" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308191528">
+        <jpa:table name="avoir_pv"/>
+        <jpa:attributes>
+            <jpa:id name="idStage" attribute-type="int" visibile="true" id="_14341039308251613">
+                <jpa:column name="id_stage" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_pv"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idPv" attribute-type="int" visibile="true" id="_14341039308251614">
+                <jpa:column name="id_pv" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_pv"/>
+            </jpa:id>
+            <jpa:id name="idMembreCs" attribute-type="int" visibile="true" id="_14341039308251615">
+                <jpa:column name="id_membre_cs" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_pv"/>
+            </jpa:id>
+            <jpa:many-to-one name="membreCs" target-entity="MembreCs" optional="false" primaryKey="false" connected-entity-id="_14341039308201530" connected-attribute-id="_14341039308261626" visibile="true" id="_14341039308251616">
+                <jpa:join-column name="id_membre_cs" referenced-column-name="id_membre_cs" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="pv" target-entity="Pv" optional="false" primaryKey="false" connected-entity-id="_14341039308181522" connected-attribute-id="_14341039308251575" visibile="true" id="_14341039308251617">
+                <jpa:join-column name="id_pv" referenced-column-name="id_pv" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stage" target-entity="Stage" optional="false" primaryKey="false" connected-entity-id="_14341039308231542" connected-attribute-id="_14341039308271697" visibile="true" id="_14341039308251618">
+                <jpa:join-column name="id_stage" referenced-column-name="id_stage" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="ZoneType" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308191529">
+        <jpa:table name="zone_type"/>
+        <jpa:attributes>
+            <jpa:id name="idZone" attribute-type="java.lang.Integer" visibile="true" id="_14341039308251619">
+                <jpa:column name="id_zone" unique="false" nullable="false" insertable="true" updatable="true" table="zone_type"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nomZone" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308251620">
+                <jpa:column name="nom_zone" unique="false" nullable="true" insertable="true" updatable="true" table="zone_type" length="30"/>
+            </jpa:basic>
+            <jpa:many-to-many name="lieuStageCollection" target-entity="LieuStage" mapped-by="zoneTypeCollection" connected-entity-id="_14341039308221537" connected-attribute-id="_14341039308261665" visibile="true" id="_14341039308251621"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="MembreCs" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308201530">
+        <jpa:table name="membre_cs"/>
+        <jpa:attributes>
+            <jpa:id name="idMembreCs" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261622">
+                <jpa:column name="id_membre_cs" unique="false" nullable="false" insertable="true" updatable="true" table="membre_cs"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nomMemCs" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261623">
+                <jpa:column name="nom_mem_cs" unique="false" nullable="true" insertable="true" updatable="true" table="membre_cs" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="prenomMemCs" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261624">
+                <jpa:column name="prenom_mem_cs" unique="false" nullable="true" insertable="true" updatable="true" table="membre_cs" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirFctMemCsCollection" target-entity="AvoirFctMemCs" mapped-by="membreCs" connected-entity-id="_14341039308151519" connected-attribute-id="_14341039308241553" visibile="true" id="_14341039308261625"/>
+            <jpa:one-to-many name="avoirPvCollection" target-entity="AvoirPv" mapped-by="membreCs" connected-entity-id="_14341039308191528" connected-attribute-id="_14341039308251616" visibile="true" id="_14341039308261626"/>
+            <jpa:one-to-many name="avoirGradeMemCsCollection" target-entity="AvoirGradeMemCs" mapped-by="membreCs" connected-entity-id="_14341039308201533" connected-attribute-id="_14341039308261640" visibile="true" id="_14341039308261627"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Diplome" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308201531">
+        <jpa:table name="diplome"/>
+        <jpa:attributes>
+            <jpa:id name="idDiplome" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261628">
+                <jpa:column name="id_diplome" unique="false" nullable="false" insertable="true" updatable="true" table="diplome"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="libelleDeplome" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261629">
+                <jpa:column name="libelle_deplome" unique="false" nullable="true" insertable="true" updatable="true" table="diplome" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirDiplomeCollection" target-entity="AvoirDiplome" mapped-by="diplome" connected-entity-id="_14341039308231545" connected-attribute-id="_14341039308281714" visibile="true" id="_14341039308261630"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Manifestation" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308201532">
+        <jpa:table name="manifestation"/>
+        <jpa:attributes>
+            <jpa:id name="idManifestation" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261631">
+                <jpa:column name="id_manifestation" unique="false" nullable="false" insertable="true" updatable="true" table="manifestation"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="objetInvitation" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261632">
+                <jpa:column name="objet_invitation" unique="false" nullable="true" insertable="true" updatable="true" table="manifestation" length="256"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fraisSejourNumeroFraisSejour" target-entity="FraisSejour" primaryKey="false" connected-entity-id="_14341039308221540" connected-attribute-id="_14341039308271684" visibile="true" id="_14341039308261634">
+                <jpa:join-column name="frais_sejour_numero_frais_sejour" referenced-column-name="numero_frais_sejour" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="inviteManifestationCollection" target-entity="InviteManifestation" mapped-by="manifestation" connected-entity-id="_14341039308191524" connected-attribute-id="_14341039308251592" visibile="true" id="_14341039308261633"/>
+            <jpa:one-to-many name="avoirFraisManifCollection" target-entity="AvoirFraisManif" mapped-by="manifestation" connected-entity-id="_14341039308231543" connected-attribute-id="_14341039308271706" visibile="true" id="_14341039308261635"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirGradeMemCs" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308201533">
+        <jpa:table name="avoir_grade_mem_cs"/>
+        <jpa:attributes>
+            <jpa:id name="idMembreCs" attribute-type="int" visibile="true" id="_14341039308261636">
+                <jpa:column name="id_membre_cs" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_grade_mem_cs"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idGrade" attribute-type="int" visibile="true" id="_14341039308261637">
+                <jpa:column name="id_grade" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_grade_mem_cs"/>
+            </jpa:id>
+            <jpa:basic name="dateAvoirFonctionMemCs" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308261638">
+                <jpa:column name="date_avoir_fonction_mem_cs" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_grade_mem_cs"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="grade" target-entity="Grade" optional="false" primaryKey="false" connected-entity-id="_14341039308231544" connected-attribute-id="_14341039308271710" visibile="true" id="_14341039308261639">
+                <jpa:join-column name="id_grade" referenced-column-name="id_grade" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="membreCs" target-entity="MembreCs" optional="false" primaryKey="false" connected-entity-id="_14341039308201530" connected-attribute-id="_14341039308261627" visibile="true" id="_14341039308261640">
+                <jpa:join-column name="id_membre_cs" referenced-column-name="id_membre_cs" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="FraisManif" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308201534">
+        <jpa:table name="frais_manif"/>
+        <jpa:attributes>
+            <jpa:id name="idFraisManif" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261641">
+                <jpa:column name="id_frais_manif" unique="false" nullable="false" insertable="true" updatable="true" table="frais_manif"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="montantSejourFraisManif" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261642">
+                <jpa:column name="montant_sejour_frais_manif" unique="false" nullable="true" insertable="true" updatable="true" table="frais_manif"/>
+            </jpa:basic>
+            <jpa:basic name="montantTransportFraisManif" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261643">
+                <jpa:column name="montant_transport_frais_manif" unique="false" nullable="true" insertable="true" updatable="true" table="frais_manif"/>
+            </jpa:basic>
+            <jpa:basic name="montantVisaFraisManif" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261644">
+                <jpa:column name="montant_visa_frais_manif" unique="false" nullable="true" insertable="true" updatable="true" table="frais_manif"/>
+            </jpa:basic>
+            <jpa:basic name="montantAssuranceFraisManif" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261645">
+                <jpa:column name="montant_assurance_frais_manif" unique="false" nullable="true" insertable="true" updatable="true" table="frais_manif"/>
+            </jpa:basic>
+            <jpa:basic name="fraisInscriptionFraisManif" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261646">
+                <jpa:column name="frais_inscription_frais_manif" unique="false" nullable="true" insertable="true" updatable="true" table="frais_manif"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirFraisManifCollection" target-entity="AvoirFraisManif" mapped-by="fraisManif" connected-entity-id="_14341039308231543" connected-attribute-id="_14341039308271705" visibile="true" id="_14341039308261647"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="EtatStage" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308211535">
+        <jpa:table name="etat_stage"/>
+        <jpa:attributes>
+            <jpa:id name="etatStage" attribute-type="java.lang.String" visibile="true" id="_14341039308261648">
+                <jpa:column name="etat_stage" unique="false" nullable="false" insertable="true" updatable="true" table="etat_stage" length="30"/>
+            </jpa:id>
+            <jpa:one-to-many name="avoirEtatCollection" target-entity="AvoirEtat" mapped-by="etatStage1" connected-entity-id="_14341039308241547" connected-attribute-id="_14341039308281723" visibile="true" id="_14341039308261649"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Stagiaire" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308211536">
+        <jpa:table name="stagiaire"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261650">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="stagiaire"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nomStagiaire" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261651">
+                <jpa:column name="nom_stagiaire" unique="false" nullable="true" insertable="true" updatable="true" table="stagiaire" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="prenomStagiaire" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261652">
+                <jpa:column name="prenom_stagiaire" unique="false" nullable="true" insertable="true" updatable="true" table="stagiaire" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="telStagiaire" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261653">
+                <jpa:column name="tel_stagiaire" unique="false" nullable="true" insertable="true" updatable="true" table="stagiaire" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="emailStagiaire" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261654">
+                <jpa:column name="email_stagiaire" unique="false" nullable="true" insertable="true" updatable="true" table="stagiaire" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirFonctionCollection" target-entity="AvoirFonction" mapped-by="stagiaire" connected-entity-id="_14341039308181523" connected-attribute-id="_14341039308251580" visibile="true" id="_14341039308261655"/>
+            <jpa:one-to-many name="inviteManifestationCollection" target-entity="InviteManifestation" mapped-by="stagiaire" connected-entity-id="_14341039308191524" connected-attribute-id="_14341039308251593" visibile="true" id="_14341039308261656"/>
+            <jpa:one-to-many name="avoirGradeCollection" target-entity="AvoirGrade" mapped-by="stagiaire" connected-entity-id="_14341039308191526" connected-attribute-id="_14341039308251604" visibile="true" id="_14341039308261657"/>
+            <jpa:one-to-many name="encadreParCollection" target-entity="EncadrePar" mapped-by="stagiaire" connected-entity-id="_14341039308191527" connected-attribute-id="_14341039308251612" visibile="true" id="_14341039308261658"/>
+            <jpa:one-to-many name="demandeStageCollection" target-entity="DemandeStage" mapped-by="stagiaire" connected-entity-id="_14341039308221538" connected-attribute-id="_14341039308261674" visibile="true" id="_14341039308261659"/>
+            <jpa:one-to-many name="affecteLaboCollection" target-entity="AffecteLabo" mapped-by="stagiaire" connected-entity-id="_14341039308221539" connected-attribute-id="_14341039308271679" visibile="true" id="_14341039308261660"/>
+            <jpa:one-to-many name="avoirDiplomeCollection" target-entity="AvoirDiplome" mapped-by="stagiaire" connected-entity-id="_14341039308231545" connected-attribute-id="_14341039308281715" visibile="true" id="_14341039308261661"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="LieuStage" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308221537">
+        <jpa:table name="lieu_stage"/>
+        <jpa:attributes>
+            <jpa:id name="idLieu" attribute-type="java.lang.Integer" visibile="true" id="_14341039308261662">
+                <jpa:column name="id_lieu" unique="false" nullable="false" insertable="true" updatable="true" table="lieu_stage"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="paysLieuStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261663">
+                <jpa:column name="pays_lieu_stage" unique="false" nullable="true" insertable="true" updatable="true" table="lieu_stage" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="villeLieuStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261664">
+                <jpa:column name="ville_lieu_stage" unique="false" nullable="true" insertable="true" updatable="true" table="lieu_stage" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="stageCollection" target-entity="Stage" mapped-by="lieuStageIdLieu" connected-entity-id="_14341039308231542" connected-attribute-id="_14341039308271700" visibile="true" id="_14341039308261666"/>
+            <jpa:many-to-many name="zoneTypeCollection" target-entity="ZoneType" connected-entity-id="_14341039308191529" connected-attribute-id="_14341039308251621" visibile="true" id="_14341039308261665">
+                <jpa:join-table name="appartient_zone">
+                    <jpa:join-column name="id_lieu" referenced-column-name="id_lieu" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <jpa:inverse-join-column name="id_zone" referenced-column-name="id_zone" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </jpa:join-table>
+            </jpa:many-to-many>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="DemandeStage" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308221538">
+        <jpa:table name="demande_stage"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308261667">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="demande_stage"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idStage" attribute-type="int" visibile="true" id="_14341039308261668">
+                <jpa:column name="id_stage" unique="false" nullable="false" insertable="true" updatable="true" table="demande_stage"/>
+            </jpa:id>
+            <jpa:basic name="autorisationDeStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261669">
+                <jpa:column name="autorisation_de_stage" unique="false" nullable="true" insertable="true" updatable="true" table="demande_stage" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="avisDadpgrStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261670">
+                <jpa:column name="avis_dadpgr_stage" unique="false" nullable="true" insertable="true" updatable="true" table="demande_stage" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="avisCsStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308261671">
+                <jpa:column name="avis_cs_stage" unique="false" nullable="true" insertable="true" updatable="true" table="demande_stage" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="dateDemandeStage" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308261672">
+                <jpa:column name="date_Demande_Stage" unique="false" nullable="true" insertable="true" updatable="true" table="demande_stage"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="stage" target-entity="Stage" optional="false" primaryKey="false" connected-entity-id="_14341039308231542" connected-attribute-id="_14341039308271698" visibile="true" id="_14341039308261673">
+                <jpa:join-column name="id_stage" referenced-column-name="id_stage" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261659" visibile="true" id="_14341039308261674">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AffecteLabo" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308221539">
+        <jpa:table name="affecte_labo"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308261675">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="affecte_labo"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idLabo" attribute-type="int" visibile="true" id="_14341039308261676">
+                <jpa:column name="id_labo" unique="false" nullable="false" insertable="true" updatable="true" table="affecte_labo"/>
+            </jpa:id>
+            <jpa:basic name="dateAffecteLabo" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308261677">
+                <jpa:column name="date_affecte_labo" unique="false" nullable="true" insertable="true" updatable="true" table="affecte_labo"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="laboratoireRattachement" target-entity="LaboratoireRattachement" optional="false" primaryKey="false" connected-entity-id="_14341039308241548" connected-attribute-id="_14341039308281727" visibile="true" id="_14341039308271678">
+                <jpa:join-column name="id_labo" referenced-column-name="id_labo" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261660" visibile="true" id="_14341039308271679">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="FraisSejour" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308221540">
+        <jpa:table name="frais_sejour"/>
+        <jpa:attributes>
+            <jpa:id name="numeroFraisSejour" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271680">
+                <jpa:column name="numero_frais_sejour" unique="false" nullable="false" insertable="true" updatable="true" table="frais_sejour"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="montantAlloc" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271681">
+                <jpa:column name="montant_alloc" unique="false" nullable="true" insertable="true" updatable="true" table="frais_sejour" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="stageIdStage" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271682">
+                <jpa:column name="stage_id_stage" unique="false" nullable="true" insertable="true" updatable="true" table="frais_sejour"/>
+            </jpa:basic>
+            <jpa:basic name="manifestationIdManifestation" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271683">
+                <jpa:column name="manifestation_id_manifestation" unique="false" nullable="true" insertable="true" updatable="true" table="frais_sejour"/>
+            </jpa:basic>
+            <jpa:one-to-many name="manifestationCollection" target-entity="Manifestation" mapped-by="fraisSejourNumeroFraisSejour" connected-entity-id="_14341039308201532" connected-attribute-id="_14341039308261634" visibile="true" id="_14341039308271684"/>
+            <jpa:one-to-many name="stageCollection" target-entity="Stage" mapped-by="fraisSejourNumeroFraisSejour" connected-entity-id="_14341039308231542" connected-attribute-id="_14341039308271699" visibile="true" id="_14341039308271685"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Encadrant" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308221541">
+        <jpa:table name="encadrant"/>
+        <jpa:attributes>
+            <jpa:id name="idEncadrant" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271686">
+                <jpa:column name="id_encadrant" unique="false" nullable="false" insertable="true" updatable="true" table="encadrant"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nomEncadrant" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271687">
+                <jpa:column name="nom_encadrant" unique="false" nullable="true" insertable="true" updatable="true" table="encadrant" length="30"/>
+            </jpa:basic>
+            <jpa:basic name="prenomEncadrant" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271688">
+                <jpa:column name="prenom_encadrant" unique="false" nullable="true" insertable="true" updatable="true" table="encadrant" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="encadreParCollection" target-entity="EncadrePar" mapped-by="encadrant" collection-type="java.util.Collection" connected-entity-id="_14341039308191527" connected-attribute-id="_14341039308251611" visibile="true" id="_14341039308271689"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Stage" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308231542">
+        <jpa:table name="stage"/>
+        <jpa:attributes>
+            <jpa:id name="idStage" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271690">
+                <jpa:column name="id_stage" unique="false" nullable="false" insertable="true" updatable="true" table="stage"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="dateDebutStage" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308271691">
+                <jpa:column name="date_debut_stage" unique="false" nullable="true" insertable="true" updatable="true" table="stage"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="dateFinStage" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308271692">
+                <jpa:column name="date_fin_stage" unique="false" nullable="true" insertable="true" updatable="true" table="stage"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="objectifStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271693">
+                <jpa:column name="objectif_stage" unique="false" nullable="true" insertable="true" updatable="true" table="stage" length="256"/>
+            </jpa:basic>
+            <jpa:basic name="environnementStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271694">
+                <jpa:column name="environnement_stage" unique="false" nullable="true" insertable="true" updatable="true" table="stage" length="256"/>
+            </jpa:basic>
+            <jpa:basic name="missionStage" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271695">
+                <jpa:column name="mission_stage" unique="false" nullable="true" insertable="true" updatable="true" table="stage" length="256"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fraisSejourNumeroFraisSejour" target-entity="FraisSejour" primaryKey="false" connected-entity-id="_14341039308221540" connected-attribute-id="_14341039308271685" visibile="true" id="_14341039308271699">
+                <jpa:join-column name="frais_sejour_numero_frais_sejour" referenced-column-name="numero_frais_sejour" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="lieuStageIdLieu" target-entity="LieuStage" primaryKey="false" connected-entity-id="_14341039308221537" connected-attribute-id="_14341039308261666" visibile="true" id="_14341039308271700">
+                <jpa:join-column name="lieu_stage_id_lieu" referenced-column-name="id_lieu" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="avoirFraiStageCollection" target-entity="AvoirFraiStage" mapped-by="stage" connected-entity-id="_14341039308171520" connected-attribute-id="_14341039308241558" visibile="true" id="_14341039308271696"/>
+            <jpa:one-to-many name="avoirPvCollection" target-entity="AvoirPv" mapped-by="stage" connected-entity-id="_14341039308191528" connected-attribute-id="_14341039308251618" visibile="true" id="_14341039308271697"/>
+            <jpa:one-to-many name="demandeStageCollection" target-entity="DemandeStage" mapped-by="stage" connected-entity-id="_14341039308221538" connected-attribute-id="_14341039308261673" visibile="true" id="_14341039308271698"/>
+            <jpa:one-to-many name="avoirEtatCollection" target-entity="AvoirEtat" mapped-by="stage" connected-entity-id="_14341039308241547" connected-attribute-id="_14341039308281724" visibile="true" id="_14341039308271701"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirFraisManif" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308231543">
+        <jpa:table name="avoir_frais_manif"/>
+        <jpa:attributes>
+            <jpa:id name="idManifestation" attribute-type="int" visibile="true" id="_14341039308271702">
+                <jpa:column name="id_manifestation" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_frais_manif"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idFraisManif" attribute-type="int" visibile="true" id="_14341039308271703">
+                <jpa:column name="id_frais_manif" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_frais_manif"/>
+            </jpa:id>
+            <jpa:basic name="totalFraisManif" optional="true" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271704">
+                <jpa:column name="total_frais_manif" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_frais_manif"/>
+            </jpa:basic>
+            <jpa:many-to-one name="fraisManif" target-entity="FraisManif" optional="false" primaryKey="false" connected-entity-id="_14341039308201534" connected-attribute-id="_14341039308261647" visibile="true" id="_14341039308271705">
+                <jpa:join-column name="id_frais_manif" referenced-column-name="id_frais_manif" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="manifestation" target-entity="Manifestation" optional="false" primaryKey="false" connected-entity-id="_14341039308201532" connected-attribute-id="_14341039308261635" visibile="true" id="_14341039308271706">
+                <jpa:join-column name="id_manifestation" referenced-column-name="id_manifestation" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Grade" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308231544">
+        <jpa:table name="grade"/>
+        <jpa:attributes>
+            <jpa:id name="idGrade" attribute-type="java.lang.Integer" visibile="true" id="_14341039308271707">
+                <jpa:column name="id_grade" unique="false" nullable="false" insertable="true" updatable="true" table="grade"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="libelleGrade" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308271708">
+                <jpa:column name="libelle_grade" unique="false" nullable="true" insertable="true" updatable="true" table="grade" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirGradeCollection" target-entity="AvoirGrade" mapped-by="grade" connected-entity-id="_14341039308191526" connected-attribute-id="_14341039308251603" visibile="true" id="_14341039308271709"/>
+            <jpa:one-to-many name="avoirGradeMemCsCollection" target-entity="AvoirGradeMemCs" mapped-by="grade" connected-entity-id="_14341039308201533" connected-attribute-id="_14341039308261639" visibile="true" id="_14341039308271710"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirDiplome" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308231545">
+        <jpa:table name="avoir_diplome"/>
+        <jpa:attributes>
+            <jpa:id name="idStagiaire" attribute-type="int" visibile="true" id="_14341039308281711">
+                <jpa:column name="id_stagiaire" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_diplome"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:id name="idDiplome" attribute-type="int" visibile="true" id="_14341039308281712">
+                <jpa:column name="id_diplome" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_diplome"/>
+            </jpa:id>
+            <jpa:basic name="dateAvoirDiplome" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308281713">
+                <jpa:column name="date_avoir_diplome" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_diplome"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="diplome" target-entity="Diplome" optional="false" primaryKey="false" connected-entity-id="_14341039308201531" connected-attribute-id="_14341039308261630" visibile="true" id="_14341039308281714">
+                <jpa:join-column name="id_diplome" referenced-column-name="id_diplome" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stagiaire" target-entity="Stagiaire" optional="false" primaryKey="false" connected-entity-id="_14341039308211536" connected-attribute-id="_14341039308261661" visibile="true" id="_14341039308281715">
+                <jpa:join-column name="id_stagiaire" referenced-column-name="id_stagiaire" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="Fonction" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308231546">
+        <jpa:table name="fonction"/>
+        <jpa:attributes>
+            <jpa:id name="idFonction" attribute-type="java.lang.Integer" visibile="true" id="_14341039308281716">
+                <jpa:column name="id_fonction" unique="false" nullable="false" insertable="true" updatable="true" table="fonction"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="libelleFonction" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308281717">
+                <jpa:column name="libelle_fonction" unique="false" nullable="true" insertable="true" updatable="true" table="fonction" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="avoirFctMemCsCollection" target-entity="AvoirFctMemCs" mapped-by="fonction" connected-entity-id="_14341039308151519" connected-attribute-id="_14341039308241552" visibile="true" id="_14341039308281718"/>
+            <jpa:one-to-many name="avoirFonctionCollection" target-entity="AvoirFonction" mapped-by="fonction" connected-entity-id="_14341039308181523" connected-attribute-id="_14341039308251579" visibile="true" id="_14341039308281719"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="AvoirEtat" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308241547">
+        <jpa:table name="avoir_etat"/>
+        <jpa:attributes>
+            <jpa:id name="etatStage" attribute-type="java.lang.String" visibile="true" id="_14341039308281720">
+                <jpa:column name="etat_stage" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_etat" length="30"/>
+            </jpa:id>
+            <jpa:id name="idStage" attribute-type="int" visibile="true" id="_14341039308281721">
+                <jpa:column name="id_stage" unique="false" nullable="false" insertable="true" updatable="true" table="avoir_etat"/>
+            </jpa:id>
+            <jpa:basic name="dateAvoirEtat" optional="true" attribute-type="java.util.Date" visibile="true" id="_14341039308281722">
+                <jpa:column name="date_avoir_etat" unique="false" nullable="true" insertable="true" updatable="true" table="avoir_etat"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:many-to-one name="etatStage1" target-entity="EtatStage" optional="false" primaryKey="false" connected-entity-id="_14341039308211535" connected-attribute-id="_14341039308261649" visibile="true" id="_14341039308281723">
+                <jpa:join-column name="etat_stage" referenced-column-name="etat_stage" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="stage" target-entity="Stage" optional="false" primaryKey="false" connected-entity-id="_14341039308231542" connected-attribute-id="_14341039308271701" visibile="true" id="_14341039308281724">
+                <jpa:join-column name="id_stage" referenced-column-name="id_stage" unique="false" nullable="true" insertable="false" updatable="false"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:entity class="LaboratoireRattachement" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_14341039308241548">
+        <jpa:table name="laboratoire_rattachement"/>
+        <jpa:attributes>
+            <jpa:id name="idLabo" attribute-type="java.lang.Integer" visibile="true" id="_14341039308281725">
+                <jpa:column name="id_labo" unique="false" nullable="false" insertable="true" updatable="true" table="laboratoire_rattachement"/>
+                <jpa:generated-value strategy="AUTO"/>
+            </jpa:id>
+            <jpa:basic name="nomLabo" optional="true" attribute-type="java.lang.String" visibile="true" id="_14341039308281726">
+                <jpa:column name="nom_labo" unique="false" nullable="true" insertable="true" updatable="true" table="laboratoire_rattachement" length="30"/>
+            </jpa:basic>
+            <jpa:one-to-many name="affecteLaboCollection" target-entity="AffecteLabo" mapped-by="laboratoireRattachement" connected-entity-id="_14341039308221539" connected-attribute-id="_14341039308271678" visibile="true" id="_14341039308281727"/>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_14341039308141517">
+        <plane elementRef="_14341039308141516" id="_14341039308141518_p">
+            <shape elementRef="_14341039308151519" id="_14341039308151519_gui">
+                <Bounds x="311.0" y="1633.0" width="185.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308171520" id="_14341039308171520_gui">
+                <Bounds x="1401.0" y="285.0" width="179.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308181521" id="_14341039308181521_gui">
+                <Bounds x="1465.0" y="2264.0" width="213.0" height="252.0"/>
+            </shape>
+            <shape elementRef="_14341039308181522" id="_14341039308181522_gui">
+                <Bounds x="311.0" y="285.0" width="151.0" height="231.0"/>
+            </shape>
+            <shape elementRef="_14341039308181523" id="_14341039308181523_gui">
+                <Bounds x="821.0" y="959.0" width="173.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308191524" id="_14341039308191524_gui">
+                <Bounds x="1111.0" y="1928.0" width="203.0" height="336.0"/>
+            </shape>
+            <shape elementRef="_14341039308191525" id="_14341039308191525_gui">
+                <Bounds x="1678.0" y="32.0" width="211.0" height="189.0"/>
+            </shape>
+            <shape elementRef="_14341039308191526" id="_14341039308191526_gui">
+                <Bounds x="1678.0" y="1254.0" width="159.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308191527" id="_14341039308191527_gui">
+                <Bounds x="821.0" y="1633.0" width="163.0" height="231.0"/>
+            </shape>
+            <shape elementRef="_14341039308191528" id="_14341039308191528_gui">
+                <Bounds x="560.0" y="32.0" width="139.0" height="176.0"/>
+            </shape>
+            <shape elementRef="_14341039308191529" id="_14341039308191529_gui">
+                <Bounds x="311.0" y="959.0" width="164.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_14341039308201530" id="_14341039308201530_gui">
+                <Bounds x="32.0" y="1928.0" width="215.0" height="189.0"/>
+            </shape>
+            <shape elementRef="_14341039308201531" id="_14341039308201531_gui">
+                <Bounds x="1953.0" y="1633.0" width="185.0" height="126.0"/>
+            </shape>
+            <shape elementRef="_14341039308201532" id="_14341039308201532_gui">
+                <Bounds x="821.0" y="2328.0" width="226.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308201533" id="_14341039308201533_gui">
+                <Bounds x="2259.0" y="1254.0" width="202.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308201534" id="_14341039308201534_gui">
+                <Bounds x="1401.0" y="2876.0" width="211.0" height="210.0"/>
+            </shape>
+            <shape elementRef="_14341039308211535" id="_14341039308211535_gui">
+                <Bounds x="1111.0" y="32.0" width="159.0" height="92.0"/>
+            </shape>
+            <shape elementRef="_14341039308211536" id="_14341039308211536_gui">
+                <Bounds x="1111.0" y="1254.0" width="213.0" height="315.0"/>
+            </shape>
+            <shape elementRef="_14341039308221537" id="_14341039308221537_gui">
+                <Bounds x="560.0" y="580.0" width="164.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308221538" id="_14341039308221538_gui">
+                <Bounds x="1401.0" y="959.0" width="183.0" height="231.0"/>
+            </shape>
+            <shape elementRef="_14341039308221539" id="_14341039308221539_gui">
+                <Bounds x="1678.0" y="1928.0" width="193.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308221540" id="_14341039308221540_gui">
+                <Bounds x="1678.0" y="580.0" width="208.0" height="189.0"/>
+            </shape>
+            <shape elementRef="_14341039308221541" id="_14341039308221541_gui">
+                <Bounds x="560.0" y="1928.0" width="176.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_14341039308231542" id="_14341039308231542_gui">
+                <Bounds x="1111.0" y="580.0" width="226.0" height="315.0"/>
+            </shape>
+            <shape elementRef="_14341039308231543" id="_14341039308231543_gui">
+                <Bounds x="1111.0" y="2644.0" width="184.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308231544" id="_14341039308231544_gui">
+                <Bounds x="1953.0" y="959.0" width="215.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_14341039308231545" id="_14341039308231545_gui">
+                <Bounds x="1401.0" y="1633.0" width="171.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308231546" id="_14341039308231546_gui">
+                <Bounds x="560.0" y="1254.0" width="197.0" height="147.0"/>
+            </shape>
+            <shape elementRef="_14341039308241547" id="_14341039308241547_gui">
+                <Bounds x="821.0" y="285.0" width="147.0" height="168.0"/>
+            </shape>
+            <shape elementRef="_14341039308241548" id="_14341039308241548_gui">
+                <Bounds x="1953.0" y="2328.0" width="242.0" height="126.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>

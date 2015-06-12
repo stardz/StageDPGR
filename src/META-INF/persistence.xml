@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ProjetPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model.FraisStage</class>
+    <class>model.AvoirEtat</class>
+    <class>model.LaboratoireRattachement</class>
+    <class>model.DemandeStage</class>
+    <class>model.Stage</class>
+    <class>model.Diplome</class>
+    <class>model.LieuStage</class>
+    <class>model.Grade</class>
+    <class>model.AvoirGradeMemCs</class>
+    <class>model.Manifestation</class>
+    <class>model.EtatStage</class>
+    <class>model.Pv</class>
+    <class>model.Encadrant</class>
+    <class>model.MembreCs</class>
+    <class>model.AvoirPv</class>
+    <class>model.AvoirFraiStage</class>
+    <class>model.FraisSejour</class>
+    <class>model.AvoirGrade</class>
+    <class>model.FraisManif</class>
+    <class>model.InviteManifestation</class>
+    <class>model.AvoirDiplome</class>
+    <class>model.AffecteLabo</class>
+    <class>model.AvoirFraisManif</class>
+    <class>model.AvoirFonction</class>
+    <class>model.Fonction</class>
+    <class>model.Stagiaire</class>
+    <class>model.Inviteur</class>
+    <class>model.EncadrePar</class>
+    <class>model.ZoneType</class>
+    <class>model.AvoirFctMemCs</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/stagedb"/>
+      <property name="javax.persistence.jdbc.password" value="123"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>
