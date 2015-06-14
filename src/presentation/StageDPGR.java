@@ -36,8 +36,7 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("============="+persistance.PersistManager.getSesEncadrant(1).get(0).getNomEncadrant());
-        launch(args);
+       launch(args);
     }
 
     public static void refreshRoot() {
