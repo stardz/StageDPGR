@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import java.util.Date;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,6 +36,7 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("============="+persistance.PersistManager.getSesEncadrant(1).get(0).getNomEncadrant());
         launch(args);
     }
 
