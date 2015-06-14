@@ -11,15 +11,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="zone_type")
 public class ZoneType implements Serializable {
 
-    @ManyToMany(targetEntity = LieuStage.class,mappedBy = "zoneTypeCollection")
-    private Collection<LieuStage> lieuStageCollection;
+    @OneToMany(targetEntity = AppartientZone.class,mappedBy = "zoneType")
+    private Collection<AppartientZone> appartientZoneCollection;
     @Column(name="nom_zone",table="zone_type",length=30)
     @Basic
     private String nomZone;
@@ -32,12 +32,12 @@ public class ZoneType implements Serializable {
 
     }
    
-    public Collection<LieuStage> getLieuStageCollection() {
-        return this.lieuStageCollection;
+    public Collection<AppartientZone> getAppartientZoneCollection() {
+        return this.appartientZoneCollection;
     }
 
-    public void setLieuStageCollection(Collection<LieuStage> lieuStageCollection) {
-        this.lieuStageCollection = lieuStageCollection;
+    public void setAppartientZoneCollection(Collection<AppartientZone> appartientZoneCollection) {
+        this.appartientZoneCollection = appartientZoneCollection;
     }
    
     public String getNomZone() {

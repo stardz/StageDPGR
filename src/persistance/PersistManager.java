@@ -507,38 +507,7 @@ public class PersistManager {
         entityManager.close();
         return diplome;
     }
-
-    public static void insertZone(ZoneType zone) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(zone);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
-
-    public static List<ZoneType> findAllZones() {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        TypedQuery<ZoneType> query = entityManager.createQuery("SELECT c FROM ZoneType c", ZoneType.class);
-        List<ZoneType> result = query.getResultList();
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        return result;
-    }
-
-    public static ZoneType findZoneById(int idZoneType) {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        ZoneType zoneType = null;
-        zoneType = entityManager.find(ZoneType.class, idZoneType);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-        return zoneType;
-    }
-
+    
     public static void insertLabo(LaboratoireRattachement labo) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -602,6 +571,85 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
         return fraisStage;
+    }
+   /*
+    Lieu de Stage
+    */
+    public static void insertLieuStage(LieuStage lieuStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(lieuStage);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public static List<LieuStage> findAllLieuStage() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<LieuStage> query = entityManager.createQuery("SELECT c FROM LieuStage c", LieuStage.class);
+        List<LieuStage> result = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
+    }
+
+    public static LieuStage findLieuStageById(int idLieuStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        LieuStage lieuStage = null;
+        lieuStage = entityManager.find(LieuStage.class, idLieuStage);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return lieuStage;
+    }
+    
+    public static void affectZoneLieu(int idZone,int idLieu){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AppartientZone appZone = new AppartientZone();
+        appZone.setCommentaires("rien");
+        appZone.setIdLieu(idLieu);
+        appZone.setIdZone(idZone);
+        entityManager.persist(appZone);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+    /*
+    Zones
+    */
+    public static void insertZone(ZoneType zone) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(zone);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public static List<ZoneType> findAllZones() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<ZoneType> query = entityManager.createQuery("SELECT c FROM ZoneType c", ZoneType.class);
+        List<ZoneType> result = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
+    }
+
+    public static ZoneType findZoneById(int idZoneType) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        ZoneType zoneType = null;
+        zoneType = entityManager.find(ZoneType.class, idZoneType);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return zoneType;
     }
     /*
      Statistiques
