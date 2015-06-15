@@ -821,7 +821,7 @@ public class PersistManager {
         entityManager.close();
     }
     public static Utilisateur getUtilisateurByLogin(String login){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         Utilisateur user=null;
