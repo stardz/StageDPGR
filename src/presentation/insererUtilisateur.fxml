@@ -73,7 +73,7 @@
             <Font name="Tw Cen MT" size="14.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="profil" layoutX="150.0" layoutY="206.0" prefWidth="150.0" />
+      <ComboBox fx:id="profil" layoutX="150.0" layoutY="206.0" prefWidth="150.0" />
       
    </children>
 </AnchorPane>

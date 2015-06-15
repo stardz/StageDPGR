@@ -40,9 +40,14 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Stagiaire st=new Stagiaire();
-         st.setIdStagiaire(5);
-         persistance.PersistManager.insertStagiaire(st);
+      Utilisateur user=new Utilisateur();
+      user.setLoginUtilisateur("Agent");
+        user.setEtatCompte("123");
+        user.setMpUtilisateur("123");
+        user.setNomUtilisateur("123");
+        user.setPrenomUtilisateur("123");
+        user.setProfilUtilisateur("123");
+        persistance.PersistManager.updateUtilisateur(user);
         launch(args);
     }
 
