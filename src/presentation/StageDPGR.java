@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Utilisateur;
 
 /**
  *
@@ -36,7 +37,7 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       // System.out.println("========="+persistance.PersistManager.getUtilisateurByLogin("Agent").getEtatCompte());
+        System.out.println("========"+persistance.PersistManager.findAllUtilisateur().get(0).getEtatCompte());
         launch(args);
     }
 

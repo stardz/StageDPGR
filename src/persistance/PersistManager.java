@@ -833,7 +833,17 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
         return user;
-    }   
+    } 
+    public static List<Utilisateur> findAllUtilisateur() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<Utilisateur> query = entityManager.createQuery("SELECT c FROM Utilisateur c", Utilisateur.class);
+        List<Utilisateur> result = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
+    }
     public static String cryptWithMD5(String pass){
         MessageDigest md;
         try {
