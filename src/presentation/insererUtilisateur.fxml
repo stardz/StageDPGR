@@ -1,11 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.insertUtilisateurController">
-    
+<AnchorPane id="AnchorPane" prefHeight="421.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.insertUtilisateurController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbdeff" height="52.0" layoutX="8.0" layoutY="361.0" stroke="BLACK" strokeType="INSIDE" width="458.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbdeff" height="300.0" layoutX="9.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="458.0" />
+      <Text layoutX="20.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom d' utilisateur">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font></Text>
+      <Text layoutX="42.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font></Text>
+      <Text layoutX="34.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font></Text>
+      <Text layoutX="30.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font></Text>
+      <Text layoutX="29.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmer MP">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font></Text>
+      <TextField fx:id="psedou" layoutX="149.0" layoutY="83.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextField fx:id="nom" layoutX="149.0" layoutY="124.0" prefHeight="25.0" prefWidth="104.0" />
+      <TextField fx:id="prenom" layoutX="150.0" layoutY="166.0" prefHeight="25.0" prefWidth="104.0" />
+      <TextField fx:id="motPasse" layoutX="149.0" layoutY="258.0" prefHeight="25.0" prefWidth="212.0" />
+      <TextField fx:id="CMotPasse" layoutX="149.0" layoutY="306.0" prefHeight="25.0" prefWidth="212.0" />
+      <Button fx:id="valider" layoutX="207.0" layoutY="367.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Valider" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imagePlaceAjouterPlace11" fitHeight="39.0" fitWidth="39.0" layoutX="209.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ValiderInfo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="annuler" layoutX="339.0" layoutY="367.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Annuler" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Tw Cen MT" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imagePlaceAjouterPlace111" fitHeight="39.0" fitWidth="40.0" layoutX="339.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AnnulerInfo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutY="14.0" prefHeight="39.0" prefWidth="475.0" style="-fx-background-color: #2C3E50;">
+         <children>
+            <Label layoutX="10.0" layoutY="5.0" prefHeight="30.0" prefWidth="335.0" text="Création d'un nouveau compte" textFill="WHITE">
+               <font>
+                  <Font name="Tw Cen MT" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Text layoutX="40.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profil">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="profil" layoutX="150.0" layoutY="206.0" prefWidth="150.0" />
+      
+   </children>
 </AnchorPane>
