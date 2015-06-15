@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings status="GENERATED" jaxb-support="false" id="_1434383274634410" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity class="Utilisateur" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1434383274634413">
+        <jpa:table name="Utilisateur"/>
+        <jpa:attributes>
+            <jpa:id name="loginUtilisateur" attribute-type="java.lang.String" visibile="true" id="_1434383274651416">
+                <jpa:column name="login_utilisateur" unique="false" nullable="false" insertable="true" updatable="true" table="Utilisateur" length="2147483647"/>
+            </jpa:id>
+            <jpa:basic name="nomUtilisateur" optional="true" attribute-type="java.lang.String" visibile="true" id="_1434383274651414">
+                <jpa:column name="nom_utilisateur" unique="false" nullable="true" insertable="true" updatable="true" table="Utilisateur" length="2147483647"/>
+            </jpa:basic>
+            <jpa:basic name="prenomUtilisateur" optional="true" attribute-type="java.lang.String" visibile="true" id="_1434383274651415">
+                <jpa:column name="prenom_utilisateur" unique="false" nullable="true" insertable="true" updatable="true" table="Utilisateur" length="2147483647"/>
+            </jpa:basic>
+            <jpa:basic name="mpUtilisateur" optional="true" attribute-type="java.lang.String" visibile="true" id="_1434383274651417">
+                <jpa:column name="mp_utilisateur" unique="false" nullable="true" insertable="true" updatable="true" table="Utilisateur" length="2147483647"/>
+            </jpa:basic>
+            <jpa:basic name="profilUtilisateur" optional="true" attribute-type="java.lang.String" visibile="true" id="_1434383274651418">
+                <jpa:column name="profil_utilisateur" unique="false" nullable="true" insertable="true" updatable="true" table="Utilisateur" length="2147483647"/>
+            </jpa:basic>
+            <jpa:basic name="etatCompte" optional="true" attribute-type="java.lang.String" visibile="true" id="_1434383274651419">
+                <jpa:column name="etat_compte" unique="false" nullable="true" insertable="true" updatable="true" table="Utilisateur" length="2147483647"/>
+            </jpa:basic>
+        </jpa:attributes>
+    </jpa:entity>
+    <jpa:diagram id="_1434383274634411">
+        <plane elementRef="_1434383274634410" id="_1434383274634412_p"/>
+    </jpa:diagram>
+</jpa:entity-mappings>
