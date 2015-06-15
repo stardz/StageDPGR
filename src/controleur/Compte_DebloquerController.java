@@ -6,11 +6,13 @@
 
 package controleur;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import model.Utilisateur;
 import presentation.StageDPGR;
@@ -18,38 +20,32 @@ import presentation.StageDPGR;
 /**
  * FXML Controller class
  *
- * @author B-Zakaria
+ * @author Oopc
  */
-public class ConfiirmerBloquerController implements Initializable {
+public class Compte_DebloquerController implements Initializable {
 
-    /**
+   /**
      * Initializes the controller class.
      */
-      @FXML 
-    Button valider;
-    @FXML 
-    Button annuler;
     @FXML
-    Text nomCompte;
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        nomCompte.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
-    }  
-    
-    @FXML 
-    public void valider(){
+    Text nomCompteDebloquer;
+    @FXML
+    private void confirmer(ActionEvent event) throws IOException{
         Utilisateur u=new Utilisateur();
         u.setLoginUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
-        u.setEtatCompte("bloque");
+        u.setEtatCompte("actif");
         u.setMpUtilisateur(StageDPGR.selectedUtilisateur.getMpUtilisateur());
         u.setNomUtilisateur(StageDPGR.selectedUtilisateur.getNomUtilisateur());
         u.setPrenomUtilisateur(StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
         u.setProfilUtilisateur(StageDPGR.selectedUtilisateur.getProfilUtilisateur());
     }
-     @FXML 
-    public void annuler(){
-        // fermer 2nd stage
+    @FXML
+    private void annuler(ActionEvent event) throws IOException{
+        // close seconde stage
     }
-    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //TODO
+        nomCompteDebloquer.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+    }    
 }

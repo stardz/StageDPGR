@@ -860,8 +860,20 @@ public class PersistManager {
            // Logger.getLogger(CryptWithMD5.class.getName()).log(Level.SEVERE, null, ex);
     }
         return null;
-
-
    }
-    
+    public static void updateUtilisateur(Utilisateur usr){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Utilisateur u=entityManager.find(Utilisateur.class,usr.getLoginUtilisateur());
+        u.setLoginUtilisateur(usr.getLoginUtilisateur());
+        u.setEtatCompte(usr.getEtatCompte());
+        u.setMpUtilisateur(usr.getMpUtilisateur());
+        u.setNomUtilisateur(usr.getNomUtilisateur());
+        u.setPrenomUtilisateur(usr.getPrenomUtilisateur());
+        u.setProfilUtilisateur(usr.getProfilUtilisateur());
+        entityManager.getTransaction().commit();
+        entityManager.close();
+      
+    }
 }
