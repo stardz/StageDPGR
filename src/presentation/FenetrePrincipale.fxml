@@ -43,7 +43,7 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="communiquerPlace" layoutX="22.0" layoutY="443.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Communiquer" textFill="WHITE">
+                        <Button fx:id="communiquerPlace" layoutX="22.0" layoutY="443.0" mnemonicParsing="false" onAction="#afficherProfilStagiaireOnAction" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Afficher profil stagiaire" textFill="WHITE">
                         
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />

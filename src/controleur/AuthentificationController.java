@@ -37,22 +37,26 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void connexion(ActionEvent event) {
-        Utilisateur usr = persistance.PersistManager.getUtilisateurByLogin(nomUtilisateur.getText());
-        if(usr == null){
+        try {
+            /*  Utilisateur usr = persistance.PersistManager.getUtilisateurByLogin(nomUtilisateur.getText());
+            if(usr == null){
             nomUtilisateur.setEffect(new DropShadow(10, Color.RED));
-        }else if (usr.getMpUtilisateur().equals(persistance.PersistManager.cryptWithMD5(motdePasse.getText()))) {
+            }else if (usr.getMpUtilisateur().equals(persistance.PersistManager.cryptWithMD5(motdePasse.getText()))) {
             try {
-                StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
             } catch (IOException ex) {
-                Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
             }
             StageDPGR.refreshRoot();
-        }else{
-               motdePasse.setEffect(new DropShadow(10, Color.RED));
+            }else{
+            motdePasse.setEffect(new DropShadow(10, Color.RED));
+            }*/
+            
+            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        
-
+               StageDPGR.refreshRoot1();
     }
 
     @Override

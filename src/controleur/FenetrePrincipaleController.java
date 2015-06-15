@@ -5,12 +5,17 @@
  */
 package controleur;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
@@ -18,6 +23,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Utilisateur;
 import modelforpresentation.UtilisateurPres;
+import presentation.StageDPGR;
 
 /**
  * FXML Controller class
@@ -74,5 +80,15 @@ public class FenetrePrincipaleController implements Initializable {
         //Remplissage
         tableComptes.setItems(dataComptes);
         tableComptes.getColumns().addAll(nomUsrCol,prenomUsrCol,loginCol,mpCol,profileCol,etatCol);
+    }
+    
+    @FXML
+    private void afficherProfilStagiaireOnAction(ActionEvent event){
+        System.out.println("click profile");
+        try {
+            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FenetrePrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

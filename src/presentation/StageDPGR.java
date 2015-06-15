@@ -22,6 +22,10 @@ public class StageDPGR extends Application {
     public static Parent root;
     public static Scene scene;
     public static Stage stage;
+    
+     public static Parent root2 ;
+    public static Scene scene2 ;
+    public static Stage stage2 ;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -41,10 +45,16 @@ public class StageDPGR extends Application {
         launch(args);
     }
 
-    public static void refreshRoot() {
+    public static void refreshRoot1() {
         StageDPGR.scene = new Scene(StageDPGR.root);
         StageDPGR.stage.setScene(StageDPGR.scene);
         StageDPGR.stage.centerOnScreen();
+    }
+    
+        public static void refreshRoot2() {
+        StageDPGR.scene2= new Scene(StageDPGR.root2);
+        StageDPGR.stage2.setScene(StageDPGR.scene2);
+        StageDPGR.stage2.centerOnScreen();
     }
 
 }

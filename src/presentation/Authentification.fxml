@@ -11,11 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="297.0" prefWidth="246.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.AuthentificationController">
     <children>
-        <ImageView fitHeight="81.0" fitWidth="264.0" layoutX="6.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../logo.png" />
-            </image>
-        </ImageView>
+        <ImageView fitHeight="100.0" fitWidth="140.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
         <TextField fx:id="nomUtilisateur" layoutX="16.0" layoutY="141.0" prefHeight="38.0" prefWidth="213.0" promptText="Nom d'utilisateur" style="-fx-border-color: #2980b9;" />
         <PasswordField fx:id="motdePasse" layoutX="17.0" layoutY="190.0" prefHeight="38.0" prefWidth="213.0" promptText="Mot de passe" style="-fx-border-color: #2980b9;" />
         <Button fx:id="btnConnect" layoutX="17.0" layoutY="238.0" mnemonicParsing="false" onAction="#connexion" prefHeight="38.0" prefWidth="213.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Connecter" textFill="WHITE" AnchorPane.rightAnchor="16.0">
