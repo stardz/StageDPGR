@@ -36,7 +36,7 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("========="+persistance.PersistManager.getUtilisateurByLogin("agent").toString());
+       // System.out.println("========="+persistance.PersistManager.getUtilisateurByLogin("Agent").getEtatCompte());
         launch(args);
     }
 
