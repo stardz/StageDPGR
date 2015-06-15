@@ -5,19 +5,24 @@
  */
 package controleur;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Utilisateur;
 import modelforpresentation.UtilisateurPres;
+import presentation.StageDPGR;
 
 /**
  * FXML Controller class
@@ -29,6 +34,30 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     TableView tableComptes;
 
+    
+    /*
+    Actions comptes
+    */
+    @FXML
+    private void showCompteAjouter(ActionEvent event) throws IOException{
+        
+    }
+    @FXML
+    private void showCompteSupprimer(ActionEvent event) throws IOException{
+        
+    }
+    @FXML
+    private void showCompteModifier(ActionEvent event) throws IOException{
+        
+    }
+    @FXML
+    private void showCompteBloquer(ActionEvent event) throws IOException{
+        
+    }
+    @FXML
+    private void showCompteDeBloquer(ActionEvent event) throws IOException{
+        
+    }
     /**
      * Initializes the controller class.
      */
@@ -74,5 +103,14 @@ public class FenetrePrincipaleController implements Initializable {
         //Remplissage
         tableComptes.setItems(dataComptes);
         tableComptes.getColumns().addAll(nomUsrCol,prenomUsrCol,loginCol,mpCol,profileCol,etatCol);
+        
+        //Sélection d'une cellule
+        tableComptes.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                StageDPGR.selectedUtilisateur=(UtilisateurPres)tableComptes.getSelectionModel().getSelectedItem();
+            }
+        });
     }
 }

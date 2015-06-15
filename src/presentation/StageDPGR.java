@@ -11,7 +11,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Stagiaire;
 import model.Utilisateur;
+import modelforpresentation.UtilisateurPres;
 
 /**
  *
@@ -22,6 +24,7 @@ public class StageDPGR extends Application {
     public static Parent root;
     public static Scene scene;
     public static Stage stage;
+    public static UtilisateurPres selectedUtilisateur;  
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -37,7 +40,9 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("========"+persistance.PersistManager.findAllUtilisateur().get(0).getEtatCompte());
+         Stagiaire st=new Stagiaire();
+         st.setIdStagiaire(5);
+         persistance.PersistManager.insertStagiaire(st);
         launch(args);
     }
 

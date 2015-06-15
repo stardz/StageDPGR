@@ -31,6 +31,7 @@
     <class>model.Inviteur</class>
     <class>model.EncadrePar</class>
     <class>model.ZoneType</class>
+    <class>model.AppartientZone</class>
     <class>model.AvoirFctMemCs</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/stagedb"/>
