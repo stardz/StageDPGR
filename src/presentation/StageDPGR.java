@@ -24,6 +24,11 @@ public class StageDPGR extends Application {
     public static Parent root;
     public static Scene scene;
     public static Stage stage;
+    
+   public static Parent root2;
+    public static Scene scene2;
+    public static Stage stage2;
+    
     public static UtilisateurPres selectedUtilisateur;  
 
     @Override

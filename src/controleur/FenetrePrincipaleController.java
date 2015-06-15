@@ -121,9 +121,10 @@ public class FenetrePrincipaleController implements Initializable {
     private void afficherProfilStagiaireOnAction(ActionEvent event){
         System.out.println("click profile");
         try {
-            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
+            StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(FenetrePrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        StageDPGR.refreshRoot2();
     }
 }
