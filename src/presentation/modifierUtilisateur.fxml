@@ -60,7 +60,7 @@
       </ImageView>
       <Pane layoutY="14.0" prefHeight="39.0" prefWidth="475.0" style="-fx-background-color: #2C3E50;">
          <children>
-            <Label layoutX="10.0" layoutY="5.0" prefHeight="30.0" prefWidth="335.0" text="Création d'un nouveau compte" textFill="WHITE">
+            <Label layoutX="10.0" layoutY="5.0" prefHeight="30.0" prefWidth="397.0" text="Modification d'un compte existant" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT" size="26.0" />
                </font>
