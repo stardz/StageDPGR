@@ -812,4 +812,22 @@ public class PersistManager {
     /*
      Utilisateurs
      */
+    public static void insertUtilisateur(Utilisateur usr){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(usr);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+    public static Utilisateur getUtilisateurByLogin(String login){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Utilisateur user=null;
+        user=entityManager.find(Utilisateur.class, login);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return user;
+    }
 }
