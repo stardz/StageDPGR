@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controleur;
 
 import java.io.IOException;
@@ -16,6 +15,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import model.Utilisateur;
 import presentation.StageDPGR;
 
 /**
@@ -24,43 +26,38 @@ import presentation.StageDPGR;
  * @author oSunshine
  */
 public class AuthentificationController implements Initializable {
-/**
+
+    /**
      * Initializes the controller class.
      */
-    @FXML 
+    @FXML
     TextField nomUtilisateur;
     @FXML
     TextField motdePasse;
+
     @FXML
-    private void connexion(ActionEvent event) {        
-        
-    /*    ConnexionBdd connex=new ConnexionBdd();
-        connex.connecter();
-        Compte compteAVerifier=connex.trouveCompte(nomUtilisateur.getText());
-        if(compteAVerifier.getNom()==null){
+    private void connexion(ActionEvent event) {
+        Utilisateur usr = persistance.PersistManager.getUtilisateurByLogin(nomUtilisateur.getText());
+        if(usr == null){
             nomUtilisateur.setEffect(new DropShadow(10, Color.RED));
-            return;    
+        }else if (usr.getMpUtilisateur().equals(persistance.PersistManager.cryptWithMD5(motdePasse.getText()))) {
+            try {
+                StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+            } catch (IOException ex) {
+                Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            StageDPGR.refreshRoot();
+        }else{
+               motdePasse.setEffect(new DropShadow(10, Color.RED));
         }
-        if(motdePasse.getText().equals(compteAVerifier.getMdpCompte().getValue())==false){
-            motdePasse.setEffect(new DropShadow(10, Color.RED));
-            return;  
-        }
-        Solit.currentCompte=compteAVerifier;
-        Solit.IDProfile=compteAVerifier.getIDCompte().getValue();
-*/      
-        try {
-            StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
- 
-             StageDPGR.refreshRoot();
-      
+
+        
+
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    
+    }
+
 }

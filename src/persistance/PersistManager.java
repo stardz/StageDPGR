@@ -5,6 +5,8 @@
  */
 package persistance;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -809,13 +811,15 @@ public class PersistManager {
      Statistiques
      */
 
-    /*
+     /*
      Utilisateurs
      */
     public static void insertUtilisateur(Utilisateur usr){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
+        String encryptedMP=cryptWithMD5(usr.getMpUtilisateur());
+        usr.setMpUtilisateur(encryptedMP);
         entityManager.persist(usr);
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -829,6 +833,25 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
         return user;
+    }   
+    public static String cryptWithMD5(String pass){
+        MessageDigest md;
+        try {
+        md = MessageDigest.getInstance("MD5");
+        byte[] passBytes = pass.getBytes();
+        md.reset();
+        byte[] digested = md.digest(passBytes);
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<digested.length;i++){
+            sb.append(Integer.toHexString(0xff & digested[i]));
+        }
+        return sb.toString();
+    } catch (NoSuchAlgorithmException ex) {
+           // Logger.getLogger(CryptWithMD5.class.getName()).log(Level.SEVERE, null, ex);
     }
+        return null;
+
+
+   }
     
 }
