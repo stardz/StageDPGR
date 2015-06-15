@@ -155,8 +155,8 @@ public class PersistManager {
         AvoirGrade avGrade = new AvoirGrade();
         avGrade.setDateAvoirGrade(date);
         avGrade.setIdGrade(idGrade);
-        entityManager.persist(avGrade);
         avGrade.setIdStagiaire(idStagiaire);
+        entityManager.persist(avGrade);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
@@ -241,23 +241,39 @@ public class PersistManager {
         entityManager.close();
         return stage;
     }
-    
-    public static void attribuerPv(int idStage,int idPv,int[] idsMemCs){
+
+    public static void attribuerPv(int idStage, int idPv, int[] idsMemCs) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        AvoirPv avoirPv=new AvoirPv();
+        AvoirPv avoirPv = new AvoirPv();
         avoirPv.setIdStage(idStage);
         avoirPv.setIdPv(idPv);
-        for(int i:idsMemCs){
+        for (int i : idsMemCs) {
             avoirPv.setIdMembreCs(i);
             entityManager.persist(avoirPv);
         }
         entityManager.getTransaction().commit();
         entityManager.close();
     }
-    
-     /*
+
+    public static List<Pv> getSesPv(int idStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<AvoirPv> query = entityManager.createQuery("SELECT c FROM AvoirPv c", AvoirPv.class);
+        List<AvoirPv> avoirPvListe = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        List<Pv> result = new ArrayList<Pv>();
+        for (AvoirPv it : avoirPvListe) {
+            if (it.getIdStage() == idStage) {
+                result.add(findPvById(it.getIdStage()));
+            }
+        }
+        return result;
+    }
+    /*
      Manifestation
      */
 
@@ -291,10 +307,10 @@ public class PersistManager {
         entityManager.close();
         return manifestation;
     }
+
     /*
      Demandes de Stage
      */
-
     public static void insertDemandeStage(DemandeStage demandeStage) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -314,10 +330,43 @@ public class PersistManager {
         entityManager.close();
         return result;
     }
-   
+
+    public static void affectDemandeStage(int idStagiaire, int idStage, Date dateDemandeStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        DemandeStage demandeStage = new DemandeStage();
+        demandeStage.setDateDemandeStage(dateDemandeStage);
+        demandeStage.setIdStage(idStage);
+        demandeStage.setIdStagiaire(idStagiaire);
+        demandeStage.setAvisDadpgrStage("En attente");
+        demandeStage.setAvisCsStage("En attente");
+        demandeStage.setAutorisationDeStage("En attente");
+        entityManager.persist(demandeStage);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public static List<DemandeStage> getSesDemandeStage(int idStagiaire) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c", DemandeStage.class);
+        List<DemandeStage> demandeStagesListe = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        List<DemandeStage> result = new ArrayList<DemandeStage>();
+        for (DemandeStage it : demandeStagesListe) {
+            if (it.getIdStagiaire() == idStagiaire) {
+                result.add(it);
+            }
+        }
+        return result;
+    }
     /*
-    Pvs
-    */
+     Pvs
+     */
+
     public static void insertPv(Pv pv) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -443,6 +492,63 @@ public class PersistManager {
      Membres CS
      */
 
+    public static void insertMemCS(MembreCs membreCs) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(membreCs);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public static List<MembreCs> findAllMembreCs() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<MembreCs> query = entityManager.createQuery("SELECT c FROM MembreCs c", MembreCs.class);
+        List<MembreCs> result = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
+    }
+
+    public static MembreCs findMembreCsById(int idMembreCs) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        MembreCs membreCs = null;
+        membreCs = entityManager.find(MembreCs.class, idMembreCs);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return membreCs;
+    }
+
+    public static void affectGradeMemCS(int idGrade, int idMemCS, Date date) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirGradeMemCs avGradeMemCs = new AvoirGradeMemCs();
+        avGradeMemCs.setDateAvoirFonctionMemCs(date);
+        avGradeMemCs.setIdGrade(idGrade);
+        avGradeMemCs.setIdMembreCs(idMemCS);
+        entityManager.persist(avGradeMemCs);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public static void affectFonctionMemCS(int idFonction, int idMemCS, Date date) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirFctMemCs avFctMemCs = new AvoirFctMemCs();
+        avFctMemCs.setDateAvoirGradeMemCs(date);
+        avFctMemCs.setIdFonction(idFonction);
+        avFctMemCs.setIdMembreCs(idMemCS);
+        entityManager.persist(avFctMemCs);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
     /*
      Configurations
      */
@@ -507,7 +613,7 @@ public class PersistManager {
         entityManager.close();
         return diplome;
     }
-    
+
     public static void insertLabo(LaboratoireRattachement labo) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -538,10 +644,10 @@ public class PersistManager {
         entityManager.close();
         return laboratoireRattachement;
     }
-    
+
     /*
-    Frais de stage
-    */
+     Frais de stage
+     */
     public static void insertFraisStage(FraisStage fraisStage) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -572,9 +678,10 @@ public class PersistManager {
         entityManager.close();
         return fraisStage;
     }
-   /*
-    Lieu de Stage
-    */
+    /*
+     Lieu de Stage
+     */
+
     public static void insertLieuStage(LieuStage lieuStage) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -605,8 +712,8 @@ public class PersistManager {
         entityManager.close();
         return lieuStage;
     }
-    
-    public static void affectZoneLieu(int idZone,int idLieu){
+
+    public static void affectZoneLieu(int idZone, int idLieu) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
@@ -619,8 +726,9 @@ public class PersistManager {
         entityManager.close();
     }
     /*
-    Zones
-    */
+     Zones
+     */
+
     public static void insertZone(ZoneType zone) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -650,6 +758,52 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
         return zoneType;
+    }
+    /*
+     Etats
+     */
+
+    public static void insertEtatStage(EtatStage etatStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(etatStage);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public static List<EtatStage> findAllEtatStage() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<EtatStage> query = entityManager.createQuery("SELECT c FROM EtatStage c", EtatStage.class);
+        List<EtatStage> result = query.getResultList();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return result;
+    }
+
+    public static EtatStage findEtatStageById(String etatStageCle) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        EtatStage etatStage = null;
+        etatStage = entityManager.find(EtatStage.class, etatStageCle);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return etatStage;
+    }
+
+    public static void affectEtatStage(int idStage, String etatStage, Date dateAffectation) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirEtat avoirEtat = new AvoirEtat();
+        avoirEtat.setEtatStage(etatStage);
+        avoirEtat.setIdStage(idStage);
+        avoirEtat.setDateAvoirEtat(dateAffectation);
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
     /*
      Statistiques
