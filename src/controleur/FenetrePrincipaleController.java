@@ -260,4 +260,27 @@ public class FenetrePrincipaleController implements Initializable {
     public void refreshInfosDemandeStage(){
         
     }
+    
+    @FXML 
+    private void modifierStagiaire(ActionEvent e){
+        
+         
+        try {
+            StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ModifierStagiaire.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FenetrePrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        StageDPGR.refreshRoot2();
+    }
+    
+        @FXML
+    private void ajouterStagiaire(ActionEvent e){
+        
+        try {
+            StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterStagiaire.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FenetrePrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        StageDPGR.refreshRoot2();
+    }
 }
