@@ -26,8 +26,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import model.DemandeStage;
 import model.Stagiaire;
 import model.Utilisateur;
+import modelforpresentation.DemandeStagePres;
 import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 import presentation.StageDPGR;
@@ -41,6 +43,8 @@ public class FenetrePrincipaleController implements Initializable {
     TabPane tabPane;
     @FXML
     TableView tableStagiares;
+    @FXML
+    TableView tableDemandeStage;
     @FXML
     TableView tableComptes;
     @FXML
@@ -185,7 +189,52 @@ public class FenetrePrincipaleController implements Initializable {
                 FenetrePrincipaleController.this.refreshInfosStagiaire();
             }
         });
+         /*
+                Tableau des demandes De Stage
+        */
+        //Data
+        ObservableList<DemandeStagePres> dataDmdStage = FXCollections.observableArrayList();
+        List<DemandeStage> listeDmsStage=persistance.PersistManager.findAllDemandeStages();
         
+        for(DemandeStage it:listeDmsStage){
+            dataDmdStage.add(new DemandeStagePres(it));
+        }
+        // Colonnes
+        TableColumn idStagiaireDmdStageCol = new TableColumn();
+        idStagiaireDmdStageCol.setText("Identifiant Stagiaire");
+        idStagiaireDmdStageCol.setCellValueFactory(new PropertyValueFactory("idStagiaire"));
+        
+        TableColumn idStageDmdStageCol = new TableColumn();
+        idStageDmdStageCol.setText("Identifiant Stage");
+        idStageDmdStageCol.setCellValueFactory(new PropertyValueFactory("idStage"));
+        
+        TableColumn dateDmdStageCol = new TableColumn();
+        dateDmdStageCol.setText("Date de demande");
+        dateDmdStageCol.setCellValueFactory(new PropertyValueFactory("dateDemandeStage"));
+        
+        TableColumn avisDGDmdStageCol = new TableColumn();
+        avisDGDmdStageCol.setText("Avis DAGPGR");
+        avisDGDmdStageCol.setCellValueFactory(new PropertyValueFactory("avisDadpgrStage"));
+        
+        TableColumn avisCSDmdStageCol = new TableColumn();
+        avisCSDmdStageCol.setText("Avis Conseil Scientifique");
+        avisCSDmdStageCol.setCellValueFactory(new PropertyValueFactory("avisCsStage"));
+        
+        TableColumn autorisationDmdStageCol = new TableColumn();
+        autorisationDmdStageCol.setText("Autorisation de Stage");
+        autorisationDmdStageCol.setCellValueFactory(new PropertyValueFactory("autorisationDeStage"));
+        //Remplissage
+        tableDemandeStage.setItems(dataDmdStage);
+        tableDemandeStage.getColumns().addAll(idStagiaireCol,idStageDmdStageCol,dateDmdStageCol,avisDGDmdStageCol,avisCSDmdStageCol,autorisationDmdStageCol);
+        
+        //Sélection d'une cellule
+        tableDemandeStage.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                StageDPGR.selectedDemandeStage=(DemandeStagePres)tableDemandeStage.getSelectionModel().getSelectedItem();
+                FenetrePrincipaleController.this.refreshInfosDemandeStage();
+            }
+        });
     }
     
     @FXML
@@ -207,5 +256,8 @@ public class FenetrePrincipaleController implements Initializable {
     }
     public void refreshInfosStagiaire(){
         // MAJ les informations d'un stagiaire
+    }
+    public void refreshInfosDemandeStage(){
+        
     }
 }

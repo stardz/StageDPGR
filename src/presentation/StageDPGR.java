@@ -11,8 +11,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.DemandeStage;
 import model.Stagiaire;
 import model.Utilisateur;
+import modelforpresentation.DemandeStagePres;
 import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 
@@ -32,7 +34,7 @@ public class StageDPGR extends Application {
     public static int currentTab=new Integer(0);
     public static UtilisateurPres selectedUtilisateur;
     public static StagiairePres selectedStagiaire;
-
+    public static DemandeStagePres selectedDemandeStage;
     @Override
     public void start(Stage stage) throws Exception {
         root = FXMLLoader.load(getClass().getResource("Authentification.fxml"));

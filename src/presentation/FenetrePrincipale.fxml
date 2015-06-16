@@ -337,86 +337,56 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <Pane layoutX="355.0" layoutY="420.0" prefHeight="179.0" prefWidth="813.0" style="-fx-background-color: #E3E3E3;">
+                  <Pane layoutX="437.0" layoutY="492.0" prefHeight="122.0" prefWidth="731.0" style="-fx-background-color: #E3E3E3;">
                      <children>
-                        <GridPane layoutX="20.0" prefHeight="179.0" prefWidth="795.0">
+                        <GridPane layoutX="24.0" layoutY="10.0" prefHeight="102.0" prefWidth="748.0">
                            <children>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Numéro">
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Nom Zone">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Nom Zone" GridPane.rowIndex="1">
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Desciptif" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Desciptif" GridPane.rowIndex="2">
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Caméras installées" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Caméras installées" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Etat de surveillance" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="51.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Classe de danger" GridPane.columnIndex="2">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="numInfoZone" text="empty" GridPane.columnIndex="1">
+                              <Label fx:id="nomInfoZone" text="empty" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nomInfoZone" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label fx:id="descriptifInfoZone" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="descriptifInfoZone" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Label fx:id="camInstalleInfoZone" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="camInstalleInfoZone" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="etatInfoZone" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="classeInfoZone" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Date debut de surveillance" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Date debut de surveillance" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="datedebInfoZone" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Label fx:id="datedebInfoZone" text="empty" GridPane.columnIndex="3">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Caméras actives" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Caméras actives" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="cameraActivesInfoZone" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Label fx:id="cameraActivesInfoZone" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -432,12 +402,15 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
                      </children>
                   </Pane>
+                  <Label layoutX="399.0" layoutY="422.0" text="Progression de la demande" />
+                  <ProgressBar layoutX="595.0" layoutY="422.0" prefHeight="18.0" prefWidth="524.0" progress="0.0" />
+                  <Label layoutX="627.0" layoutY="454.0" text="Validé Par Directeur DPGR" />
+                  <Label layoutX="841.0" layoutY="454.0" text="Validée Par Conseil Scientifique" />
+                  <Label layoutX="1071.0" layoutY="454.0" text="Autorisé" />
                </children>
             </AnchorPane>
          </content>
