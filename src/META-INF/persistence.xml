@@ -42,7 +42,7 @@
   </persistence-unit>
   <persistence-unit name="DEFAULT_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>Utilisateur</class>
+    <class>model.Utilisateur</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/stagedb"/>
       <property name="javax.persistence.jdbc.password" value="123"/>
