@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import presentation.StageDPGR;
 
 /**
  * FXML Controller class
@@ -60,7 +61,7 @@ public class ProfilStagiaireController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // System.out.println(" aa "+nomEtPrenomProfil.getText());
-        nomEtPrenomProfil.setText(nomEtPrenomProfil.getText() + "aa");
+        nomEtPrenomProfil.setText("Profile du Stagiaire :"+StageDPGR.selectedStagiaire.getNomStagiaire()+" "+StageDPGR.selectedStagiaire.getPrenomStagiaire());
 
     }
 

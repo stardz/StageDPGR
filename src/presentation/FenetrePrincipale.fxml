@@ -19,13 +19,13 @@
                   <TableView fx:id="tableStagiares" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Button fx:id="localiserPlace" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier" textFill="WHITE">
+                        <Button fx:id="modifierStagiaire" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ajouterPlace" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
+                        <Button fx:id="supprimerStagiaire" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
                             
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -37,19 +37,19 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="supprimerPlace" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Détails sur le stagiaires" textFill="WHITE">
+                        <Button fx:id="detailStagiaire" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Détails sur le stagiaires" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="communiquerPlace" layoutX="22.0" layoutY="443.0" mnemonicParsing="false" onAction="#afficherProfilStagiaireOnAction" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Afficher profil stagiaire" textFill="WHITE">
+                        <Button fx:id="profilStagiaire" layoutX="22.0" layoutY="443.0" mnemonicParsing="false" onAction="#showStagiareProfile" prefHeight="51.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Afficher profil stagiaire" textFill="WHITE">
                         
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="signalerInfraction" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Ajouter" textFill="WHITE">
+                        <Button fx:id="ajouterStagiaire" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" onAction="#showStagiareAjouter" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Ajouter" textFill="WHITE">
                             
                            <effect>
                               <DropShadow color="WHITE" height="0.0" radius="0.0" width="0.0" />
@@ -333,7 +333,7 @@
                      </children>
                   </Pane>
                   <Label layoutX="399.0" layoutY="422.0" text="Progression de la demande" />
-                  <ProgressBar layoutX="595.0" layoutY="422.0" prefHeight="18.0" prefWidth="524.0" progress="0.0" />
+                  <ProgressBar fx:id="progresDemandeStage" layoutX="595.0" layoutY="422.0" prefHeight="18.0" prefWidth="524.0" progress="0.0" />
                   <Label layoutX="627.0" layoutY="454.0" text="Validé Par Directeur DPGR" />
                   <Label layoutX="841.0" layoutY="454.0" text="Validée Par Conseil Scientifique" />
                   <Label layoutX="1071.0" layoutY="454.0" text="Autorisé" />

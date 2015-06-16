@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -57,7 +58,9 @@ public class FenetrePrincipaleController implements Initializable {
     Label libelleCompte4;
     @FXML
     Label libelleCompte5;
-    
+    @FXML
+    ProgressBar progresDemandeStage;
+   
     /*
     Actions comptes
     */
@@ -91,12 +94,37 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+    @FXML
+    private void showStagiareAjouter(ActionEvent event) throws IOException{
+        //StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show(); 
+    }
+    @FXML
+    private void showStagiareModifier(ActionEvent event) throws IOException{
+       // StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show(); 
+    }
+    @FXML
+    private void showStagiareSupprimer(ActionEvent event) throws IOException{
+     //   StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show(); 
+    }
+    @FXML
+    private void showStagiareProfile(ActionEvent event) throws IOException{
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show(); 
+    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        progresDemandeStage.setProgress(0.6);
         //set Current Tab
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(StageDPGR.currentTab);
