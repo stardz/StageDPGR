@@ -62,7 +62,10 @@ public class ProfilStagiaireController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // System.out.println(" aa "+nomEtPrenomProfil.getText());
         nomEtPrenomProfil.setText("Profile du Stagiaire :"+StageDPGR.selectedStagiaire.getNomStagiaire()+" "+StageDPGR.selectedStagiaire.getPrenomStagiaire());
-
+        profilNom.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
+        profilPrenom.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
+        profilEmail.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
+        profilTel.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
     }
 
 }
