@@ -874,6 +874,15 @@ public class PersistManager {
         u.setProfilUtilisateur(usr.getProfilUtilisateur());
         entityManager.getTransaction().commit();
         entityManager.close();
-      
+    }
+    public static void deleteUtilisateur(String login){
+          EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+       Utilisateur user =getUtilisateurByLogin(login);
+      Utilisateur toBeRemoved = entityManager.merge(user);
+       entityManager.remove(toBeRemoved);
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
 }

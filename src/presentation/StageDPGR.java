@@ -28,7 +28,7 @@ public class StageDPGR extends Application {
    public static Parent root2;
     public static Scene scene2;
     public static Stage stage2;
-    
+    public static int currentTab=new Integer(0);
     public static UtilisateurPres selectedUtilisateur;  
 
     @Override

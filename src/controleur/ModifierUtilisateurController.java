@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -50,11 +51,14 @@ public class ModifierUtilisateurController implements Initializable {
         profil.getItems().add("Agent");
         profil.getItems().add("DADPGR");
         profil.getItems().add("MembreCS");
+        psedou.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+        nom.setText(StageDPGR.selectedUtilisateur.getNomUtilisateur());
+        prenom.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+        
     }
 
     @FXML
     private void valider(ActionEvent event) throws IOException {
-
         Utilisateur u = new Utilisateur();
         u.setLoginUtilisateur(psedou.getText());
         u.setEtatCompte("actif");
@@ -62,14 +66,17 @@ public class ModifierUtilisateurController implements Initializable {
         u.setNomUtilisateur(nom.getText());
         u.setPrenomUtilisateur(prenom.getText());
         u.setProfilUtilisateur(profil.getValue().toString());
+        persistance.PersistManager.updateUtilisateur(u);
+        StageDPGR.currentTab=6;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+        StageDPGR.stage2.close();
     }
 
     @FXML
     private void annuler(ActionEvent event) throws IOException {
         // close seconde stage
-        psedou.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
-        nom.setText(StageDPGR.selectedUtilisateur.getNomUtilisateur());
-         prenom.setText(StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
+        StageDPGR.stage2.close();
          
     }
 

@@ -18,7 +18,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,40 +29,59 @@ import javafx.scene.input.MouseEvent;
 import model.Utilisateur;
 import modelforpresentation.UtilisateurPres;
 import presentation.StageDPGR;
-
 /**
  * FXML Controller class
  *
  * @author oSunshine
  */
 public class FenetrePrincipaleController implements Initializable {
-
+    @FXML
+    TabPane tabPane;
     @FXML
     TableView tableComptes;
-
+    @FXML
+    Label libelleCompte1;
+    @FXML
+    Label libelleCompte2;
+    @FXML
+    Label libelleCompte3;
+    @FXML
+    Label libelleCompte4;
+    @FXML
+    Label libelleCompte5;
     
     /*
     Actions comptes
     */
     @FXML
     private void showCompteAjouter(ActionEvent event) throws IOException{
-        
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/insererUtilisateur.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show(); 
     }
     @FXML
     private void showCompteSupprimer(ActionEvent event) throws IOException{
-        
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confirmerSup.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show();
     }
     @FXML
     private void showCompteModifier(ActionEvent event) throws IOException{
-        
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/modifierUtilisateur.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show();
     }
     @FXML
     private void showCompteBloquer(ActionEvent event) throws IOException{
-        
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confiirmerBloquer.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show();
     }
     @FXML
     private void showCompteDeBloquer(ActionEvent event) throws IOException{
-        
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/Compte_Debloquer.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show();
     }
     /**
      * Initializes the controller class.
@@ -67,6 +89,9 @@ public class FenetrePrincipaleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //set Current Tab
+        SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
+        selectionModel.select(StageDPGR.currentTab);
         /*
                 Tableau des comptes
         */
@@ -109,10 +134,10 @@ public class FenetrePrincipaleController implements Initializable {
         
         //Sélection d'une cellule
         tableComptes.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
             @Override
             public void handle(MouseEvent event) {
                 StageDPGR.selectedUtilisateur=(UtilisateurPres)tableComptes.getSelectionModel().getSelectedItem();
+                FenetrePrincipaleController.this.refreshInfosCompte();
             }
         });
     }
@@ -126,5 +151,12 @@ public class FenetrePrincipaleController implements Initializable {
             Logger.getLogger(FenetrePrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
         }
         StageDPGR.refreshRoot2();
+    }
+    public void refreshInfosCompte(){
+        libelleCompte1.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+        libelleCompte2.setText(StageDPGR.selectedUtilisateur.getNomUtilisateur());
+        libelleCompte3.setText(StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
+        libelleCompte4.setText(StageDPGR.selectedUtilisateur.getProfilUtilisateur());
+        libelleCompte5.setText(StageDPGR.selectedUtilisateur.getEtatCompte());
     }
 }

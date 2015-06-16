@@ -38,7 +38,7 @@
       <TextField fx:id="prenom" layoutX="150.0" layoutY="166.0" prefHeight="25.0" prefWidth="104.0" />
       <TextField fx:id="motPasse" layoutX="149.0" layoutY="258.0" prefHeight="25.0" prefWidth="212.0" />
       <TextField fx:id="CMotPasse" layoutX="149.0" layoutY="306.0" prefHeight="25.0" prefWidth="212.0" />
-      <Button fx:id="valider" layoutX="207.0" layoutY="367.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Valider" textFill="WHITE">
+      <Button fx:id="valider" layoutX="207.0" layoutY="367.0" mnemonicParsing="false" onAction="#valider" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Valider" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT" size="20.0" />
          </font>
@@ -48,7 +48,7 @@
             <Image url="@ValiderInfo.png" />
          </image>
       </ImageView>
-      <Button fx:id="annuler" layoutX="339.0" layoutY="367.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Annuler" textFill="WHITE">
+      <Button fx:id="annuler" layoutX="339.0" layoutY="367.0" mnemonicParsing="false" onAction="#annuler" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Annuler" textFill="WHITE">
 
          <font>
             <Font name="Tw Cen MT" size="20.0" />

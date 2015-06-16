@@ -38,10 +38,16 @@ public class Compte_DebloquerController implements Initializable {
         u.setNomUtilisateur(StageDPGR.selectedUtilisateur.getNomUtilisateur());
         u.setPrenomUtilisateur(StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
         u.setProfilUtilisateur(StageDPGR.selectedUtilisateur.getProfilUtilisateur());
+        persistance.PersistManager.updateUtilisateur(u);
+        StageDPGR.currentTab=6;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+        StageDPGR.stage2.close();
     }
     @FXML
     private void annuler(ActionEvent event) throws IOException{
         // close seconde stage
+        StageDPGR.stage2.close();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

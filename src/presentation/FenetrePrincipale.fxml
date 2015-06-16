@@ -1146,74 +1146,59 @@
                      <children>
                         <GridPane layoutX="20.0" prefHeight="179.0" prefWidth="795.0">
                            <children>
-                              <Label prefHeight="99.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Libellé de l'infraction">
+                              <Label prefHeight="99.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Login du Compte">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="74.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Type de l'infraction" GridPane.rowIndex="1">
+                              <Label prefHeight="74.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Nom du proprietaire" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="54.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Descriptif" GridPane.rowIndex="2">
+                              <Label prefHeight="54.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Prénom du proprietaire " GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="55.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Obligation non respecté" GridPane.rowIndex="3">
+                              <Label prefHeight="51.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Type d'utilisateur" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="51.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Nom de l'individu" GridPane.columnIndex="2">
+                              <Label fx:id="libelleCompte1" text="empty" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="libelleCompte2" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="libelleCompte3" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="libelleCompte4" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="96.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Etat de du compte" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="libelleInfoInfraction1" text="empty" GridPane.columnIndex="1">
+                              <Label fx:id="libelleCompte5" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="typeInfoInfraction1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="descriptifIndInfoInfraction1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="obligationInfoInfraction1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="nomIndividuInfoInfraction1" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="96.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Prénom de l'individu" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="prenomIndInfoInfraction1" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Etat de l'individu" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="etatIndInfoInfraction1" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="15.0" />
                                  </font>
                               </Label>
                            </children>
@@ -1224,7 +1209,6 @@
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="141.0" />
                            </columnConstraints>
                            <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

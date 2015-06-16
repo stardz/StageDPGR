@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -62,10 +63,16 @@ public class insertUtilisateurController implements Initializable {
         u.setNomUtilisateur(nom.getText());
         u.setPrenomUtilisateur(prenom.getText());
         u.setProfilUtilisateur(profil.getValue().toString());
+        StageDPGR.currentTab=6;
+        persistance.PersistManager.insertUtilisateur(u);
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+        StageDPGR.stage2.close();
     }
     @FXML
     private void annuler(ActionEvent event) throws IOException{
         // close seconde stage
+        StageDPGR.stage2.close();
     }
 
 }
