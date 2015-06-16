@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Stagiaire;
 import model.Utilisateur;
+import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 
 /**
@@ -29,7 +30,8 @@ public class StageDPGR extends Application {
     public static Scene scene2;
     public static Stage stage2;
     public static int currentTab=new Integer(0);
-    public static UtilisateurPres selectedUtilisateur;  
+    public static UtilisateurPres selectedUtilisateur;
+    public static StagiairePres selectedStagiaire;
 
     @Override
     public void start(Stage stage) throws Exception {

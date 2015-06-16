@@ -26,7 +26,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import model.Stagiaire;
 import model.Utilisateur;
+import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 import presentation.StageDPGR;
 /**
@@ -37,6 +39,8 @@ import presentation.StageDPGR;
 public class FenetrePrincipaleController implements Initializable {
     @FXML
     TabPane tabPane;
+    @FXML
+    TableView tableStagiares;
     @FXML
     TableView tableComptes;
     @FXML
@@ -99,7 +103,6 @@ public class FenetrePrincipaleController implements Initializable {
         ObservableList<UtilisateurPres> dataComptes = FXCollections.observableArrayList();
         List<Utilisateur> listeUsrs=persistance.PersistManager.findAllUtilisateur();
         
-        System.out.println("================="+listeUsrs.toString());
         for(Utilisateur it:listeUsrs){
             dataComptes.add(new UtilisateurPres(it));
         }
@@ -140,6 +143,49 @@ public class FenetrePrincipaleController implements Initializable {
                 FenetrePrincipaleController.this.refreshInfosCompte();
             }
         });
+        /*
+                Tableau des Stagiares
+        */
+        //Data
+        ObservableList<StagiairePres> dataStagiaires = FXCollections.observableArrayList();
+        List<Stagiaire> listeStagiares=persistance.PersistManager.findAllStagiaires();
+        
+        for(Stagiaire it:listeStagiares){
+            dataStagiaires.add(new StagiairePres(it));
+        }
+         // Colonnes
+        TableColumn idStagiaireCol = new TableColumn();
+        idStagiaireCol.setText("Identifiant");
+        idStagiaireCol.setCellValueFactory(new PropertyValueFactory("idStagiaire"));
+        
+        TableColumn nomStagiaireCol = new TableColumn();
+        nomStagiaireCol.setText("Nom");
+        nomStagiaireCol.setCellValueFactory(new PropertyValueFactory("nomStagiaire"));
+        
+        TableColumn prenomStagiaireCol = new TableColumn();
+        prenomStagiaireCol.setText("Prenom");
+        prenomStagiaireCol.setCellValueFactory(new PropertyValueFactory("prenomStagiaire"));
+        
+        TableColumn emailStagiaireCol = new TableColumn();
+        emailStagiaireCol.setText("Email");
+        emailStagiaireCol.setCellValueFactory(new PropertyValueFactory("emailStagiaire"));
+        
+        TableColumn telStagiaireCol = new TableColumn();
+        telStagiaireCol.setText("N° Telephone");
+        telStagiaireCol.setCellValueFactory(new PropertyValueFactory("telStagiaire"));
+        //Remplissage
+        tableStagiares.setItems(dataStagiaires);
+        tableStagiares.getColumns().addAll(idStagiaireCol,nomStagiaireCol,prenomStagiaireCol,emailStagiaireCol,telStagiaireCol);
+        
+        //Sélection d'une cellule
+        tableStagiares.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                StageDPGR.selectedStagiaire=(StagiairePres)tableStagiares.getSelectionModel().getSelectedItem();
+                FenetrePrincipaleController.this.refreshInfosStagiaire();
+            }
+        });
+        
     }
     
     @FXML
@@ -158,5 +204,8 @@ public class FenetrePrincipaleController implements Initializable {
         libelleCompte3.setText(StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
         libelleCompte4.setText(StageDPGR.selectedUtilisateur.getProfilUtilisateur());
         libelleCompte5.setText(StageDPGR.selectedUtilisateur.getEtatCompte());
+    }
+    public void refreshInfosStagiaire(){
+        // MAJ les informations d'un stagiaire
     }
 }
