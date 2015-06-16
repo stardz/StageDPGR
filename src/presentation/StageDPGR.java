@@ -39,6 +39,8 @@ public class StageDPGR extends Application {
         StageDPGR.stage = stage;
         stage.setScene(scene);
         stage.show();
+        
+        stage2=new Stage()  ;
     }
 
     /**
@@ -63,9 +65,12 @@ public class StageDPGR extends Application {
     }
     
         public static void refreshRoot2() {
-        StageDPGR.scene2= new Scene(StageDPGR.root2);
-        StageDPGR.stage2.setScene(StageDPGR.scene2);
-        StageDPGR.stage2.centerOnScreen();
+        scene2= new Scene(StageDPGR.root2);
+        stage2.setResizable(false);
+        stage2.setScene(StageDPGR.scene2);
+        stage2.centerOnScreen();
+        stage2.show();
+        
     }
 
 }

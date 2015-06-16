@@ -12,20 +12,20 @@
 
 <TabPane fx:id="tabPane" prefHeight="664.0" prefWidth="1254.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.FenetrePrincipaleController">
    <tabs>
-      <Tab fx:id="tabPlaces" text="Stagière  ">
+      <Tab text="Gestion des stagiaires">
          <content>
             <AnchorPane prefHeight="645.0" prefWidth="1254.0" style="-fx-background-color: #ecf0f1;">
                <children>
                   <TableView fx:id="tabStagiares" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Button fx:id="localiserPlace" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Localiser placé" textFill="WHITE">
+                        <Button fx:id="localiserPlace" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ajouterPlace" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Ajouter placé" textFill="WHITE">
+                        <Button fx:id="ajouterPlace" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
                             
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -49,7 +49,7 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="signalerInfraction" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Signaler infraction" textFill="WHITE">
+                        <Button fx:id="signalerInfraction" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Ajouter" textFill="WHITE">
                             
                            <effect>
                               <DropShadow color="WHITE" height="0.0" radius="0.0" width="0.0" />
@@ -60,12 +60,12 @@
                         </Button>
                         <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Infraction.png" />
+                              <Image url="@../icons/user_male_add.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Localisation.png" />
+                              <Image url="@../icons/user_male_edit.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="23.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
@@ -80,7 +80,7 @@
                         </ImageView>
                         <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Ajout.png" />
+                              <Image url="@../icons/user_male_delete4.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="20.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
@@ -90,7 +90,7 @@
                         </ImageView>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
                            <children>
-                              <Label layoutX="39.0" layoutY="12.0" text="Gestion des individus" textFill="WHITE">
+                              <Label layoutX="39.0" layoutY="12.0" text="Gestion des  stagiaires" textFill="WHITE">
                                  <font>
                                     <Font name="Tw Cen MT" size="26.0" />
                                  </font>
@@ -238,7 +238,7 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
-      <Tab fx:id="tabZones" text="Stage     ">
+      <Tab text="Gestion des Stages ">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">
                <children>
@@ -318,7 +318,7 @@
                         </ImageView>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
                            <children>
-                              <Label layoutX="39.0" layoutY="12.0" text="Gestion des Zones" textFill="WHITE">
+                              <Label layoutX="39.0" layoutY="12.0" text="Gestion des stages" textFill="WHITE">
                                  <font>
                                     <Font name="Tw Cen MT" size="26.0" />
                                  </font>
@@ -445,7 +445,7 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
-      <Tab fx:id="tabDemande" text="Demande ">
+      <Tab fx:id="tabDemande" text="Gestion des manifestations ">
          <content>
             <AnchorPane prefHeight="646.0" prefWidth="1245.0" style="-fx-background-color: #ecf0f1;">
                <children>
@@ -591,6 +591,179 @@
                                  </font>
                               </Label>
                               <Label fx:id="derniereConnexInfoCompte" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="237.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="139.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <ImageView fitHeight="179.0" fitWidth="179.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/NoPicture.gif" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </content>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Tab>
+      <Tab fx:id="tabDemande1" text="Etat des stages">
+         <content>
+            <AnchorPane prefHeight="646.0" prefWidth="1245.0" style="-fx-background-color: #ecf0f1;">
+               <children>
+                  <TableView fx:id="tableComptes1" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
+                  <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
+                     <children>
+                        <Button fx:id="modifierCompte1" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="    Modifier un Compte" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="supprimerCompte1" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="      Supprimer un Compte" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="debloquerCompte1" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="       Debloquer un Compte" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="bloquerCompte1" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="  Bloquer un Compte" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="ajouterCompte1" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="   Ajouter un Compte" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="WHITE" height="0.0" radius="0.0" width="0.0" />
+                           </effect>
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="23.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/AjouterCompte.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="44.0" fitWidth="44.0" layoutX="27.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/ModifierCompte.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="28.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/DebloquerCompte.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/SupprimerCompte.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="24.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/BloquerCompte.png" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
+                           <children>
+                              <Label layoutX="39.0" layoutY="12.0" text="Gestion des comptes" textFill="WHITE">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="26.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="164.0" fitWidth="214.0" layoutX="40.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../logo.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="back41" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="355.0" layoutY="420.0" prefHeight="179.0" prefWidth="813.0" style="-fx-background-color: #E3E3E3;">
+                     <children>
+                        <GridPane layoutX="250.0" prefHeight="179.0" prefWidth="415.0">
+                           <children>
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Nom">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Prénom" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Nom de l'utilisateur" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Profile" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Date debut de service" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label prefHeight="30.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Dernière Connexion" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="nomInfoCompte1" text="empty" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="prenomInfoCompte1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="pseudoInfoCompte1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="profileInfoCompte1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="debutServInfoCompte1" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="derniereConnexInfoCompte1" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
@@ -776,7 +949,7 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
-      <Tab fx:id="tabStatistiques" text="Statistique ">
+      <Tab fx:id="tabStatistiques" text="Statistiques ">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">
                <children>
@@ -918,7 +1091,7 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
-      <Tab fx:id="tabComptes" text="Gestion Utilisateurs">
+      <Tab fx:id="tabComptes" text="Gestion des utilisateurs">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">
                <children>
@@ -1066,7 +1239,7 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
-      <Tab fx:id="tabConfiguration" text="Configuration">
+      <Tab fx:id="tabConfiguration" text="Configurations">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">
                <children>
