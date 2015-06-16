@@ -17,13 +17,13 @@ import javafx.scene.control.Button;
  *
  * @author B-Zakaria
  */
-public class ConfirmationController implements Initializable {
+public class ConfiirmerBloquerController implements Initializable {
 
     /**
      * Initializes the controller class.
      */
-    @FXML 
-    Button confirmer;
+      @FXML 
+    Button valider;
     @FXML 
     Button annuler;
     
@@ -33,7 +33,7 @@ public class ConfirmationController implements Initializable {
     }  
     
     @FXML 
-    public void confirmer(){
+    public void valider(){
         
     }
      @FXML 
