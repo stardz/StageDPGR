@@ -9,6 +9,18 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
 <TabPane fx:id="tabPane" prefHeight="664.0" prefWidth="1254.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.FenetrePrincipaleController">
    <tabs>
@@ -348,34 +360,34 @@
          <content>
             <AnchorPane prefHeight="646.0" prefWidth="1245.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <TableView fx:id="tableComptes" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
+                  <TableView fx:id="tableComptes2" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Button fx:id="modifierCompte" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="    Modifier un Compte" textFill="WHITE">
+                        <Button fx:id="modifierCompte2" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="    Modifier un Compte" textFill="WHITE">
                          
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="supprimerCompte" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="      Supprimer un Compte" textFill="WHITE">
+                        <Button fx:id="supprimerCompte2" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="      Supprimer un Compte" textFill="WHITE">
                       
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="debloquerCompte" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="       Debloquer un Compte" textFill="WHITE">
+                        <Button fx:id="debloquerCompte2" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="       Debloquer un Compte" textFill="WHITE">
                       
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="bloquerCompte" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="  Bloquer un Compte" textFill="WHITE">
+                        <Button fx:id="bloquerCompte2" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="  Bloquer un Compte" textFill="WHITE">
                        
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ajouterCompte" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="   Ajouter un Compte" textFill="WHITE">
+                        <Button fx:id="ajouterCompte2" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="   Ajouter un Compte" textFill="WHITE">
                       
                            <effect>
                               <DropShadow color="WHITE" height="0.0" radius="0.0" width="0.0" />
@@ -848,141 +860,163 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
-      <Tab fx:id="tabStatistiques" text="Statistiques ">
+            <Tab fx:id="tabStatistiques" text="Statistiques ">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <TableView fx:id="tableStat" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
-                  <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
+                  <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="271.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
+                        <Pane layoutY="36.0" prefHeight="54.0" prefWidth="269.0" style="-fx-background-color: #2C3E50;">
                            <children>
-                              <Label layoutX="39.0" layoutY="12.0" text="Les Infractions" textFill="WHITE">
+                              <Label layoutX="39.0" layoutY="12.0" text="Statistiques" textFill="WHITE">
                                  <font>
                                     <Font name="Tw Cen MT" size="26.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fitHeight="164.0" fitWidth="214.0" layoutX="40.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../logo.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="back6" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />
-                           </image>
-                        </ImageView>
-                        <ComboBox fx:id="filtreInfractions" layoutX="40.0" layoutY="270.0" prefHeight="35.0" prefWidth="234.0" promptText="Choisissez un filtre" style="-fx-background-color: #DFDFDF;" />
-                        <Button fx:id="validerInfractions" layoutX="40.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="235.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider" textFill="WHITE">
+                        <ComboBox fx:id="comboAnnée" layoutX="18.0" layoutY="143.0" prefHeight="35.0" prefWidth="234.0" promptText="Choisissez l'année" style="-fx-background-color: #DFDFDF;" />
+                        <Button fx:id="validerInfractions" layoutX="17.0" layoutY="475.0" mnemonicParsing="false" onAction="#validerStatistiquesOnAction" prefHeight="40.0" prefWidth="235.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Label layoutX="40.0" layoutY="215.0" prefHeight="49.0" prefWidth="234.0" text="Afficher les infractions par :" textFill="WHITE">
+                        <Label layoutX="20.0" layoutY="100.0" prefHeight="49.0" prefWidth="234.0" text="Paramètres:" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="219.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="206.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../LynxTrak/LynxTrak/src/solit/valider.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="valeurFiltreInfraction" layoutX="40.0" layoutY="319.0" prefHeight="41.0" prefWidth="235.0" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="355.0" layoutY="420.0" prefHeight="179.0" prefWidth="813.0" style="-fx-background-color: #E3E3E3;">
-                     <children>
-                        <GridPane layoutX="20.0" prefHeight="179.0" prefWidth="795.0">
+                        <Label layoutX="18.0" layoutY="318.0" prefHeight="49.0" prefWidth="234.0" text="Profil :" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Label>
+                        <Group layoutX="7.0" layoutY="58.0">
                            <children>
-                              <Label prefHeight="99.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Libellé de l'infraction">
+                              <RadioButton layoutX="30.0" layoutY="379.0" mnemonicParsing="false" selected="true" text="Les deux">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="groupProfils" />
+                                 </toggleGroup>
                                  <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
-                              </Label>
-                              <Label prefHeight="74.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Type de l'infraction" GridPane.rowIndex="1">
+                              </RadioButton>
+                              <RadioButton layoutX="30.0" layoutY="309.0" mnemonicParsing="false" text="Enseignants chercheurs" toggleGroup="$groupProfils">
                                  <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
-                              </Label>
-                              <Label prefHeight="54.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Descriptif" GridPane.rowIndex="2">
+                              </RadioButton>
+                              <RadioButton layoutX="30.0" layoutY="348.0" mnemonicParsing="false" text="Doctorants" toggleGroup="$groupProfils">
                                  <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
+                                    <Font size="14.0" />
                                  </font>
-                              </Label>
-                              <Label prefHeight="55.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Obligation non respecté" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="51.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Nom de l'individu" GridPane.columnIndex="2">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="libelleInfoInfraction" text="empty" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="typeInfoInfraction" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="descriptifIndInfoInfraction" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="obligationInfoInfraction" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="nomIndividuInfoInfraction" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="96.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Prénom de l'individu" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="prenomIndInfoInfraction" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Etat de l'individu" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="etatIndInfoInfraction" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
+                              </RadioButton>
                            </children>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="237.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="139.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="10.0" prefWidth="227.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="184.0" minWidth="0.0" prefWidth="141.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                        </GridPane>
+                        </Group>
+                        <Label layoutX="18.0" layoutY="178.0" prefHeight="49.0" prefWidth="234.0" text="Type:" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="20.0" />
+                           </font>
+                        </Label>
+                        <Group layoutX="7.0" layoutY="-82.0">
+                           <children>
+                              <RadioButton layoutX="30.0" layoutY="379.0" mnemonicParsing="false" text="Les deux">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="groupTypes" />
+                                 </toggleGroup>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton layoutX="30.0" layoutY="309.0" mnemonicParsing="false" selected="true" text="Stages" toggleGroup="$groupTypes">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton layoutX="30.0" layoutY="348.0" mnemonicParsing="false" text="Manifestations scientifiques" toggleGroup="$groupTypes">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                        </Group>
                      </children>
                   </Pane>
+                  <SplitPane dividerPositions="0.42362204724409447" layoutX="264.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="637.0" prefWidth="991.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane dividerPositions="0.5066258919469928" layoutX="6.0" layoutY="1.0" prefHeight="303.0" prefWidth="983.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" prefHeight="49.0" prefWidth="203.0" text="Nombre de demandes  :" textFill="#22a7f0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="nbDemandes" layoutX="236.0" layoutY="14.0" prefHeight="49.0" prefWidth="69.0" text="//">
+                                             <font>
+                                                <Font name="System Bold Italic" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <PieChart fx:id="pieChartAccVsRefuse" layoutX="30.0" layoutY="63.0" prefHeight="183.0" prefWidth="412.0" title="Demandes acceptées vs réfusées" />
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="14.0" prefHeight="49.0" prefWidth="226.0" text="Nombre de demandeurs : " textFill="#22a7f0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="nbDemandeurs" layoutX="285.0" layoutY="14.0" prefHeight="49.0" prefWidth="69.0" text="//">
+                                             <font>
+                                                <Font name="System Bold Italic" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <PieChart fx:id="pieChartdemandeursVsPasDemandeurs" layoutX="34.0" layoutY="48.0" prefHeight="206.0" prefWidth="412.0" title="Répartition des demandeurs" />
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <SplitPane layoutX="3.0" prefHeight="364.0" prefWidth="983.0">
+                                 <items>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <LineChart fx:id="lineChartEvolutionBudget" layoutY="12.0" prefHeight="336.0" prefWidth="476.0" title="Evolution du budget">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                          <StackedBarChart layoutX="513.0" layoutY="5.0" prefHeight="351.0" prefWidth="453.0" title="Répartition des stages par état">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </StackedBarChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
                </children>
             </AnchorPane>
          </content>
@@ -990,6 +1024,7 @@
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
          </graphic>
       </Tab>
+
       <Tab fx:id="tabComptes" text="Gestion des utilisateurs">
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">

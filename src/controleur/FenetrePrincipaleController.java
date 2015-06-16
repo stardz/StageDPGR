@@ -18,6 +18,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.SingleSelectionModel;
@@ -25,6 +29,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.DemandeStage;
@@ -61,6 +66,28 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     ProgressBar progresDemandeStage;
    
+        /**
+     * **********************Statistiques***************************
+     */
+    @FXML
+    private Label nbDemandes;
+    @FXML
+    private Label nbDemandeurs;
+    @FXML
+    private PieChart pieChartAccVsRefuse;
+    @FXML
+    private PieChart pieChartdemandeursVsPasDemandeurs;
+    @FXML
+    private LineChart lineChartEvolutionBudget;
+    @FXML
+    
+    private BarChart barChartStages;
+    @FXML
+    private ToggleGroup groupTypes;
+    @FXML
+    private ToggleGroup groupProfils;
+    @FXML
+    private ComboBox<String> comboAnnée;
     /*
     Actions comptes
     */
@@ -310,5 +337,10 @@ public class FenetrePrincipaleController implements Initializable {
             Logger.getLogger(FenetrePrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
         }
         StageDPGR.refreshRoot2();
+    }
+    
+        @FXML
+    private void validerStatistiquesOnAction(ActionEvent event) {
+
     }
 }
