@@ -37,7 +37,7 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="supprimerPlace" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer placé" textFill="WHITE">
+                        <Button fx:id="supprimerPlace" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Détails sur le stagiaires" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -58,36 +58,6 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/user_male_add.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/user_male_edit.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="23.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Message.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="25.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Modifier.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../icons/user_male_delete4.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="20.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Delete.png" />
-                           </image>
-                        </ImageView>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
                            <children>
                               <Label layoutX="39.0" layoutY="12.0" text="Gestion des  stagiaires" textFill="WHITE">
@@ -97,11 +67,6 @@
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fitHeight="164.0" fitWidth="214.0" layoutX="40.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../logo.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fx:id="back" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
                         
                            <image>
@@ -245,27 +210,27 @@
                   <TableView fx:id="tableDemandeStage" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Button fx:id="consulterMap" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Consulter Map" textFill="WHITE">
+                        <Button fx:id="consulterMap" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Creer une demande" textFill="WHITE">
                          
 
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="suivreCameras" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Suivre Caméra" textFill="WHITE">
+                        <Button fx:id="suivreCameras" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier une demande " textFill="WHITE">
                        
 
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="modifierZone" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier une zone" textFill="WHITE">
+                        <Button fx:id="modifierZone" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider la demande" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ajouterZone" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Ajouter une zone" textFill="WHITE">
+                        <Button fx:id="ajouterZone" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer une demande" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -277,59 +242,20 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="signalerDanger" layoutX="21.0" layoutY="151.0" mnemonicParsing="false" textFill="WHITE">
-                          
-                           <effect>
-                              <DropShadow color="WHITE" height="0.0" radius="0.0" width="0.0" />
-                           </effect>
-                           <font>
-                              <Font name="Tw Cen MT" size="20.0" />
-                           </font>
-                        </Button>
-                        <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/Infraction.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="25.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/ConsulterMap.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="23.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/SupprimerZone.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="25.0" layoutY="383.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/ModifierZone.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="21.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/SuivreCamera.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="28.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/AjouterZone.png" />
-                           </image>
-                        </ImageView>
-                        <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
+                        <Pane layoutY="36.0" prefHeight="101.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
                            <children>
-                              <Label layoutX="39.0" layoutY="12.0" text="Gestion des stages" textFill="WHITE">
+                              <Label layoutX="22.0" prefHeight="50.0" prefWidth="272.0" text="Gestion des demandes" textFill="WHITE">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="26.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="90.0" layoutY="37.0" prefHeight="50.0" prefWidth="115.0" text="de stages" textFill="WHITE">
                                  <font>
                                     <Font name="Tw Cen MT" size="26.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fitHeight="164.0" fitWidth="214.0" layoutX="40.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../logo.png" />
-                           </image>
-                        </ImageView>
                         <ImageView fx:id="back3" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />

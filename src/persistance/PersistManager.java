@@ -56,7 +56,20 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
-
+    public static void updateStagiaire(Stagiaire stagiaire) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Stagiaire st=entityManager.find(Stagiaire.class, stagiaire.getIdStagiaire());
+        st.setIdStagiaire(stagiaire.getIdStagiaire());
+        st.setNomStagiaire(stagiaire.getNomStagiaire());
+        st.setPrenomStagiaire(stagiaire.getPrenomStagiaire());
+        st.setEmailStagiaire(stagiaire.getEmailStagiaire());
+        st.setTelStagiaire(stagiaire.getTelStagiaire());
+        entityManager.persist(stagiaire);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
     public static void affectLabo(int idLabo, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
