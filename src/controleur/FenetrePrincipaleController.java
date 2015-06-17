@@ -532,10 +532,10 @@ public class FenetrePrincipaleController implements Initializable {
         libelleStagiaire2.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
         libelleStagiaire3.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
         libelleStagiaire4.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
-         libelleStagiaire4.setText(persistance.PersistManager.getSesLabo(idStagiaire).get(0).getNomLabo());
-         libelleStagiaire4.setText(persistance.PersistManager.getSesFonction(idStagiaire).get(0).getLibelleFonction());
-         libelleStagiaire4.setText(persistance.PersistManager.getSesDiplome(idStagiaire).get(0).getLibelleDeplome());
-         libelleStagiaire4.setText(persistance.PersistManager.getSesGrade(idStagiaire).get(0).getLibelleGrade());
+         libelleStagiaire5.setText(persistance.PersistManager.getSesLabo(idStagiaire).get(0).getNomLabo());
+         libelleStagiaire6.setText(persistance.PersistManager.getSesFonction(idStagiaire).get(0).getLibelleFonction());
+         libelleStagiaire7.setText(persistance.PersistManager.getSesDiplome(idStagiaire).get(0).getLibelleDeplome());
+         libelleStagiaire8.setText(persistance.PersistManager.getSesGrade(idStagiaire).get(0).getLibelleGrade());
         
 
     }
