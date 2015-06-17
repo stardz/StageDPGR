@@ -244,7 +244,21 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
-
+    public static void updateStage(Stage stage){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        Stage stg=findStageById(stage.getIdStage());
+        stg.setIdStage(stage.getIdStage());
+        stg.setDateDebutStage(stage.getDateDebutStage());
+        stg.setDateFinStage(stage.getDateFinStage());
+        stg.setObjectifStage(stage.getObjectifStage());
+        stg.setEnvironnementStage(stage.getEnvironnementStage());
+        stg.setMissionStage(stage.getMissionStage());
+       
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
     public static List<Stage> findAllStages() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -297,6 +311,18 @@ public class PersistManager {
             }
         }
         return result;
+    }
+    /*
+    Frais stage
+    */
+    public static FraisStage getSesFrais(int idStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirFraiStage avFraiStage=entityManager.find(AvoirFraiStage.class,idStage);
+        FraisStage fraisStage=entityManager.find(FraisStage.class,avFraiStage.getIdFraiStage());
+        entityManager.getTransaction().commit();
+        return fraisStage;
     }
     /*
      Manifestation
@@ -714,6 +740,19 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
         return fraisStage;
+    }
+    public static void updateFraisStage(FraisStage fraisStage){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        FraisStage fr=findFraisStageById(fraisStage.getIdFraiStage());
+        fr.setIdFraiStage(fraisStage.getIdFraiStage());
+        fr.setMontantAssurranceFraiStage(fraisStage.getMontantAssurranceFraiStage());
+        fr.setMontantSejourFraiStage(fraisStage.getMontantSejourFraiStage());
+        fr.setMontantTransportFraiStage(fraisStage.getMontantTransportFraiStage());
+        fr.setMontantVisaFraiStage(fraisStage.getMontantVisaFraiStage());
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
     /*
      Lieu de Stage
