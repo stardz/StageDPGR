@@ -40,7 +40,7 @@ public class AjouterStagiaireController implements Initializable {
     private TextField email, nom, prenom, tel;
 
     @FXML
-    private MenuButton grade, labo, fonction, diplome;
+    private ComboBox<String> grade, labo, fonction, diplome;
 
     /**
      * Initializes the controller class.
@@ -63,7 +63,7 @@ public class AjouterStagiaireController implements Initializable {
 
         for (Grade gradeSelected : grades) {
 
-            grade.getItems().add(new CheckMenuItem(gradeSelected.getLibelleGrade()));
+            grade.getItems().add(gradeSelected.getLibelleGrade());
 
         }
 
@@ -72,15 +72,16 @@ public class AjouterStagiaireController implements Initializable {
 
         for (LaboratoireRattachement laboSelected : labos) {
 
-            labo.getItems().add(new CheckMenuItem(laboSelected.getNomLabo()));
+            labo.getItems().add(laboSelected.getNomLabo());
 
         }
+
         List<Fonction> fonctions;
         fonctions = persistance.PersistManager.findAllFonction();
 
         for (Fonction fonctionSelected : fonctions) {
 
-            fonction.getItems().add(new CheckMenuItem(fonctionSelected.getLibelleFonction()));
+            fonction.getItems().add(fonctionSelected.getLibelleFonction());
 
         }
 
@@ -89,9 +90,12 @@ public class AjouterStagiaireController implements Initializable {
 
         for (Diplome diplomeSelected : diplomes) {
 
-            diplome.getItems().add(new CheckMenuItem(diplomeSelected.getLibelleDeplome()));
+            diplome.getItems().add(diplomeSelected.getLibelleDeplome());
 
         }
+
+     
+        
 
     }
 
