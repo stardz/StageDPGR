@@ -45,7 +45,7 @@ public class AjouterDemandeStageController implements Initializable {
     DatePicker dateDemande, dateDebut, dateFin;
 
     @FXML
-    TextField duree, fraisSejour, fraisTransport, fraisAssurance, fraisVisa;
+    TextField fraisSejour, fraisTransport, fraisAssurance, fraisVisa;
 
     @FXML
     TextArea objective, environ, mission;
@@ -105,6 +105,7 @@ public class AjouterDemandeStageController implements Initializable {
 
     @FXML
     private void annuler(ActionEvent e) {
+        StageDPGR.stage2.close();
 
     }
 
