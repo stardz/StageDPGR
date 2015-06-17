@@ -527,16 +527,30 @@ public class FenetrePrincipaleController implements Initializable {
 
     public void refreshInfosStagiaire() {
         Stagiaire stagiaire=persistance.PersistManager.findStagiaireById(StageDPGR.selectedStagiaire.getIdStagiaire());
+        int idStagiaire = stagiaire.getIdStagiaire() ;
         libelleStagiaire1.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
         libelleStagiaire2.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
         libelleStagiaire3.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
         libelleStagiaire4.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
+         libelleStagiaire4.setText(persistance.PersistManager.getSesLabo(idStagiaire).get(0).getNomLabo());
+         libelleStagiaire4.setText(persistance.PersistManager.getSesFonction(idStagiaire).get(0).getLibelleFonction());
+         libelleStagiaire4.setText(persistance.PersistManager.getSesDiplome(idStagiaire).get(0).getLibelleDeplome());
+         libelleStagiaire4.setText(persistance.PersistManager.getSesGrade(idStagiaire).get(0).getLibelleGrade());
+        
 
     }
 
     public void refreshInfosDemandeStage() {
         DemandeStage dmdStage=persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(),StageDPGR.selectedDemandeStage.getIdStagiaire()));
-        libelleDemandeStage1.setText(""+dmdStage.getIdStage());
+        Stage stage = persistance.PersistManager.findStageById(dmdStage.getIdStage()) ;
+        Stagiaire stagiaire= persistance.PersistManager.findStagiaireById(dmdStage.getIdStage());
+        libelleDemandeStage1.setText(stagiaire.getNomStagiaire()+stagiaire.getPrenomStagiaire());
+        libelleDemandeStage2.setText(StageDPGR.selectedDemandeStage.getDateDemandeStage());
+        libelleDemandeStage4.setText(stage.getDateDebutStage().toString()) ;
+        libelleDemandeStage5.setText(stage.getDateDebutStage().toString()) ;
+        libelleDemandeStage6.setText(stage.getLieuStageIdLieu().getPaysLieuStage()) ;
+         
+       
     }
 
     @FXML
