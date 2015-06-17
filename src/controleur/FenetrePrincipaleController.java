@@ -186,6 +186,8 @@ public class FenetrePrincipaleController implements Initializable {
     TextField fieldLaboConf;
     @FXML
     TextField fieldZoneConf;
+    @FXML
+    TextField fieldLieuConf;
     /*
      Actions comptes
      */
@@ -638,5 +640,72 @@ public class FenetrePrincipaleController implements Initializable {
         fraisAssStageInfo.setText("" + frais.getMontantAssurranceFraiStage());
         int total = frais.getMontantSejourFraiStage() + frais.getMontantSejourFraiStage() + frais.getMontantVisaFraiStage() + frais.getMontantAssurranceFraiStage();
         fraisTotalStageInfo.setText(" " + total);
+    }
+    /*
+    Configuration methodes
+    */
+    @FXML
+    private void addGrade(ActionEvent event) throws IOException {
+        if(fieldGradeConf.getText()!=null){
+            Grade grde=new Grade();
+            grde.setIdGrade(persistance.PersistManager.findAllGrades().size()+1);
+            grde.setLibelleGrade(fieldGradeConf.getText());
+            persistance.PersistManager.insertGrade(grde);
+            
+        }
+        StageDPGR.currentTab=7;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+    }
+    @FXML
+    private void addFonction(ActionEvent event) throws IOException {
+        if(fieldFctConf.getText()!=null){
+            Fonction fonction=new Fonction();
+            fonction.setIdFonction(persistance.PersistManager.findAllFonction().size()+1);
+            fonction.setLibelleFonction(fieldFctConf.getText());
+            persistance.PersistManager.insertFonction(fonction);
+            
+        }
+        StageDPGR.currentTab=7;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+    }
+    @FXML
+    private void addDiplome(ActionEvent event) throws IOException {
+        if(fieldDiplomeConf.getText()!=null){
+            Diplome diplome=new Diplome();
+            diplome.setIdDiplome(persistance.PersistManager.findAllDiplome().size()+1);
+            diplome.setLibelleDeplome(fieldDiplomeConf.getText());
+            persistance.PersistManager.insertDiplome(diplome);
+            
+        }
+        StageDPGR.currentTab=7;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+    }
+    @FXML
+    private void addLabo(ActionEvent event) throws IOException {
+        if(fieldLaboConf.getText()!=null){
+            LaboratoireRattachement labo=new LaboratoireRattachement();
+            labo.setIdLabo(persistance.PersistManager.findAllLabo().size()+1);
+            labo.setNomLabo(fieldLaboConf.getText());
+            persistance.PersistManager.insertLabo(labo);
+            
+        }
+        StageDPGR.currentTab=7;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
+    }
+    @FXML
+    private void addZone(ActionEvent event) throws IOException {
+        if(fieldZoneConf.getText()!=null){
+            ZoneType zone=new ZoneType();
+            zone.setIdZone(persistance.PersistManager.findAllZones().size()+1);
+            zone.setNomZone(fieldZoneConf.getText());
+            persistance.PersistManager.insertZone(zone);
+        }
+        StageDPGR.currentTab=7;
+        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.refreshRoot1();
     }
 }
