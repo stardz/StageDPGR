@@ -681,6 +681,18 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    public static void affectFraisStage(int idStage,int idFraisStage,int totalFrais){
+       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirFraiStage avFraisStage=new AvoirFraiStage();
+        avFraisStage.setIdFraiStage(idFraisStage);
+        avFraisStage.setIdStage(idStage);
+        avFraisStage.setTotalFraisStage(totalFrais);
+        entityManager.persist(avFraisStage);
+       entityManager.getTransaction().commit();
+        entityManager.close();
+    }
 
     public static List<FraisStage> findAllFraisStage() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
