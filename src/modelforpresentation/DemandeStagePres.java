@@ -1,6 +1,7 @@
 package modelforpresentation;
 
 
+import controleur.DateFormatter;
 import model.*;
 import java.io.Serializable;
 import java.lang.String;
@@ -36,7 +37,7 @@ public class DemandeStagePres implements Serializable {
    public DemandeStagePres(DemandeStage dmdStage) {
          this.setIdStage(dmdStage.getIdStage());
          this.setIdStagiaire(dmdStage.getIdStagiaire());
-         this.setDateDemandeStage(dmdStage.getDateDemandeStage().toString());
+         this.setDateDemandeStage(DateFormatter.formatter.format(dmdStage.getDateDemandeStage()));
          this.setAutorisationDeStage(dmdStage.getAutorisationDeStage());
          this.setAvisDadpgrStage(dmdStage.getAvisDadpgrStage());
          this.setAvisCsStage(dmdStage.getAvisCsStage());
