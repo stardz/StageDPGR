@@ -5,6 +5,7 @@
  */
 package controleur;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -24,6 +26,7 @@ import model.Grade;
 import model.LieuStage;
 import model.Stage;
 import model.Stagiaire;
+import presentation.StageDPGR;
 
 /**
  * FXML Controller class
@@ -55,7 +58,7 @@ public class AjouterDemandeStageController implements Initializable {
 
         stagiaireList = persistance.PersistManager.findAllStagiaires();
 
-      //  persistance.PersistManager.insertLieuStage(new LieuStage(persistance.PersistManager.findAllLieuStage().size()+1,"Constantine","Algerie"));
+        //  persistance.PersistManager.insertLieuStage(new LieuStage(persistance.PersistManager.findAllLieuStage().size()+1,"Constantine","Algerie"));
         for (Stagiaire st : stagiaireList) {
             stagiaire.getItems().add(st.getNomStagiaire() + "  " + st.getPrenomStagiaire());
         }
@@ -69,7 +72,7 @@ public class AjouterDemandeStageController implements Initializable {
     }
 
     @FXML
-    private void valider(ActionEvent e) {
+    private void valider(ActionEvent e) throws IOException {
         try {
 
             Stage stage = new Stage(DateFormatter.formatter.parse(dateFin.getValue().toString()), objective.getText(), lieuList.get(lieu.getSelectionModel().getSelectedIndex()), DateFormatter.formatter.parse(dateDebut.getValue().toString()), environ.getText(), mission.getText());
@@ -77,7 +80,7 @@ public class AjouterDemandeStageController implements Initializable {
             stage.setIdStage(persistance.PersistManager.findAllStages().size() + 1);
 
             persistance.PersistManager.insertStage(stage);
-            
+
             FraisStage fraisStage = new FraisStage(persistance.PersistManager.findAllFraisStage().size() + 1, Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
 
             persistance.PersistManager.insertFraisStage(fraisStage);
@@ -91,6 +94,13 @@ public class AjouterDemandeStageController implements Initializable {
         } catch (ParseException ex) {
             Logger.getLogger(AjouterDemandeStageController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        StageDPGR.currentTab = 1;
+
+        StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+
+        StageDPGR.refreshRoot1();
+        StageDPGR.stage2.close();
     }
 
     @FXML
