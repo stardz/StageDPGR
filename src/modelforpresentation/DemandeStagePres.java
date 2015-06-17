@@ -23,6 +23,11 @@ import javax.persistence.TemporalType;
 
 public class DemandeStagePres implements Serializable {
     
+    
+    
+    
+    
+    
     private StringProperty dateDemandeStage;
     private IntegerProperty idStagiaire;
     private IntegerProperty idStage;

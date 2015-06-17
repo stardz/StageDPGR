@@ -190,15 +190,15 @@ public class FenetrePrincipaleController implements Initializable {
             StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ModifierStagiaire.fxml"));
             StageDPGR.refreshRoot2();
             StageDPGR.stage2.show();
-        }else {
-            
+        } else {
+
         }
     }
 
     @FXML
     private void showDemandeAjouter(ActionEvent event) throws IOException {
-         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterDemandeStage.fxml"));
-          StageDPGR.refreshRoot2();
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterDemandeStage.fxml"));
+        StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
 
