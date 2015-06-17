@@ -96,4 +96,8 @@ public class FraisStage implements Serializable {
     public void setMontantSejourFraiStage(Integer montantSejourFraiStage) {
         this.montantSejourFraiStage = montantSejourFraiStage;
     }
+    
+    public int getTotalCout(){
+        return this.getMontantVisaFraiStage()+this.getMontantTransportFraiStage()+this.getMontantAssurranceFraiStage()+this.getMontantSejourFraiStage();
+    }
 }

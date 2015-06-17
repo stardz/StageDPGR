@@ -167,4 +167,5 @@ public class Stage implements Serializable {
     public void setAvoirEtatCollection(Collection<AvoirEtat> avoirEtatCollection) {
         this.avoirEtatCollection = avoirEtatCollection;
     }
+    
 }
