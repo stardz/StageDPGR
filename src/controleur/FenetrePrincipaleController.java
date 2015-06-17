@@ -549,10 +549,10 @@ public class FenetrePrincipaleController implements Initializable {
 
         libelleDemandeStage1.setText("" + dmdStage.getIdStage());
 
-        System.out.println("stagestage "+dmdStage.getIdStage());
-        
+        System.out.println("stagestage " + dmdStage.getIdStage());
+
         Stage stage = persistance.PersistManager.findStageById(dmdStage.getIdStage());
-        
+
         Stagiaire stagiaire = persistance.PersistManager.findStagiaireById(dmdStage.getIdStage());
 
         libelleDemandeStage1.setText(stagiaire.getNomStagiaire() + stagiaire.getPrenomStagiaire());
