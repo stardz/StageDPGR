@@ -55,7 +55,7 @@
       </ImageView>
       <Pane layoutY="14.0" prefHeight="39.0" prefWidth="602.0" style="-fx-background-color: #2C3E50;">
          <children>
-            <Label layoutX="35.0" layoutY="5.0" prefHeight="30.0" prefWidth="403.0" text="Création d'un nouveau Stagiaire" textFill="WHITE">
+            <Label layoutX="35.0" layoutY="5.0" prefHeight="30.0" prefWidth="403.0" text="Modification du Stagiaire" textFill="WHITE">
                <font>
                   <Font name="Tw Cen MT" size="26.0" />
                </font>
