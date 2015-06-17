@@ -66,7 +66,7 @@ public class PersistManager {
         st.setPrenomStagiaire(stagiaire.getPrenomStagiaire());
         st.setEmailStagiaire(stagiaire.getEmailStagiaire());
         st.setTelStagiaire(stagiaire.getTelStagiaire());
-        entityManager.persist(stagiaire);
+       // entityManager.persist(stagiaire);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
