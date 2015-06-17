@@ -62,6 +62,15 @@ public class Stage implements Serializable {
     public Stage() {
 
     }
+
+    public Stage(Date dateFinStage, String objectifStage, LieuStage lieuStageIdLieu, Date dateDebutStage, String environnementStage, String missionStage) {
+        this.dateFinStage = dateFinStage;
+        this.objectifStage = objectifStage;
+        this.lieuStageIdLieu = lieuStageIdLieu;
+        this.dateDebutStage = dateDebutStage;
+        this.environnementStage = environnementStage;
+        this.missionStage = missionStage;
+    }
    
     public Date getDateFinStage() {
         return this.dateFinStage;

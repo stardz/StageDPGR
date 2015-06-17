@@ -50,6 +50,8 @@ public class DemandeStage implements Serializable {
     public DemandeStage() {
 
     }
+    
+    
    
     public Stage getStage() {
         return this.stage;
