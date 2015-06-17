@@ -37,19 +37,19 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="supprimerStagiaire" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
+                        <Button fx:id="supprimerStagiaire" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" onAction="#showStagiareSupprimer" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
                             
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="modifierPlace" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier placé" textFill="WHITE">
+                        <Button fx:id="modifierPlace" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Net yet" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="detailStagiaire" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Détails sur le stagiaires" textFill="WHITE">
+                        <Button fx:id="detailStagiaire" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Not yet" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />

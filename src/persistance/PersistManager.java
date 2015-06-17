@@ -70,6 +70,16 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    public static void deleteStagiaire(int idStagiaire){
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+       Stagiaire stagiaire =findStagiaireById(idStagiaire);
+      Stagiaire toBeRemoved = entityManager.merge(stagiaire);
+       entityManager.remove(toBeRemoved);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
     public static void affectLabo(int idLabo, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

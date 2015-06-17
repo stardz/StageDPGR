@@ -163,7 +163,6 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
-
     @FXML
     private void showStagiareAjouter(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterStagiaire.fxml"));
@@ -173,6 +172,16 @@ public class FenetrePrincipaleController implements Initializable {
 
     @FXML
     private void showStagiareModifier(ActionEvent event) throws IOException {
+        if (StageDPGR.selectedStagiaire != null) {
+            StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ModifierStagiaire.fxml"));
+            StageDPGR.refreshRoot2();
+            StageDPGR.stage2.show();
+        } else {
+
+        }
+    }
+    @FXML
+    private void showStagiare(ActionEvent event) throws IOException {
         if (StageDPGR.selectedStagiaire != null) {
             StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ModifierStagiaire.fxml"));
             StageDPGR.refreshRoot2();
@@ -198,7 +207,8 @@ public class FenetrePrincipaleController implements Initializable {
 
     @FXML
     private void showStagiareSupprimer(ActionEvent event) throws IOException {
-        //   StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confirmerSupStagiaire.fxml"));
+        persistance.PersistManager.deleteStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
