@@ -138,6 +138,7 @@ public class ModifierStagiaireController implements Initializable {
 
          persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
          */
+
         StageDPGR.currentTab = 0;
 
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
