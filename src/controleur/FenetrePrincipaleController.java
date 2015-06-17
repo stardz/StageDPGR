@@ -534,7 +534,8 @@ public class FenetrePrincipaleController implements Initializable {
 
     public void refreshInfosDemandeStage() {
 
-        libelleDemandeStage1.setText(StageDPGR.selectedStage.getIdStage().toString());
+        libelleDemandeStage1.setText(StageDPGR.selectedDemandeStage.getIdStage()+"");
+
     }
 
     @FXML
