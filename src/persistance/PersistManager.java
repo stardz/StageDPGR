@@ -298,6 +298,15 @@ public class PersistManager {
         }
         return result;
     }
+    public static FraisStage getSesFrais(int idStage) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirFraiStage avFraiStage=entityManager.find(AvoirFraiStage.class,idStage);
+        FraisStage fraisStage=entityManager.find(FraisStage.class,avFraiStage.getIdFraiStage());
+        entityManager.getTransaction().commit();
+        return fraisStage;
+    }
     /*
      Manifestation
      */
