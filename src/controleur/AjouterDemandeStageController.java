@@ -55,6 +55,7 @@ public class AjouterDemandeStageController implements Initializable {
 
         stagiaireList = persistance.PersistManager.findAllStagiaires();
 
+      //  persistance.PersistManager.insertLieuStage(new LieuStage(persistance.PersistManager.findAllLieuStage().size()+1,"Constantine","Algerie"));
         for (Stagiaire st : stagiaireList) {
             stagiaire.getItems().add(st.getNomStagiaire() + "  " + st.getPrenomStagiaire());
         }
@@ -72,12 +73,20 @@ public class AjouterDemandeStageController implements Initializable {
         try {
 
             Stage stage = new Stage(DateFormatter.formatter.parse(dateFin.getValue().toString()), objective.getText(), lieuList.get(lieu.getSelectionModel().getSelectedIndex()), DateFormatter.formatter.parse(dateDebut.getValue().toString()), environ.getText(), mission.getText());
+
             stage.setIdStage(persistance.PersistManager.findAllStages().size() + 1);
 
+            persistance.PersistManager.insertStage(stage);
+            
             FraisStage fraisStage = new FraisStage(persistance.PersistManager.findAllFraisStage().size() + 1, Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+
             persistance.PersistManager.insertFraisStage(fraisStage);
 
             int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
+
+            persistance.PersistManager.affectFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
+
+            persistance.PersistManager.affectDemandeStage(stagiaireList.get(stagiaire.getSelectionModel().getSelectedIndex()).getIdStagiaire(), stage.getIdStage(), DateFormatter.formatter.parse(dateDemande.getValue().toString()));
 
         } catch (ParseException ex) {
             Logger.getLogger(AjouterDemandeStageController.class.getName()).log(Level.SEVERE, null, ex);
