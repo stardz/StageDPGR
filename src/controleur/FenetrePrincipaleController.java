@@ -412,6 +412,9 @@ public class FenetrePrincipaleController implements Initializable {
         for(LieuStage it:lieuxConf)comboLieuConf.getItems().add(it.getPaysLieuStage()+" :: "+it.getVilleLieuStage());
         
         List<ZoneType> zonesConf=persistance.PersistManager.findAllZones();
-        for(ZoneType it:zonesConf)comboZoneConf.getItems().add(it.getNomZone());
+        for(ZoneType it:zonesConf){
+            comboZoneConf.getItems().add(it.getNomZone());
+            affctedZoneConf.getItems().add(it.getNomZone());
+        }
     }
 }

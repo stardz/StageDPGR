@@ -1161,7 +1161,7 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #CFD8DC;">
                <children>
-                  <Pane layoutX="40.0" layoutY="16.0" prefHeight="324.0" prefWidth="257.0" style="-fx-background-color: #22A7F0;">
+                  <Pane layoutX="40.0" layoutY="14.0" prefHeight="324.0" prefWidth="257.0" style="-fx-background-color: #22A7F0;">
                      <children>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="257.0" style="-fx-background-color: #2C3E50;">
                            <children>
@@ -1189,7 +1189,7 @@
                         <DropShadow />
                      </effect>
                   </Pane>
-                  <Pane layoutX="359.0" layoutY="21.0" prefHeight="318.0" prefWidth="257.0" style="-fx-background-color: #22A7F0;">
+                  <Pane layoutX="350.0" layoutY="20.0" prefHeight="318.0" prefWidth="257.0" style="-fx-background-color: #22A7F0;">
                      <children>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="257.0" style="-fx-background-color: #2C3E50;">
                            <children>
@@ -1301,7 +1301,7 @@
                         <DropShadow />
                      </effect>
                   </Pane>
-                  <Pane layoutX="659.0" layoutY="21.0" prefHeight="318.0" prefWidth="257.0" style="-fx-background-color: #22A7F0;">
+                  <Pane layoutX="655.0" layoutY="20.0" prefHeight="318.0" prefWidth="257.0" style="-fx-background-color: #22A7F0;">
                      <children>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="257.0" style="-fx-background-color: #2C3E50;">
                            <children>
