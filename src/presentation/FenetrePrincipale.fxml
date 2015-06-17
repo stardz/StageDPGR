@@ -31,7 +31,7 @@
                   <TableView fx:id="tableStagiares" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Button fx:id="modifierStagiaire" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier" textFill="WHITE">
+                        <Button fx:id="modifierStagiaire" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" onAction="#showStagiareModifier" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -219,14 +219,14 @@
                   <TableView fx:id="tableDemandeStage" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Button fx:id="consulterMap" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Creer une demande" textFill="WHITE">
+                        <Button fx:id="consulterMap" layoutX="20.0" layoutY="211.0" mnemonicParsing="false" onAction="#showDemandeAjouter" prefHeight="45.0" prefWidth="254.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Creer une demande" textFill="WHITE">
                          
 
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="suivreCameras" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier une demande " textFill="WHITE">
+                        <Button fx:id="suivreCameras" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" onAction="#showDemandeModifier" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier une demande " textFill="WHITE">
                        
 
                            <font>

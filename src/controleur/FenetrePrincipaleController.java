@@ -166,16 +166,34 @@ public class FenetrePrincipaleController implements Initializable {
 
     @FXML
     private void showStagiareAjouter(ActionEvent event) throws IOException {
-        //StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterStagiaire.fxml"));
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
 
     @FXML
     private void showStagiareModifier(ActionEvent event) throws IOException {
+        if (StageDPGR.selectedStagiaire != null) {
+            StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ModifierStagiaire.fxml"));
+            StageDPGR.refreshRoot2();
+            StageDPGR.stage2.show();
+        }else {
+            
+        }
+    }
+
+    @FXML
+    private void showDemandeAjouter(ActionEvent event) throws IOException {
         // StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
-        StageDPGR.refreshRoot2();
-        StageDPGR.stage2.show();
+        //  StageDPGR.refreshRoot2();
+        //StageDPGR.stage2.show();
+    }
+
+    @FXML
+    private void showDemandeModifier(ActionEvent event) throws IOException {
+        // StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+        //  StageDPGR.refreshRoot2();
+        //StageDPGR.stage2.show();
     }
 
     @FXML
@@ -337,7 +355,7 @@ public class FenetrePrincipaleController implements Initializable {
                 FenetrePrincipaleController.this.refreshInfosDemandeStage();
             }
         });
-        
+
         // Remplissage des configs
         remplirConfiguration();
     }
@@ -395,24 +413,35 @@ public class FenetrePrincipaleController implements Initializable {
     private void validerStatistiquesOnAction(ActionEvent event) {
 
     }
-    public void remplirConfiguration(){
-        List<Fonction> fctsConf=persistance.PersistManager.findAllFonction();
-        for(Fonction it:fctsConf)comboFctConf.getItems().add(it.getLibelleFonction());
-        
-        List<Grade> grdsConf=persistance.PersistManager.findAllGrades();
-        for(Grade it:grdsConf)comboGradeConf.getItems().add(it.getLibelleGrade());
-        
-        List<Diplome> dplmsConf=persistance.PersistManager.findAllDiplome();
-        for(Diplome it:dplmsConf)comboDiplomeConf.getItems().add(it.getLibelleDeplome());
-        
-        List<LaboratoireRattachement> labosConf=persistance.PersistManager.findAllLabo();
-        for(LaboratoireRattachement it:labosConf)comboLaboConf.getItems().add(it.getNomLabo());
-        
-        List<LieuStage> lieuxConf=persistance.PersistManager.findAllLieuStage();       
-        for(LieuStage it:lieuxConf)comboLieuConf.getItems().add(it.getPaysLieuStage()+" :: "+it.getVilleLieuStage());
-        
-        List<ZoneType> zonesConf=persistance.PersistManager.findAllZones();
-        for(ZoneType it:zonesConf){
+
+    public void remplirConfiguration() {
+        List<Fonction> fctsConf = persistance.PersistManager.findAllFonction();
+        for (Fonction it : fctsConf) {
+            comboFctConf.getItems().add(it.getLibelleFonction());
+        }
+
+        List<Grade> grdsConf = persistance.PersistManager.findAllGrades();
+        for (Grade it : grdsConf) {
+            comboGradeConf.getItems().add(it.getLibelleGrade());
+        }
+
+        List<Diplome> dplmsConf = persistance.PersistManager.findAllDiplome();
+        for (Diplome it : dplmsConf) {
+            comboDiplomeConf.getItems().add(it.getLibelleDeplome());
+        }
+
+        List<LaboratoireRattachement> labosConf = persistance.PersistManager.findAllLabo();
+        for (LaboratoireRattachement it : labosConf) {
+            comboLaboConf.getItems().add(it.getNomLabo());
+        }
+
+        List<LieuStage> lieuxConf = persistance.PersistManager.findAllLieuStage();
+        for (LieuStage it : lieuxConf) {
+            comboLieuConf.getItems().add(it.getPaysLieuStage() + " :: " + it.getVilleLieuStage());
+        }
+
+        List<ZoneType> zonesConf = persistance.PersistManager.findAllZones();
+        for (ZoneType it : zonesConf) {
             comboZoneConf.getItems().add(it.getNomZone());
             affctedZoneConf.getItems().add(it.getNomZone());
         }

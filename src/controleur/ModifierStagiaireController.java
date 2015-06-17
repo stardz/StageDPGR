@@ -7,7 +7,6 @@ package controleur;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,18 +14,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
-import model.AvoirGrade;
 import model.Diplome;
 import model.Fonction;
 import model.Grade;
 import model.LaboratoireRattachement;
 import model.Stagiaire;
+import modelforpresentation.StagiairePres;
 import presentation.StageDPGR;
 
 /**
@@ -34,13 +30,14 @@ import presentation.StageDPGR;
  *
  * @author oSunshine
  */
-public class AjouterStagiaireController implements Initializable {
+public class ModifierStagiaireController implements Initializable {
 
     @FXML
     private TextField email, nom, prenom, tel;
 
     @FXML
     private MenuButton grade, labo, fonction, diplome;
+    private Stagiaire stagiaire;
 
     /**
      * Initializes the controller class.
@@ -58,6 +55,11 @@ public class AjouterStagiaireController implements Initializable {
          fonction.getSelectionModel().selectFirst();
          diplome.getSelectionModel().selectFirst();
          */
+        
+        email.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
+        nom.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
+        prenom.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
+        tel.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
 
         List<Grade> grades = persistance.PersistManager.findAllGrades();
 
@@ -98,10 +100,9 @@ public class AjouterStagiaireController implements Initializable {
     @FXML
     public void valider(ActionEvent e) throws IOException {
 
-        Stagiaire stagiaire;
         stagiaire = new Stagiaire(prenom.getText(), tel.getText(), nom.getText(), email.getText(), null, null, null, null);
-        stagiaire.setIdStagiaire(persistance.PersistManager.findAllStagiaires().size() + 1);
-        persistance.PersistManager.insertStagiaire(stagiaire);
+        stagiaire.setIdStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
+        persistance.PersistManager.updateStagiaire(stagiaire);
 
         StageDPGR.currentTab = 0;
 
