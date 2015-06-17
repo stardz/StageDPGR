@@ -546,8 +546,8 @@ public class FenetrePrincipaleController implements Initializable {
         Stagiaire stagiaire= persistance.PersistManager.findStagiaireById(dmdStage.getIdStage());
         libelleDemandeStage1.setText(stagiaire.getNomStagiaire()+stagiaire.getPrenomStagiaire());
         libelleDemandeStage2.setText(StageDPGR.selectedDemandeStage.getDateDemandeStage());
-        libelleDemandeStage4.setText(stage.getDateDebutStage().toString()) ;
-        libelleDemandeStage5.setText(stage.getDateDebutStage().toString()) ;
+        libelleDemandeStage4.setText(DateFormatter.formatter.format(stage.getDateDebutStage())) ;
+        libelleDemandeStage5.setText(DateFormatter.formatter.format(stage.getDateFinStage())) ;
         libelleDemandeStage6.setText(stage.getLieuStageIdLieu().getPaysLieuStage()) ;
          
        
