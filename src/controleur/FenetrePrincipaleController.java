@@ -29,22 +29,31 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.DemandeStage;
+import model.Diplome;
+import model.Fonction;
+import model.Grade;
+import model.LaboratoireRattachement;
+import model.LieuStage;
 import model.Stagiaire;
 import model.Utilisateur;
+import model.ZoneType;
 import modelforpresentation.DemandeStagePres;
 import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 import presentation.StageDPGR;
+
 /**
  * FXML Controller class
  *
  * @author oSunshine
  */
 public class FenetrePrincipaleController implements Initializable {
+
     @FXML
     TabPane tabPane;
     @FXML
@@ -65,8 +74,8 @@ public class FenetrePrincipaleController implements Initializable {
     Label libelleCompte5;
     @FXML
     ProgressBar progresDemandeStage;
-   
-        /**
+
+    /**
      * **********************Statistiques***************************
      */
     @FXML
@@ -80,7 +89,7 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     private LineChart lineChartEvolutionBudget;
     @FXML
-    
+
     private BarChart barChartStages;
     @FXML
     private ToggleGroup groupTypes;
@@ -89,62 +98,100 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     private ComboBox<String> comboAnnée;
     /*
-    Actions comptes
-    */
+     ********************************* Configurations ************************************
+     */
     @FXML
-    private void showCompteAjouter(ActionEvent event) throws IOException{
+    ComboBox comboFctConf;
+    @FXML
+    ComboBox comboDiplomeConf;
+    @FXML
+    ComboBox comboGradeConf;
+    @FXML
+    ComboBox comboLaboConf;
+    @FXML
+    ComboBox comboLieuConf;
+    @FXML
+    ComboBox affctedZoneConf;
+    @FXML
+    ComboBox comboZoneConf;
+
+    @FXML
+    TextField fieldFctConf;
+    @FXML
+    TextField fieldDiplomeConf;
+    @FXML
+    TextField fieldGradeConf;
+    @FXML
+    TextField fieldLaboConf;
+    @FXML
+    TextField fieldZoneConf;
+    /*
+     Actions comptes
+     */
+
+    @FXML
+    private void showCompteAjouter(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/insererUtilisateur.fxml"));
         StageDPGR.refreshRoot2();
-        StageDPGR.stage2.show(); 
+        StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showCompteSupprimer(ActionEvent event) throws IOException{
+    private void showCompteSupprimer(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confirmerSup.fxml"));
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showCompteModifier(ActionEvent event) throws IOException{
+    private void showCompteModifier(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/modifierUtilisateur.fxml"));
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showCompteBloquer(ActionEvent event) throws IOException{
+    private void showCompteBloquer(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confiirmerBloquer.fxml"));
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showCompteDeBloquer(ActionEvent event) throws IOException{
+    private void showCompteDeBloquer(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/Compte_Debloquer.fxml"));
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showStagiareAjouter(ActionEvent event) throws IOException{
+    private void showStagiareAjouter(ActionEvent event) throws IOException {
         //StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
         StageDPGR.refreshRoot2();
-        StageDPGR.stage2.show(); 
+        StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showStagiareModifier(ActionEvent event) throws IOException{
-       // StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+    private void showStagiareModifier(ActionEvent event) throws IOException {
+        // StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
         StageDPGR.refreshRoot2();
-        StageDPGR.stage2.show(); 
+        StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showStagiareSupprimer(ActionEvent event) throws IOException{
-     //   StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
+    private void showStagiareSupprimer(ActionEvent event) throws IOException {
+        //   StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ajouterStagiaire.fxml"));
         StageDPGR.refreshRoot2();
-        StageDPGR.stage2.show(); 
+        StageDPGR.stage2.show();
     }
+
     @FXML
-    private void showStagiareProfile(ActionEvent event) throws IOException{
+    private void showStagiareProfile(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
         StageDPGR.refreshRoot2();
-        StageDPGR.stage2.show(); 
+        StageDPGR.stage2.show();
     }
+
     /**
      * Initializes the controller class.
      */
@@ -156,13 +203,13 @@ public class FenetrePrincipaleController implements Initializable {
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(StageDPGR.currentTab);
         /*
-                Tableau des comptes
-        */
+         Tableau des comptes
+         */
         //Data
         ObservableList<UtilisateurPres> dataComptes = FXCollections.observableArrayList();
-        List<Utilisateur> listeUsrs=persistance.PersistManager.findAllUtilisateur();
-        
-        for(Utilisateur it:listeUsrs){
+        List<Utilisateur> listeUsrs = persistance.PersistManager.findAllUtilisateur();
+
+        for (Utilisateur it : listeUsrs) {
             dataComptes.add(new UtilisateurPres(it));
         }
         // Colonnes
@@ -189,111 +236,114 @@ public class FenetrePrincipaleController implements Initializable {
         TableColumn prenomUsrCol = new TableColumn();
         prenomUsrCol.setText("Prenom");
         prenomUsrCol.setCellValueFactory(new PropertyValueFactory("prenomUtilisateur"));
-        
+
         //Remplissage
         tableComptes.setItems(dataComptes);
-        tableComptes.getColumns().addAll(nomUsrCol,prenomUsrCol,loginCol,mpCol,profileCol,etatCol);
-        
+        tableComptes.getColumns().addAll(nomUsrCol, prenomUsrCol, loginCol, mpCol, profileCol, etatCol);
+
         //Sélection d'une cellule
         tableComptes.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                StageDPGR.selectedUtilisateur=(UtilisateurPres)tableComptes.getSelectionModel().getSelectedItem();
+                StageDPGR.selectedUtilisateur = (UtilisateurPres) tableComptes.getSelectionModel().getSelectedItem();
                 FenetrePrincipaleController.this.refreshInfosCompte();
             }
         });
         /*
-                Tableau des Stagiares
-        */
+         Tableau des Stagiares
+         */
         //Data
         ObservableList<StagiairePres> dataStagiaires = FXCollections.observableArrayList();
-        List<Stagiaire> listeStagiares=persistance.PersistManager.findAllStagiaires();
-        
-        for(Stagiaire it:listeStagiares){
+        List<Stagiaire> listeStagiares = persistance.PersistManager.findAllStagiaires();
+
+        for (Stagiaire it : listeStagiares) {
             dataStagiaires.add(new StagiairePres(it));
         }
-         // Colonnes
+        // Colonnes
         TableColumn idStagiaireCol = new TableColumn();
         idStagiaireCol.setText("Identifiant");
         idStagiaireCol.setCellValueFactory(new PropertyValueFactory("idStagiaire"));
-        
+
         TableColumn nomStagiaireCol = new TableColumn();
         nomStagiaireCol.setText("Nom");
         nomStagiaireCol.setCellValueFactory(new PropertyValueFactory("nomStagiaire"));
-        
+
         TableColumn prenomStagiaireCol = new TableColumn();
         prenomStagiaireCol.setText("Prenom");
         prenomStagiaireCol.setCellValueFactory(new PropertyValueFactory("prenomStagiaire"));
-        
+
         TableColumn emailStagiaireCol = new TableColumn();
         emailStagiaireCol.setText("Email");
         emailStagiaireCol.setCellValueFactory(new PropertyValueFactory("emailStagiaire"));
-        
+
         TableColumn telStagiaireCol = new TableColumn();
         telStagiaireCol.setText("N° Telephone");
         telStagiaireCol.setCellValueFactory(new PropertyValueFactory("telStagiaire"));
         //Remplissage
         tableStagiares.setItems(dataStagiaires);
-        tableStagiares.getColumns().addAll(idStagiaireCol,nomStagiaireCol,prenomStagiaireCol,emailStagiaireCol,telStagiaireCol);
-        
+        tableStagiares.getColumns().addAll(idStagiaireCol, nomStagiaireCol, prenomStagiaireCol, emailStagiaireCol, telStagiaireCol);
+
         //Sélection d'une cellule
         tableStagiares.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                StageDPGR.selectedStagiaire=(StagiairePres)tableStagiares.getSelectionModel().getSelectedItem();
+                StageDPGR.selectedStagiaire = (StagiairePres) tableStagiares.getSelectionModel().getSelectedItem();
                 FenetrePrincipaleController.this.refreshInfosStagiaire();
             }
         });
-         /*
-                Tableau des demandes De Stage
-        */
+        /*
+         Tableau des demandes De Stage
+         */
         //Data
         ObservableList<DemandeStagePres> dataDmdStage = FXCollections.observableArrayList();
-        List<DemandeStage> listeDmsStage=persistance.PersistManager.findAllDemandeStages();
-        
-        for(DemandeStage it:listeDmsStage){
+        List<DemandeStage> listeDmsStage = persistance.PersistManager.findAllDemandeStages();
+
+        for (DemandeStage it : listeDmsStage) {
             dataDmdStage.add(new DemandeStagePres(it));
         }
         // Colonnes
         TableColumn idStagiaireDmdStageCol = new TableColumn();
         idStagiaireDmdStageCol.setText("Identifiant Stagiaire");
         idStagiaireDmdStageCol.setCellValueFactory(new PropertyValueFactory("idStagiaire"));
-        
+
         TableColumn idStageDmdStageCol = new TableColumn();
         idStageDmdStageCol.setText("Identifiant Stage");
         idStageDmdStageCol.setCellValueFactory(new PropertyValueFactory("idStage"));
-        
+
         TableColumn dateDmdStageCol = new TableColumn();
         dateDmdStageCol.setText("Date de demande");
         dateDmdStageCol.setCellValueFactory(new PropertyValueFactory("dateDemandeStage"));
-        
+
         TableColumn avisDGDmdStageCol = new TableColumn();
         avisDGDmdStageCol.setText("Avis DAGPGR");
         avisDGDmdStageCol.setCellValueFactory(new PropertyValueFactory("avisDadpgrStage"));
-        
+
         TableColumn avisCSDmdStageCol = new TableColumn();
         avisCSDmdStageCol.setText("Avis Conseil Scientifique");
         avisCSDmdStageCol.setCellValueFactory(new PropertyValueFactory("avisCsStage"));
-        
+
         TableColumn autorisationDmdStageCol = new TableColumn();
         autorisationDmdStageCol.setText("Autorisation de Stage");
         autorisationDmdStageCol.setCellValueFactory(new PropertyValueFactory("autorisationDeStage"));
         //Remplissage
         tableDemandeStage.setItems(dataDmdStage);
-        tableDemandeStage.getColumns().addAll(idStagiaireCol,idStageDmdStageCol,dateDmdStageCol,avisDGDmdStageCol,avisCSDmdStageCol,autorisationDmdStageCol);
-        
+        tableDemandeStage.getColumns().addAll(idStagiaireCol, idStageDmdStageCol, dateDmdStageCol, avisDGDmdStageCol, avisCSDmdStageCol, autorisationDmdStageCol);
+
         //Sélection d'une cellule
         tableDemandeStage.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                StageDPGR.selectedDemandeStage=(DemandeStagePres)tableDemandeStage.getSelectionModel().getSelectedItem();
+                StageDPGR.selectedDemandeStage = (DemandeStagePres) tableDemandeStage.getSelectionModel().getSelectedItem();
                 FenetrePrincipaleController.this.refreshInfosDemandeStage();
             }
         });
+        
+        // Remplissage des configs
+        remplirConfiguration();
     }
-    
+
     @FXML
-    private void afficherProfilStagiaireOnAction(ActionEvent event){
+    private void afficherProfilStagiaireOnAction(ActionEvent event) {
         System.out.println("click profile");
         try {
             StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
@@ -302,24 +352,26 @@ public class FenetrePrincipaleController implements Initializable {
         }
         StageDPGR.refreshRoot2();
     }
-    public void refreshInfosCompte(){
+
+    public void refreshInfosCompte() {
         libelleCompte1.setText(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
         libelleCompte2.setText(StageDPGR.selectedUtilisateur.getNomUtilisateur());
         libelleCompte3.setText(StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
         libelleCompte4.setText(StageDPGR.selectedUtilisateur.getProfilUtilisateur());
         libelleCompte5.setText(StageDPGR.selectedUtilisateur.getEtatCompte());
     }
-    public void refreshInfosStagiaire(){
+
+    public void refreshInfosStagiaire() {
         // MAJ les informations d'un stagiaire
     }
-    public void refreshInfosDemandeStage(){
-        
+
+    public void refreshInfosDemandeStage() {
+
     }
-    
-    @FXML 
-    private void modifierStagiaire(ActionEvent e){
-        
-         
+
+    @FXML
+    private void modifierStagiaire(ActionEvent e) {
+
         try {
             StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ModifierStagiaire.fxml"));
         } catch (IOException ex) {
@@ -327,10 +379,10 @@ public class FenetrePrincipaleController implements Initializable {
         }
         StageDPGR.refreshRoot2();
     }
-    
-        @FXML
-    private void ajouterStagiaire(ActionEvent e){
-        
+
+    @FXML
+    private void ajouterStagiaire(ActionEvent e) {
+
         try {
             StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterStagiaire.fxml"));
         } catch (IOException ex) {
@@ -338,9 +390,28 @@ public class FenetrePrincipaleController implements Initializable {
         }
         StageDPGR.refreshRoot2();
     }
-    
-        @FXML
+
+    @FXML
     private void validerStatistiquesOnAction(ActionEvent event) {
 
+    }
+    public void remplirConfiguration(){
+        List<Fonction> fctsConf=persistance.PersistManager.findAllFonction();
+        for(Fonction it:fctsConf)comboFctConf.getItems().add(it.getLibelleFonction());
+        
+        List<Grade> grdsConf=persistance.PersistManager.findAllGrades();
+        for(Grade it:grdsConf)comboGradeConf.getItems().add(it.getLibelleGrade());
+        
+        List<Diplome> dplmsConf=persistance.PersistManager.findAllDiplome();
+        for(Diplome it:dplmsConf)comboDiplomeConf.getItems().add(it.getLibelleDeplome());
+        
+        List<LaboratoireRattachement> labosConf=persistance.PersistManager.findAllLabo();
+        for(LaboratoireRattachement it:labosConf)comboLaboConf.getItems().add(it.getNomLabo());
+        
+        List<LieuStage> lieuxConf=persistance.PersistManager.findAllLieuStage();       
+        for(LieuStage it:lieuxConf)comboLieuConf.getItems().add(it.getPaysLieuStage()+" :: "+it.getVilleLieuStage());
+        
+        List<ZoneType> zonesConf=persistance.PersistManager.findAllZones();
+        for(ZoneType it:zonesConf)comboZoneConf.getItems().add(it.getNomZone());
     }
 }
