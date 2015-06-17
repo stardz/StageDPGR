@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import controleur.DateFormatter;
 import java.util.Date;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -55,14 +56,6 @@ public class StageDPGR extends Application {
      */
     public static void main(String[] args) {
         
-        model.Stage stg=new model.Stage();
-        stg.setIdStage(1);
-        stg.setDateDebutStage(new Date(2012, 12, 5));
-        stg.setDateFinStage(new Date(2013, 01, 06));
-        stg.setMissionStage("mission");
-        stg.setObjectifStage("objectif");
-        stg.setEnvironnementStage("environnement");
-        persistance.PersistManager.insertStage(stg);
         launch(args);
     }
 

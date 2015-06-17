@@ -1,6 +1,7 @@
 package modelforpresentation;
 
 
+import controleur.DateFormatter;
 import model.*;
 import java.io.Serializable;
 import java.lang.Integer;
@@ -46,8 +47,8 @@ public class StagePres {
     }
     public StagePres(Stage stage) {
        this.setIdStage(stage.getIdStage());
-       this.setDateDebutStage(stage.getDateDebutStage().toString());
-       this.setDateFinStage(stage.getDateFinStage().toString());
+       this.setDateDebutStage(DateFormatter.formatter.format( stage.getDateDebutStage()));
+       this.setDateFinStage(DateFormatter.formatter.format( stage.getDateFinStage()));
        this.setObjectifStage(stage.getObjectifStage());
        this.setMissionStage(stage.getMissionStage());
        this.setEnvironnementStage(stage.getEnvironnementStage());

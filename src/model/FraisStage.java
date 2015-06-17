@@ -39,7 +39,16 @@ public class FraisStage implements Serializable {
     public FraisStage() {
 
     }
+
+    public FraisStage(Integer idFraiStage,Integer montantTransportFraiStage, Integer montantVisaFraiStage, Integer montantAssurranceFraiStage,  Integer montantSejourFraiStage) {
+        this.montantTransportFraiStage = montantTransportFraiStage;
+        this.montantVisaFraiStage = montantVisaFraiStage;
+        this.montantAssurranceFraiStage = montantAssurranceFraiStage;
+        this.idFraiStage = idFraiStage;
+        this.montantSejourFraiStage = montantSejourFraiStage;
+    }
    
+    
     public Integer getMontantTransportFraiStage() {
         return this.montantTransportFraiStage;
     }
