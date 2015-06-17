@@ -101,6 +101,7 @@ public class ModifierStagiaireController implements Initializable {
          LaboratoireRattachement laboTmp = persistance.PersistManager.getSesLabo(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
          labo.getSelectionModel().select(laboTmp.getNomLabo());
          */
+        
         grade.getSelectionModel().selectFirst();
         labo.getSelectionModel().selectFirst();
         fonction.getSelectionModel().selectFirst();
