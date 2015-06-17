@@ -428,6 +428,19 @@ public class PersistManager {
         entityManager.close();
         return dmdStage;
     }
+    public static DemandeStage findDemandeStageByIds(CKey cKey){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c where c.idStage=:arg1 AND c.idStagiaire=:arg2", DemandeStage.class).setParameter("arg1",cKey.key1);
+        query.setParameter("arg2", cKey.key2);
+        List<DemandeStage> demandeStages = query.getResultList();
+        DemandeStage dmdStage=demandeStages.get(demandeStages.size()-1);
+       
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return dmdStage;
+    }
     /*
      Pvs
      */
