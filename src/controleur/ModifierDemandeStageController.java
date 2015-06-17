@@ -8,6 +8,9 @@ package controleur;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -40,7 +43,7 @@ public class ModifierDemandeStageController implements Initializable {
     DatePicker dateDemande, dateDebut, dateFin;
 
     @FXML
-    TextField duree, fraisSejour, fraisTransport, fraisAssurance, fraisVisa;
+    TextField  fraisSejour, fraisTransport, fraisAssurance, fraisVisa;
 
     @FXML
     TextArea objective, environ, mission;
@@ -66,13 +69,27 @@ public class ModifierDemandeStageController implements Initializable {
         for (LieuStage l : lieuList) {
             lieu.getItems().add(l.getPaysLieuStage() + " : " + l.getVilleLieuStage());
         }
+        
+       // Lieu lieuTmp = persistance.PersistManager.findLieuStageById(idLieuStage);
 
-        FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+        lieu.getSelectionModel().select(null);
+        //  FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+        FraisStage fraisStage = persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage());
+        fraisSejour.setText(fraisStage.getMontantSejourFraiStage() + "");
+        fraisTransport.setText(fraisStage.getMontantTransportFraiStage() + "");
+        fraisAssurance.setText(fraisStage.getMontantAssurranceFraiStage() + "");
+        fraisVisa.setText(fraisStage.getMontantVisaFraiStage() + "");
 
-        fraisSejour.setText(fraisStage.getMontantSejourFraiStage()+"");
-        fraisTransport.setText(fraisStage.getMontantTransportFraiStage()+"");
-        fraisAssurance.setText(fraisStage.getMontantAssurranceFraiStage()+"");
-        fraisVisa.setText(fraisStage.getMontantVisaFraiStage()+"");
+        Stage st = persistance.PersistManager.findStageById(StageDPGR.selectedDemandeStage.getIdStage());
+
+        environ.setText(st.getEnvironnementStage());
+        objective.setText(st.getObjectifStage());
+        mission.setText(st.getMissionStage());
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+     
+        dateDebut.setValue(LocalDate.parse(DateFormatter.formatter.format(st.getDateDebutStage()), dateTimeFormatter));
+        dateFin.setValue(LocalDate.parse(DateFormatter.formatter.format(st.getDateFinStage()), dateTimeFormatter));
 
     }
 
@@ -92,8 +109,8 @@ public class ModifierDemandeStageController implements Initializable {
 
             int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
 
-      //      persistance.PersistManager.updateAvoirFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
-    } catch (ParseException ex) {
+            //persistance.PersistManager.updateDemandeStage(stagiaireList.get(stagiaire.getSelectionModel().getSelectedIndex()).getIdStagiaire(), stage.getIdStage(), DateFormatter.formatter.parse(dateDemande.getValue().toString()));
+        } catch (ParseException ex) {
             Logger.getLogger(AjouterDemandeStageController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
