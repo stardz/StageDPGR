@@ -17,22 +17,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name="frais_sejour")
 public class FraisSejour implements Serializable {
+    
+    
 
-    @Column(name="montant_alloc",table="frais_sejour",length=30)
+    @Column(name="montant_alloc",table="frais_sejour",length=30)  
     @Basic
     private String montantAlloc;
+    
     @Column(name="stage_id_stage",table="frais_sejour")
     @Basic
     private Integer stageIdStage;
+    
     @OneToMany(targetEntity = Manifestation.class,mappedBy = "fraisSejourNumeroFraisSejour")
     private Collection<Manifestation> manifestationCollection;
+    
+    
     @Column(name="manifestation_id_manifestation",table="frais_sejour")
     @Basic
     private Integer manifestationIdManifestation;
+    
+    
     @Column(name="numero_frais_sejour",table="frais_sejour",nullable=false)
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer numeroFraisSejour;
+    
+    
     @OneToMany(targetEntity = Stage.class,mappedBy = "fraisSejourNumeroFraisSejour")
     private Collection<Stage> stageCollection;
 
