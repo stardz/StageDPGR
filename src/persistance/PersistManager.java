@@ -178,11 +178,16 @@ public class PersistManager {
         entityManager.getTransaction().begin();
         TypedQuery<AvoirDiplome> query = entityManager.createQuery("SELECT c FROM AvoirDiplome c", AvoirDiplome.class);
         List<AvoirDiplome> avoirDiplomeListe = query.getResultList();
+        AvoirDiplome avDiplome;
+        AvoirDiplome avDiplomeRemove;
         Diplome toBeRemoved;
         Diplome dpl;
         //List<Diplome> result = new ArrayList<Diplome>();
         for (AvoirDiplome it : avoirDiplomeListe) {
             if (it.getIdStagiaire() == idStagiaire) {
+               
+               avDiplomeRemove=entityManager.merge(it); 
+               entityManager.remove(avDiplomeRemove);
                dpl=findDiplomeById(it.getIdDiplome());
                toBeRemoved=entityManager.merge(dpl);
                entityManager.remove(toBeRemoved);
