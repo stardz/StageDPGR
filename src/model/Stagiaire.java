@@ -52,7 +52,19 @@ public class Stagiaire implements Serializable {
     public Stagiaire() {
 
     }
-   
+
+    public Stagiaire(String prenomStagiaire, String telStagiaire, String nomStagiaire, String emailStagiaire, Collection<AvoirGrade> avoirGradeCollection, Collection<AvoirFonction> avoirFonctionCollection, Collection<AvoirDiplome> avoirDiplomeCollection, Collection<AffecteLabo> affecteLaboCollection) {
+        this.prenomStagiaire = prenomStagiaire;
+        this.telStagiaire = telStagiaire;
+        this.nomStagiaire = nomStagiaire;
+        this.emailStagiaire = emailStagiaire;
+        this.avoirGradeCollection = avoirGradeCollection;
+        this.avoirFonctionCollection = avoirFonctionCollection;
+        this.avoirDiplomeCollection = avoirDiplomeCollection;
+        this.affecteLaboCollection = affecteLaboCollection;
+    }
+
+    
     public String getPrenomStagiaire() {
         return this.prenomStagiaire;
     }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="392.0" prefWidth="602.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.AjouterStagiaireController">
+   <children>
+      <Text layoutX="237.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="238.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="411.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="email" layoutX="328.0" layoutY="82.0" prefHeight="25.0" prefWidth="250.0" />
+      <TextField fx:id="nom" layoutX="286.0" layoutY="127.0" prefHeight="25.0" prefWidth="104.0" />
+      <TextField fx:id="prenom" layoutX="473.0" layoutY="127.0" prefHeight="25.0" prefWidth="104.0" />
+      <Button fx:id="validerCompteAjouter" layoutX="320.0" layoutY="335.0" mnemonicParsing="false" onAction="#valider" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Valider" textFill="WHITE">
+  
+
+         <font>
+            <Font name="Tw Cen MT" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imagePlaceAjouterPlace11" fitHeight="39.0" fitWidth="39.0" layoutX="320.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../LynxTrak/LynxTrak/src/solit/ValiderInfo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="annluerCompteAjouter" layoutX="452.0" layoutY="335.0" mnemonicParsing="false" onAction="#annuler" prefHeight="39.0" prefWidth="123.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="   Annuler" textFill="WHITE">
+       
+
+         <font>
+            <Font name="Tw Cen MT" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imagePlaceAjouterPlace111" fitHeight="39.0" fitWidth="40.0" layoutX="452.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../LynxTrak/LynxTrak/src/solit/AnnulerInfo.png" />
+         </image>
+      </ImageView>
+      <Pane layoutY="14.0" prefHeight="39.0" prefWidth="602.0" style="-fx-background-color: #2C3E50;">
+         <children>
+            <Label layoutX="35.0" layoutY="5.0" prefHeight="30.0" prefWidth="403.0" text="Création d'un nouveau Stagiaire" textFill="WHITE">
+               <font>
+                  <Font name="Tw Cen MT" size="26.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fx:id="imagePlaceAjouterPlace" fitHeight="174.0" fitWidth="191.0" layoutX="26.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../LynxTrak/LynxTrak/src/solit/NoPicture.gif" />
+         </image>
+      </ImageView>
+      <Button fx:id="parcourrirCompteAjouter" layoutX="26.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #22A7F0; -fx-border-color: #22A7F0;" text="Parcourir" textFill="WHITE">
+      
+          
+         <font>
+            <Font name="Tw Cen MT" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imagePlaceAjouterPlace1" fitHeight="39.0" fitWidth="39.0" layoutX="26.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../LynxTrak/LynxTrak/src/solit/ParcourirPhoto.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tel" layoutX="290.0" layoutY="173.0" prefHeight="25.0" prefWidth="104.0" />
+      <Text layoutX="411.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grade">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="236.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="236.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Labo">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="236.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fonction">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="236.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diplome">
+         <font>
+            <Font name="Tw Cen MT" size="14.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="grade" layoutX="476.0" layoutY="173.0" mnemonicParsing="false" text="MenuButton">
+        <items>
+      
+        </items>
+      </MenuButton>
+      <MenuButton fx:id="labo" layoutX="363.0" layoutY="215.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="MenuButton">
+         <items>
+
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="fonction" layoutX="363.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="MenuButton">
+         <items>
+  
+         </items>
+      </MenuButton>
+      <MenuButton fx:id="diplome" layoutX="363.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="MenuButton">
+         <items>
+          
+         </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
