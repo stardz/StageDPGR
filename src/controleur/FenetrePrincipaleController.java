@@ -544,14 +544,16 @@ public class FenetrePrincipaleController implements Initializable {
 
     public void refreshInfosDemandeStage() {
 
-        libelleDemandeStage1.setText(StageDPGR.selectedDemandeStage.getIdStage()+"");
+        System.out.println("stagestage " + StageDPGR.selectedDemandeStage.getIdStage());
 
-        DemandeStage dmdStage=persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(),StageDPGR.selectedDemandeStage.getIdStagiaire()));
-        libelleDemandeStage1.setText(""+dmdStage.getIdStage());
+        Stage stage = persistance.PersistManager.findStageById(StageDPGR.selectedDemandeStage.getIdStage());
 
-        Stage stage = persistance.PersistManager.findStageById(dmdStage.getIdStage()) ;
-        Stagiaire stagiaire= persistance.PersistManager.findStagiaireById(dmdStage.getIdStage());
         libelleDemandeStage1.setText(stagiaire.getNomStagiaire()+stagiaire.getPrenomStagiaire());
+
+        Stagiaire stagiaire = persistance.PersistManager.findStagiaireById(StageDPGR.selectedDemandeStage.getIdStagiaire());
+
+        libelleDemandeStage1.setText(stagiaire.getNomStagiaire() + stagiaire.getPrenomStagiaire());
+
         libelleDemandeStage2.setText(StageDPGR.selectedDemandeStage.getDateDemandeStage());
         libelleDemandeStage4.setText(DateFormatter.formatter.format(stage.getDateDebutStage())) ;
         libelleDemandeStage5.setText(DateFormatter.formatter.format(stage.getDateFinStage())) ;
