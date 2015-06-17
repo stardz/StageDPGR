@@ -88,25 +88,24 @@ public class ModifierStagiaireController implements Initializable {
             diplome.getItems().add(diplomeSelected.getLibelleDeplome());
 
         }
+        System.out.println("id stagiaire " + StageDPGR.selectedStagiaire.getIdStagiaire());
+        Diplome diplomeTmp = persistance.PersistManager.getSesDiplome(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        diplome.getSelectionModel().select(diplomeTmp.getLibelleDeplome());
 
-        /*        Diplome diplomeTmp = persistance.PersistManager.getSesDiplome(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
-         diplome.getSelectionModel().select(diplomeTmp.getLibelleDeplome());
+        Grade gradeTmp = persistance.PersistManager.getSesGrade(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        grade.getSelectionModel().select(gradeTmp.getLibelleGrade());
+
+        Fonction fonctionTmp = persistance.PersistManager.getSesFonction(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        fonction.getSelectionModel().select(fonctionTmp.getLibelleFonction());
+
+        LaboratoireRattachement laboTmp = persistance.PersistManager.getSesLabo(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        labo.getSelectionModel().select(laboTmp.getNomLabo());
+
+        /* grade.getSelectionModel().selectFirst();
+         labo.getSelectionModel().selectFirst();
+         fonction.getSelectionModel().selectFirst();
+         diplome.getSelectionModel().selectFirst();
          */
-        /*        Grade gradeTmp = persistance.PersistManager.getSesGrade(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
-         grade.getSelectionModel().select(gradeTmp.getLibelleGrade());
-
-         Fonction fonctionTmp = persistance.PersistManager.getSesFonction(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
-         fonction.getSelectionModel().select(fonctionTmp.getLibelleFonction());
-
-         LaboratoireRattachement laboTmp = persistance.PersistManager.getSesLabo(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
-         labo.getSelectionModel().select(laboTmp.getNomLabo());
-         */
-        
-        grade.getSelectionModel().selectFirst();
-        labo.getSelectionModel().selectFirst();
-        fonction.getSelectionModel().selectFirst();
-        diplome.getSelectionModel().selectFirst();
-
     }
 
     @FXML
