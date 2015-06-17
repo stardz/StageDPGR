@@ -89,10 +89,10 @@ public class ModifierStagiaireController implements Initializable {
 
         }
 
-        Diplome diplomeTmp = persistance.PersistManager.getSesDiplome(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
+/*        Diplome diplomeTmp = persistance.PersistManager.getSesDiplome(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
         diplome.getSelectionModel().select(diplomeTmp.getLibelleDeplome());
-
-        Grade gradeTmp = persistance.PersistManager.getSesGrade(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
+*/
+/*        Grade gradeTmp = persistance.PersistManager.getSesGrade(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
         grade.getSelectionModel().select(gradeTmp.getLibelleGrade());
 
         Fonction fonctionTmp = persistance.PersistManager.getSesFonction(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
@@ -100,7 +100,7 @@ public class ModifierStagiaireController implements Initializable {
 
         LaboratoireRattachement laboTmp = persistance.PersistManager.getSesLabo(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
         labo.getSelectionModel().select(laboTmp.getNomLabo());
-
+*/
     }
 
     @FXML
@@ -110,22 +110,28 @@ public class ModifierStagiaireController implements Initializable {
         stagiaire.setIdStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
         persistance.PersistManager.updateStagiaire(stagiaire);
 
-        LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
-
-        persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
-
         Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
+
+        persistance.PersistManager.deleteSesDiplomes(stagiaire.getIdStagiaire());
 
         persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
-        Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
+        /*LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
 
-        persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+         persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
-        Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
+         Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
 
-        persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+         persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
+         Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
+
+         persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+
+         Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
+
+         persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+         */
         StageDPGR.currentTab = 0;
 
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
