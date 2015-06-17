@@ -37,7 +37,7 @@ public class AuthentificationController implements Initializable {
 
     @FXML
     private void connexion(ActionEvent event) {
-        try {
+       
             Utilisateur usr = persistance.PersistManager.getUtilisateurByLogin(nomUtilisateur.getText());
             if (usr == null) {
                 nomUtilisateur.setEffect(new DropShadow(10, Color.RED));
@@ -53,11 +53,7 @@ public class AuthentificationController implements Initializable {
                 motdePasse.setEffect(new DropShadow(10, Color.RED));
             }
 
-            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        StageDPGR.refreshRoot1();
+         
     }
 
     @Override
