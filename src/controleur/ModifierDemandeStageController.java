@@ -48,9 +48,6 @@ public class ModifierDemandeStageController implements Initializable {
     List<Stagiaire> stagiaireList;
     List<LieuStage> lieuList;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -60,6 +57,7 @@ public class ModifierDemandeStageController implements Initializable {
         for (Stagiaire st : stagiaireList) {
             stagiaire.getItems().add(st.getNomStagiaire() + "  " + st.getPrenomStagiaire());
         }
+
         Stagiaire stagiaireTmp = persistance.PersistManager.findStagiaireById(StageDPGR.selectedDemandeStage.getIdStagiaire());
         stagiaire.getSelectionModel().select(stagiaireTmp.getNomStagiaire() + "  " + stagiaireTmp.getPrenomStagiaire());
 
@@ -68,6 +66,13 @@ public class ModifierDemandeStageController implements Initializable {
         for (LieuStage l : lieuList) {
             lieu.getItems().add(l.getPaysLieuStage() + " : " + l.getVilleLieuStage());
         }
+
+        FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+
+        fraisSejour.setText(fraisStage.getMontantSejourFraiStage()+"");
+        fraisTransport.setText(fraisStage.getMontantTransportFraiStage()+"");
+        fraisAssurance.setText(fraisStage.getMontantAssurranceFraiStage()+"");
+        fraisVisa.setText(fraisStage.getMontantVisaFraiStage()+"");
 
     }
 
@@ -88,9 +93,7 @@ public class ModifierDemandeStageController implements Initializable {
             int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
 
       //      persistance.PersistManager.updateAvoirFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
-            //  persistance.PersistManager.affectFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
-          //  persistance.PersistManager.affectDemandeStage(stagiaireList.get(stagiaire.getSelectionModel().getSelectedIndex()).getIdStagiaire(), stage.getIdStage(), DateFormatter.formatter.parse(dateDemande.getValue().toString()));
-        } catch (ParseException ex) {
+    } catch (ParseException ex) {
             Logger.getLogger(AjouterDemandeStageController.class.getName()).log(Level.SEVERE, null, ex);
         }
 

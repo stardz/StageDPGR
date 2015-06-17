@@ -312,9 +312,11 @@ public class PersistManager {
         }
         return result;
     }
+    
     /*
     Frais stage
     */
+    
     public static FraisStage getSesFrais(int idStage) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -324,6 +326,7 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         return fraisStage;
     }
+    
     /*
      Manifestation
      */
