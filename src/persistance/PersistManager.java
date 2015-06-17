@@ -321,8 +321,11 @@ public class PersistManager {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        AvoirFraiStage avFraiStage=entityManager.find(AvoirFraiStage.class,idStage);
-        FraisStage fraisStage=entityManager.find(FraisStage.class,avFraiStage.getIdFraiStage());
+         TypedQuery<AvoirFraiStage> query = entityManager.createQuery("SELECT c FROM AvoirFraiStage c where c.idStage=:arg1", AvoirFraiStage.class).setParameter("arg1",idStage);
+        List<AvoirFraiStage> avFraiStage = query.getResultList();
+            
+//   AvoirFraiStage avFraiStage=entityManager.find(AvoirFraiStage.class,new CKey(idStage, idStage));
+        FraisStage fraisStage=entityManager.find(FraisStage.class,avFraiStage.get(avFraiStage.size()-1).getIdFraiStage());
         entityManager.getTransaction().commit();
         return fraisStage;
     }
@@ -416,6 +419,17 @@ public class PersistManager {
             }
         }
         return result;
+    }
+    public static DemandeStage getDemandeOfStage(int idStage){
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c where c.idStage=:arg1", DemandeStage.class).setParameter("arg1",idStage);
+        List<DemandeStage> demandeStages = query.getResultList();
+        DemandeStage dmdStage=demandeStages.get(demandeStages.size()-1);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return dmdStage;
     }
     /*
      Pvs

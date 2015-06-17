@@ -36,6 +36,7 @@ import javafx.scene.input.MouseEvent;
 import model.DemandeStage;
 import model.Diplome;
 import model.Fonction;
+import model.FraisStage;
 import model.Grade;
 import model.LaboratoireRattachement;
 import model.LieuStage;
@@ -78,7 +79,27 @@ public class FenetrePrincipaleController implements Initializable {
     Label libelleCompte5;
     @FXML
     ProgressBar progresDemandeStage;
-
+    @FXML
+    Label numStageInfo;
+    @FXML
+    Label concerneStageInfo;
+    @FXML
+    Label fraissejourStageInfo;
+    @FXML
+    Label fraisTransportStageInfo;
+    @FXML
+    Label fraisVisaStageInfo;
+    @FXML
+    Label fraisAssStageInfo;
+    @FXML
+    Label fraisTotalStageInfo;
+    @FXML
+    ComboBox comboFiltre;
+    @FXML
+    TextField valeurFiltrePointage;
+    @FXML
+    Label estimatorResult;
+    
     /**
      * **********************Statistiques***************************
      */
@@ -222,12 +243,35 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
-
+    @FXML
+    private void filtrerProfile(ActionEvent event) throws IOException {
+        //Data
+        ObservableList<StagePres> dataStage = FXCollections.observableArrayList();
+        List<Stage> listeStage = persistance.PersistManager.findAllStages();
+        int estimateur=0;
+        for (Stage it: listeStage) {
+           if(comboFiltre.getValue().toString().equals("Année")/*&&(it.getDateDebutStage().getYear()+"").equals(valeurFiltrePointage.getText())*/){
+               String str=it.getDateDebutStage().toString().split(" ")[it.getDateDebutStage().toString().split(" ").length-1];
+               System.out.println("============"+str);
+               if(valeurFiltrePointage.getText().equals(str)){
+                   dataStage.add(new StagePres(it));
+                   if(it.getIdStage()!=1)estimateur+=persistance.PersistManager.getSesFrais(it.getIdStage()).getTotalCout();
+               }
+           }
+        }
+        //Remplissage
+        tableStages.setItems(dataStage);
+       // tableStages.getColumns().addAll(idStageCol,dateDStageCol,dateFStageCol,envStageCol,missionStageCol,objStageCol);
+       
+        estimatorResult.setText(estimateur+"");
+    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // filtres disponibles
+        comboFiltre.getItems().add("Année");
         // TODO
         progresDemandeStage.setProgress(0.6);
         //set Current Tab
@@ -411,7 +455,7 @@ public class FenetrePrincipaleController implements Initializable {
         tableStages.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                StageDPGR.selectedStage = (StagePres) tableDemandeStage.getSelectionModel().getSelectedItem();
+                StageDPGR.selectedStage = (StagePres) tableStages.getSelectionModel().getSelectedItem();
                 FenetrePrincipaleController.this.refreshInfosStageStage();
             }
         });
@@ -511,6 +555,17 @@ public class FenetrePrincipaleController implements Initializable {
          StageDPGR.refreshRoot1();          
     }
     public void refreshInfosStageStage(){
-        
+    numStageInfo.setText(" "+StageDPGR.selectedStage.getIdStage());
+    int idStagiaire=persistance.PersistManager.getDemandeOfStage(StageDPGR.selectedStage.getIdStage()).getIdStagiaire();
+    
+    concerneStageInfo.setText(" "+persistance.PersistManager.findStagiaireById(idStagiaire).getNomStagiaire()+" "+persistance.PersistManager.findStagiaireById(idStagiaire).getPrenomStagiaire());
+    
+    FraisStage frais=persistance.PersistManager.getSesFrais(StageDPGR.selectedStage.getIdStage());
+     fraissejourStageInfo.setText(""+frais.getMontantSejourFraiStage());
+     fraisTransportStageInfo.setText(""+frais.getMontantSejourFraiStage());
+     fraisVisaStageInfo.setText(""+frais.getMontantVisaFraiStage());
+     fraisAssStageInfo.setText(""+frais.getMontantAssurranceFraiStage());
+     int total =frais.getMontantSejourFraiStage()+frais.getMontantSejourFraiStage()+frais.getMontantVisaFraiStage()+frais.getMontantAssurranceFraiStage();
+     fraisTotalStageInfo.setText(" "+total);
     }
 }

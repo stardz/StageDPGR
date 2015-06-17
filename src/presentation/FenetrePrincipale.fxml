@@ -711,127 +711,127 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <TableView fx:id="tableStages" layoutX="355.0" layoutY="31.0" prefHeight="370.0" prefWidth="812.0" />
+                  <TableView fx:id="tableStages" layoutX="355.0" layoutY="31.0" prefHeight="316.0" prefWidth="812.0" />
                   <Pane layoutX="-7.0" layoutY="-2.0" prefHeight="637.0" prefWidth="295.0" style="-fx-background-color: #22A7F0;">
                      <children>
                         <Pane layoutY="36.0" prefHeight="54.0" prefWidth="294.0" style="-fx-background-color: #2C3E50;">
                            <children>
-                              <Label layoutX="39.0" layoutY="12.0" text="Les Pointages" textFill="WHITE">
+                              <Label layoutX="85.0" layoutY="12.0" text="  Les Stages" textFill="WHITE">
                                  <font>
                                     <Font name="Tw Cen MT" size="26.0" />
                                  </font>
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fitHeight="164.0" fitWidth="214.0" layoutX="40.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../logo.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fx:id="back5" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />
-                           </image>
-                        </ImageView>
-                        <ComboBox fx:id="filtrePointage" layoutX="39.0" layoutY="268.0" prefHeight="35.0" prefWidth="237.0" promptText="Choisissez un filtre" style="-fx-background-color: #DFDFDF;" />
-                        <Button fx:id="validerPointage" layoutX="40.0" layoutY="370.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="235.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider" textFill="WHITE">
+                        <ComboBox fx:id="comboFiltre" layoutX="29.0" layoutY="193.0" prefHeight="35.0" prefWidth="237.0" promptText="Choisissez un filtre" style="-fx-background-color: #DFDFDF;" />
+                        <Button fx:id="validerPointage" layoutX="30.0" layoutY="299.0" mnemonicParsing="false" onAction="#filtrerProfile" prefHeight="40.0" prefWidth="235.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Label layoutX="40.0" layoutY="215.0" prefHeight="49.0" prefWidth="234.0" text="Afficher les pointages par :" textFill="WHITE">
+                        <Label layoutX="33.0" layoutY="134.0" prefHeight="49.0" prefWidth="234.0" text="Filtrer les Stages par :" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="219.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+                        <TextField fx:id="valeurFiltrePointage" layoutX="29.0" layoutY="241.0" prefHeight="41.0" prefWidth="236.0" />
+                        <ImageView fx:id="back24" fitHeight="63.0" fitWidth="119.0" layoutX="118.0" layoutY="520.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/valider.png" />
+                              <Image url="@../icons/logout.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="valeurFiltrePointage" layoutX="39.0" layoutY="315.0" prefHeight="41.0" prefWidth="236.0" />
+                        <Pane layoutX="37.0" layoutY="369.0" prefHeight="62.0" prefWidth="221.0" style="-fx-background-color: #2C3E50;">
+                           <children>
+                              <Label layoutX="8.0" layoutY="20.0" prefHeight="23.0" prefWidth="208.0" text="  Estimation de budget :" textFill="WHITE">
+                                 <font>
+                                    <Font name="Tw Cen MT" size="21.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label fx:id="estimatorResult" alignment="CENTER" layoutX="74.0" layoutY="448.0" prefHeight="53.0" prefWidth="151.0" style="-fx-background-color: #FFFFFF;" text="0">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Pane layoutX="355.0" layoutY="420.0" prefHeight="179.0" prefWidth="813.0" style="-fx-background-color: #E3E3E3;">
                      <children>
                         <GridPane layoutX="20.0" prefHeight="179.0" prefWidth="795.0">
                            <children>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Numéro">
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Numéro de stage" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Nom de l'Individu" GridPane.rowIndex="1">
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Le concerné par le stage" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Prenom de l'individu" GridPane.rowIndex="2">
+                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Frais d' assurance" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="36.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Etat individu" GridPane.rowIndex="3">
+                              <Label prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Cout Total du stage" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="35.0" prefWidth="187.0" style="-fx-background-color: #C2C2C2;" text="   Date du pointage" GridPane.rowIndex="4">
+                              <Label prefHeight="51.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Frais de sejour" GridPane.columnIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="51.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Commissariat" GridPane.columnIndex="2">
-                                 <font>
-                                    <Font name="Tw Cen MT" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="numeroInfoCompte" text="empty" GridPane.columnIndex="1">
+                              <Label fx:id="numStageInfo" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nomIndInfoCompte" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label fx:id="concerneStageInfo" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="prenomIndInfoCompte" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <Label fx:id="fraisAssStageInfo" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="etatIndInfoCompte" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                              <Label fx:id="fraisTotalStageInfo" text="empty" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="pointageInfoCompte" text="empty" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                              <Label fx:id="fraissejourStageInfo" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="commissariatInfoCompte" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Date de l'etablissement" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Frais de transport" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="dateEtabInfoCompte" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Nombre de brigades" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <Label prefHeight="36.0" prefWidth="207.0" style="-fx-background-color: #C2C2C2;" text="   Frais de Visa" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
                                     <Font name="Tw Cen MT" size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nbrBrigadeInfoCompte" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                              <Label fx:id="fraisVisaStageInfo" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="fraisTransportStageInfo" prefHeight="21.0" prefWidth="64.0" text="empty" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -851,6 +851,24 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="468.0" layoutY="355.0" prefHeight="54.0" prefWidth="174.0" style="-fx-background-color: #2C3E50;">
+                     <children>
+                        <Label layoutX="39.0" layoutY="12.0" text="  Stage :" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="26.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="902.0" layoutY="355.0" prefHeight="54.0" prefWidth="174.0" style="-fx-background-color: #2C3E50;">
+                     <children>
+                        <Label layoutX="39.0" layoutY="12.0" text="  Couts :" textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT" size="26.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
