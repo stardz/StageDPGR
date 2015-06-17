@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controleur;
 
 import java.io.IOException;
@@ -28,34 +27,38 @@ public class ConfirmerSupController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @FXML 
+    @FXML
     Button confirmer;
-    @FXML 
+    @FXML
     Button annuler;
-    @FXML 
+    @FXML
     Text nomCompteSupprimer;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        nomCompteSupprimer.setText(StageDPGR.selectedStagiaire.getNomStagiaire()+"  "+StageDPGR.selectedStagiaire.getPrenomStagiaire());
-    }  
-    
-    @FXML 
-    public void confirmer(){
+
+        nomCompteSupprimer.setText(StageDPGR.selectedUtilisateur.getNomUtilisateur() + "  " + StageDPGR.selectedUtilisateur.getPrenomUtilisateur());
+
+    }
+
+    @FXML
+    public void confirmer() {
         persistance.PersistManager.deleteUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
-        StageDPGR.currentTab=6;
+        StageDPGR.currentTab = 6;
         try {
-            StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(ConfirmerSupController.class.getName()).log(Level.SEVERE, null, ex);
         }
         StageDPGR.refreshRoot1();
         StageDPGR.stage2.close();
     }
-     @FXML 
-    public void annuler(){
+
+    @FXML
+    public void annuler() {
         // close seconde stage
         StageDPGR.stage2.close();
     }
-    
+
 }
