@@ -529,7 +529,7 @@ public class FenetrePrincipaleController implements Initializable {
 
     public void refreshInfosStagiaire() {
         Stagiaire stagiaire=persistance.PersistManager.findStagiaireById(StageDPGR.selectedStagiaire.getIdStagiaire());
-        int idStagiaire = stagiaire.getIdStagiaire() ;a a
+        int idStagiaire = stagiaire.getIdStagiaire() ;
         libelleStagiaire1.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
         libelleStagiaire2.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
         libelleStagiaire3.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
