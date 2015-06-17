@@ -543,11 +543,11 @@ public class FenetrePrincipaleController implements Initializable {
 
     public void refreshInfosDemandeStage() {
 
-        libelleDemandeStage1.setText(StageDPGR.selectedDemandeStage.getIdStage() + "");
+    //    libelleDemandeStage1.setText(StageDPGR.selectedDemandeStage.getIdStage() + "");
 
-        DemandeStage dmdStage = persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(), StageDPGR.selectedDemandeStage.getIdStagiaire()));
+        //DemandeStage dmdStage = persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(), StageDPGR.selectedDemandeStage.getIdStagiaire()));
 
-        libelleDemandeStage1.setText("" + dmdStage.getIdStage());
+      //  libelleDemandeStage1.setText("" + dmdStage.getIdStage());
 
         System.out.println("stagestage " + dmdStage.getIdStage());
 
