@@ -454,6 +454,9 @@ public class FenetrePrincipaleController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 StageDPGR.selectedDemandeStage = (DemandeStagePres) tableDemandeStage.getSelectionModel().getSelectedItem();
+                if (StageDPGR.selectedDemandeStage == null) {
+                    StageDPGR.selectedDemandeStage = (DemandeStagePres) tableDemandeStage.getItems().get(0);
+                }
                 FenetrePrincipaleController.this.refreshInfosDemandeStage();
             }
         });
