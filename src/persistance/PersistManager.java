@@ -483,9 +483,9 @@ public class PersistManager {
         demandeStage.setDateDemandeStage(dateDemandeStage);
         demandeStage.setIdStage(idStage);
         demandeStage.setIdStagiaire(idStagiaire);
-        demandeStage.setAvisDadpgrStage("En attente");
-        demandeStage.setAvisCsStage("En attente");
-        demandeStage.setAutorisationDeStage("En attente");
+        demandeStage.setAvisDadpgrStage("ATT");
+        demandeStage.setAvisCsStage("ATT");
+        demandeStage.setAutorisationDeStage("ATT");
         entityManager.persist(demandeStage);
         entityManager.getTransaction().commit();
         entityManager.close();
