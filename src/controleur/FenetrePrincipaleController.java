@@ -606,6 +606,7 @@ public class FenetrePrincipaleController implements Initializable {
 
     public void refreshInfosStageStage() {
         numStageInfo.setText(" " + StageDPGR.selectedStage.getIdStage());
+
         int idStagiaire = persistance.PersistManager.getDemandeOfStage(StageDPGR.selectedStage.getIdStage()).getIdStagiaire();
 
         concerneStageInfo.setText(" " + persistance.PersistManager.findStagiaireById(idStagiaire).getNomStagiaire() + " " + persistance.PersistManager.findStagiaireById(idStagiaire).getPrenomStagiaire());

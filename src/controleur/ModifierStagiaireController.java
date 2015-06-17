@@ -132,7 +132,7 @@ public class ModifierStagiaireController implements Initializable {
 
         StageDPGR.refreshRoot1();
         StageDPGR.stage2.close();
-        
+
     }
 
     @FXML
