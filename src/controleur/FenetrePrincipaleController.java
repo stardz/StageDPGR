@@ -79,6 +79,8 @@ public class FenetrePrincipaleController implements Initializable {
     Label libelleCompte4;
     @FXML
     Label libelleCompte5;
+    @FXML
+    Label loggedIn;
 
     // Libele gestion des stagiaires
     @FXML
@@ -319,7 +321,10 @@ public class FenetrePrincipaleController implements Initializable {
         comboFiltre.getItems().add("Année");
         // TODO
         progresDemandeStage.setProgress(0);
+        
+        loggedIn.setText("Logged "+StageDPGR.utilisateurLogged.getProfilUtilisateur());
         //set Current Tab
+        
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(StageDPGR.currentTab);
         /*
@@ -409,7 +414,7 @@ public class FenetrePrincipaleController implements Initializable {
             public void handle(MouseEvent event) {
                 StageDPGR.selectedStagiaire = (StagiairePres) tableStagiares.getSelectionModel().getSelectedItem();
                 if (StageDPGR.selectedStagiaire == null) {
-                    
+
                     StageDPGR.selectedStagiaire = (StagiairePres) tableStagiares.getItems().get(0);
 
                 }

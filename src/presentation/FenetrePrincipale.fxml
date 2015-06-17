@@ -87,6 +87,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
+                        <Label fx:id="loggedIn" layoutX="68.0" layoutY="601.0" prefHeight="17.0" prefWidth="140.0" text="Label" />
                      </children>
                   </Pane>
                   <Pane layoutX="355.0" layoutY="420.0" prefHeight="179.0" prefWidth="813.0" style="-fx-background-color: #E3E3E3;">
