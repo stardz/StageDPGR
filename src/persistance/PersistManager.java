@@ -142,7 +142,7 @@ public class PersistManager {
         }
         return result;
     }
-
+    
     public static void affectDeplome(int idDimplome, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -172,7 +172,25 @@ public class PersistManager {
         }
         return result;
     }
-
+   public static void deleteSesDiplomes(int idStagiaire){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<AvoirDiplome> query = entityManager.createQuery("SELECT c FROM AvoirDiplome c", AvoirDiplome.class);
+        List<AvoirDiplome> avoirDiplomeListe = query.getResultList();
+        Diplome toBeRemoved;
+        Diplome dpl;
+        //List<Diplome> result = new ArrayList<Diplome>();
+        for (AvoirDiplome it : avoirDiplomeListe) {
+            if (it.getIdStagiaire() == idStagiaire) {
+               dpl=findDiplomeById(it.getIdDiplome());
+               toBeRemoved=entityManager.merge(dpl);
+               entityManager.remove(toBeRemoved);
+            }
+        }    
+        entityManager.getTransaction().commit();
+        entityManager.close();
+   }
     public static void affectGrade(int idGrade, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -427,6 +445,19 @@ public class PersistManager {
         TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c where c.idStage=:arg1", DemandeStage.class).setParameter("arg1",idStage);
         List<DemandeStage> demandeStages = query.getResultList();
         DemandeStage dmdStage=demandeStages.get(demandeStages.size()-1);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return dmdStage;
+    }
+    public static DemandeStage findDemandeStageByIds(CKey cKey){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c where c.idStage=:arg1 AND c.idStagiaire=:arg2", DemandeStage.class).setParameter("arg1",cKey.key1);
+        query.setParameter("arg2", cKey.key2);
+        List<DemandeStage> demandeStages = query.getResultList();
+        DemandeStage dmdStage=demandeStages.get(demandeStages.size()-1);
+       
         entityManager.getTransaction().commit();
         entityManager.close();
         return dmdStage;

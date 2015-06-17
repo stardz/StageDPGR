@@ -48,6 +48,7 @@ import modelforpresentation.DemandeStagePres;
 import modelforpresentation.StagePres;
 import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
+import persistance.CKey;
 import presentation.StageDPGR;
 
 /**
@@ -525,6 +526,7 @@ public class FenetrePrincipaleController implements Initializable {
     }
 
     public void refreshInfosStagiaire() {
+        Stagiaire stagiaire=persistance.PersistManager.findStagiaireById(StageDPGR.selectedStagiaire.getIdStagiaire());
         libelleStagiaire1.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
         libelleStagiaire2.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
         libelleStagiaire3.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
@@ -535,6 +537,9 @@ public class FenetrePrincipaleController implements Initializable {
     public void refreshInfosDemandeStage() {
 
         libelleDemandeStage1.setText(StageDPGR.selectedDemandeStage.getIdStage()+"");
+
+        DemandeStage dmdStage=persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(),StageDPGR.selectedDemandeStage.getIdStagiaire()));
+        libelleDemandeStage1.setText(""+dmdStage.getIdStage());
 
     }
 
