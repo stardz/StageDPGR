@@ -39,10 +39,12 @@ import model.Fonction;
 import model.Grade;
 import model.LaboratoireRattachement;
 import model.LieuStage;
+import model.Stage;
 import model.Stagiaire;
 import model.Utilisateur;
 import model.ZoneType;
 import modelforpresentation.DemandeStagePres;
+import modelforpresentation.StagePres;
 import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 import presentation.StageDPGR;
@@ -62,6 +64,8 @@ public class FenetrePrincipaleController implements Initializable {
     TableView tableDemandeStage;
     @FXML
     TableView tableComptes;
+    @FXML
+    TableView tableStages;
     @FXML
     Label libelleCompte1;
     @FXML
@@ -212,7 +216,6 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
-
     @FXML
     private void showStagiareProfile(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
@@ -365,7 +368,53 @@ public class FenetrePrincipaleController implements Initializable {
                 FenetrePrincipaleController.this.refreshInfosDemandeStage();
             }
         });
+        /*
+         Tableau des Stages
+         */
+        //Data
+        ObservableList<StagePres> dataStage = FXCollections.observableArrayList();
+        List<Stage> listeStage = persistance.PersistManager.findAllStages();
 
+        for (Stage it: listeStage) {
+            dataStage.add(new StagePres(it));
+        }
+         // Colonnes
+        TableColumn idStageCol = new TableColumn();
+        idStageCol.setText("Identifiant Stage");
+        idStageCol.setCellValueFactory(new PropertyValueFactory("idStage"));
+        
+        TableColumn dateDStageCol = new TableColumn();
+        dateDStageCol.setText("Date de Début");
+        dateDStageCol.setCellValueFactory(new PropertyValueFactory("dateDebutStage"));
+        
+        TableColumn dateFStageCol = new TableColumn();
+        dateFStageCol.setText("Date de Fin");
+        dateFStageCol.setCellValueFactory(new PropertyValueFactory("dateFinStage"));
+        
+        TableColumn envStageCol = new TableColumn();
+        envStageCol.setText("Environnement");
+        envStageCol.setCellValueFactory(new PropertyValueFactory("environnementStage"));
+        
+        TableColumn missionStageCol = new TableColumn();
+        missionStageCol.setText("Mission");
+        missionStageCol.setCellValueFactory(new PropertyValueFactory("missionStage"));
+        
+        TableColumn objStageCol = new TableColumn();
+        objStageCol.setText("Objectif");
+        objStageCol.setCellValueFactory(new PropertyValueFactory("objectifStage"));
+        
+        //Remplissage
+        tableStages.setItems(dataStage);
+        tableStages.getColumns().addAll(idStageCol,dateDStageCol,dateFStageCol,envStageCol,missionStageCol,objStageCol);
+
+        //Sélection d'une cellule
+        tableStages.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                StageDPGR.selectedStage = (StagePres) tableDemandeStage.getSelectionModel().getSelectedItem();
+                FenetrePrincipaleController.this.refreshInfosStageStage();
+            }
+        });
         // Remplissage des configs
         remplirConfiguration();
     }
@@ -460,5 +509,8 @@ public class FenetrePrincipaleController implements Initializable {
     private void logOut(MouseEvent mouseEvent) throws IOException {
          StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/Authentification.fxml"));
          StageDPGR.refreshRoot1();          
+    }
+    public void refreshInfosStageStage(){
+        
     }
 }

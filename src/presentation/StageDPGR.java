@@ -15,6 +15,7 @@ import model.DemandeStage;
 import model.Stagiaire;
 import model.Utilisateur;
 import modelforpresentation.DemandeStagePres;
+import modelforpresentation.StagePres;
 import modelforpresentation.StagiairePres;
 import modelforpresentation.UtilisateurPres;
 
@@ -35,6 +36,7 @@ public class StageDPGR extends Application {
     public static UtilisateurPres selectedUtilisateur;
     public static StagiairePres selectedStagiaire;
     public static DemandeStagePres selectedDemandeStage;
+    public static StagePres selectedStage;
     public static Utilisateur utilisateurLogged;
     @Override
     public void start(Stage stage) throws Exception {
@@ -52,14 +54,15 @@ public class StageDPGR extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      Utilisateur user=new Utilisateur();
-      user.setLoginUtilisateur("Agent");
-        user.setEtatCompte("123");
-        user.setMpUtilisateur("123");
-        user.setNomUtilisateur("123");
-        user.setPrenomUtilisateur("123");
-        user.setProfilUtilisateur("123");
-        persistance.PersistManager.updateUtilisateur(user);
+        
+        model.Stage stg=new model.Stage();
+        stg.setIdStage(1);
+        stg.setDateDebutStage(new Date(2012, 12, 5));
+        stg.setDateFinStage(new Date(2013, 01, 06));
+        stg.setMissionStage("mission");
+        stg.setObjectifStage("objectif");
+        stg.setEnvironnementStage("environnement");
+        persistance.PersistManager.insertStage(stg);
         launch(args);
     }
 
