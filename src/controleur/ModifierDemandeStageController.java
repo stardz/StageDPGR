@@ -51,7 +51,6 @@ public class ModifierDemandeStageController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -71,7 +70,7 @@ public class ModifierDemandeStageController implements Initializable {
         }
 
     }
-    
+
     @FXML
     private void valider(ActionEvent e) throws IOException {
         try {
@@ -82,13 +81,13 @@ public class ModifierDemandeStageController implements Initializable {
 
             persistance.PersistManager.updateStage(stage);
 
-            FraisStage fraisStage = new FraisStage(persistance.PersistManager.findF, Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+            FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
 
             persistance.PersistManager.updateFraisStage(fraisStage);
 
             int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
 
-            persistance.PersistManager.updateAvoirFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(),total);
+      //      persistance.PersistManager.updateAvoirFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
           //  persistance.PersistManager.affectFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
 
           //  persistance.PersistManager.affectDemandeStage(stagiaireList.get(stagiaire.getSelectionModel().getSelectedIndex()).getIdStagiaire(), stage.getIdStage(), DateFormatter.formatter.parse(dateDemande.getValue().toString()));
