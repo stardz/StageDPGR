@@ -79,16 +79,13 @@
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fx:id="back" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
-                        
+                        <ImageView fx:id="back2" fitHeight="63.0" fitWidth="119.0" layoutX="106.0" layoutY="533.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                            <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />
+                              <Image url="@../icons/logout.png" />
                            </image>
-                        </ImageView>
-                        <ImageView fx:id="back2" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />
-                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </ImageView>
                      </children>
                   </Pane>

@@ -417,4 +417,9 @@ public class FenetrePrincipaleController implements Initializable {
             affctedZoneConf.getItems().add(it.getNomZone());
         }
     }
+    @FXML
+    private void logOut(MouseEvent mouseEvent) throws IOException {
+         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/Authentification.fxml"));
+         StageDPGR.refreshRoot1();          
+    }
 }
