@@ -67,6 +67,7 @@ public class FenetrePrincipaleController implements Initializable {
     TableView tableComptes;
     @FXML
     TableView tableStages;
+
     @FXML
     Label libelleCompte1;
     @FXML
@@ -77,6 +78,40 @@ public class FenetrePrincipaleController implements Initializable {
     Label libelleCompte4;
     @FXML
     Label libelleCompte5;
+
+    // Libele gestion des stagiaires
+    @FXML
+    Label libelleStagiaire1;
+    @FXML
+    Label libelleStagiaire2;
+    @FXML
+    Label libelleStagiaire3;
+    @FXML
+    Label libelleStagiaire4;
+    @FXML
+    Label libelleStagiaire5;
+    @FXML
+    Label libelleStagiaire6;
+    @FXML
+    Label libelleStagiaire7;
+    @FXML
+    Label libelleStagiaire8;
+
+    /// Libelle  demande de stage
+    @FXML
+    Label libelleDemandeStage1;
+    @FXML
+    Label libelleDemandeStage2;
+    @FXML
+    Label libelleDemandeStage3;
+    @FXML
+    Label libelleDemandeStage4;
+    @FXML
+    Label libelleDemandeStage5;
+    @FXML
+    Label libelleDemandeStage6;
+
+    ////
     @FXML
     ProgressBar progresDemandeStage;
     @FXML
@@ -99,7 +134,7 @@ public class FenetrePrincipaleController implements Initializable {
     TextField valeurFiltrePointage;
     @FXML
     Label estimatorResult;
-    
+
     /**
      * **********************Statistiques***************************
      */
@@ -188,6 +223,7 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
     private void showStagiareAjouter(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/AjouterStagiaire.fxml"));
@@ -205,6 +241,7 @@ public class FenetrePrincipaleController implements Initializable {
 
         }
     }
+
     @FXML
     private void showStagiare(ActionEvent event) throws IOException {
         if (StageDPGR.selectedStagiaire != null) {
@@ -237,34 +274,39 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
     private void showStagiareProfile(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ProfilStagiaire.fxml"));
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
+
     @FXML
     private void filtrerProfile(ActionEvent event) throws IOException {
         //Data
         ObservableList<StagePres> dataStage = FXCollections.observableArrayList();
         List<Stage> listeStage = persistance.PersistManager.findAllStages();
-        int estimateur=0;
-        for (Stage it: listeStage) {
-           if(comboFiltre.getValue().toString().equals("Année")/*&&(it.getDateDebutStage().getYear()+"").equals(valeurFiltrePointage.getText())*/){
-               String str=it.getDateDebutStage().toString().split(" ")[it.getDateDebutStage().toString().split(" ").length-1];
-               System.out.println("============"+str);
-               if(valeurFiltrePointage.getText().equals(str)){
-                   dataStage.add(new StagePres(it));
-                   if(it.getIdStage()!=1)estimateur+=persistance.PersistManager.getSesFrais(it.getIdStage()).getTotalCout();
-               }
-           }
+        int estimateur = 0;
+        for (Stage it : listeStage) {
+            if (comboFiltre.getValue().toString().equals("Année")/*&&(it.getDateDebutStage().getYear()+"").equals(valeurFiltrePointage.getText())*/) {
+                String str = it.getDateDebutStage().toString().split(" ")[it.getDateDebutStage().toString().split(" ").length - 1];
+                System.out.println("============" + str);
+                if (valeurFiltrePointage.getText().equals(str)) {
+                    dataStage.add(new StagePres(it));
+                    if (it.getIdStage() != 1) {
+                        estimateur += persistance.PersistManager.getSesFrais(it.getIdStage()).getTotalCout();
+                    }
+                }
+            }
         }
         //Remplissage
         tableStages.setItems(dataStage);
-       // tableStages.getColumns().addAll(idStageCol,dateDStageCol,dateFStageCol,envStageCol,missionStageCol,objStageCol);
-       
-        estimatorResult.setText(estimateur+"");
+        // tableStages.getColumns().addAll(idStageCol,dateDStageCol,dateFStageCol,envStageCol,missionStageCol,objStageCol);
+
+        estimatorResult.setText(estimateur + "");
     }
+
     /**
      * Initializes the controller class.
      */
@@ -419,37 +461,37 @@ public class FenetrePrincipaleController implements Initializable {
         ObservableList<StagePres> dataStage = FXCollections.observableArrayList();
         List<Stage> listeStage = persistance.PersistManager.findAllStages();
 
-        for (Stage it: listeStage) {
+        for (Stage it : listeStage) {
             dataStage.add(new StagePres(it));
         }
-         // Colonnes
+        // Colonnes
         TableColumn idStageCol = new TableColumn();
         idStageCol.setText("Identifiant Stage");
         idStageCol.setCellValueFactory(new PropertyValueFactory("idStage"));
-        
+
         TableColumn dateDStageCol = new TableColumn();
         dateDStageCol.setText("Date de Début");
         dateDStageCol.setCellValueFactory(new PropertyValueFactory("dateDebutStage"));
-        
+
         TableColumn dateFStageCol = new TableColumn();
         dateFStageCol.setText("Date de Fin");
         dateFStageCol.setCellValueFactory(new PropertyValueFactory("dateFinStage"));
-        
+
         TableColumn envStageCol = new TableColumn();
         envStageCol.setText("Environnement");
         envStageCol.setCellValueFactory(new PropertyValueFactory("environnementStage"));
-        
+
         TableColumn missionStageCol = new TableColumn();
         missionStageCol.setText("Mission");
         missionStageCol.setCellValueFactory(new PropertyValueFactory("missionStage"));
-        
+
         TableColumn objStageCol = new TableColumn();
         objStageCol.setText("Objectif");
         objStageCol.setCellValueFactory(new PropertyValueFactory("objectifStage"));
-        
+
         //Remplissage
         tableStages.setItems(dataStage);
-        tableStages.getColumns().addAll(idStageCol,dateDStageCol,dateFStageCol,envStageCol,missionStageCol,objStageCol);
+        tableStages.getColumns().addAll(idStageCol, dateDStageCol, dateFStageCol, envStageCol, missionStageCol, objStageCol);
 
         //Sélection d'une cellule
         tableStages.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -483,11 +525,16 @@ public class FenetrePrincipaleController implements Initializable {
     }
 
     public void refreshInfosStagiaire() {
-        // MAJ les informations d'un stagiaire
+        libelleStagiaire1.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
+        libelleStagiaire2.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
+        libelleStagiaire3.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
+        libelleStagiaire4.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
+
     }
 
     public void refreshInfosDemandeStage() {
 
+        libelleDemandeStage1.setText(StageDPGR.selectedStage.getIdStage().toString());
     }
 
     @FXML
@@ -549,23 +596,25 @@ public class FenetrePrincipaleController implements Initializable {
             affctedZoneConf.getItems().add(it.getNomZone());
         }
     }
+
     @FXML
     private void logOut(MouseEvent mouseEvent) throws IOException {
-         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/Authentification.fxml"));
-         StageDPGR.refreshRoot1();          
+        StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/Authentification.fxml"));
+        StageDPGR.refreshRoot1();
     }
-    public void refreshInfosStageStage(){
-    numStageInfo.setText(" "+StageDPGR.selectedStage.getIdStage());
-    int idStagiaire=persistance.PersistManager.getDemandeOfStage(StageDPGR.selectedStage.getIdStage()).getIdStagiaire();
-    
-    concerneStageInfo.setText(" "+persistance.PersistManager.findStagiaireById(idStagiaire).getNomStagiaire()+" "+persistance.PersistManager.findStagiaireById(idStagiaire).getPrenomStagiaire());
-    
-    FraisStage frais=persistance.PersistManager.getSesFrais(StageDPGR.selectedStage.getIdStage());
-     fraissejourStageInfo.setText(""+frais.getMontantSejourFraiStage());
-     fraisTransportStageInfo.setText(""+frais.getMontantSejourFraiStage());
-     fraisVisaStageInfo.setText(""+frais.getMontantVisaFraiStage());
-     fraisAssStageInfo.setText(""+frais.getMontantAssurranceFraiStage());
-     int total =frais.getMontantSejourFraiStage()+frais.getMontantSejourFraiStage()+frais.getMontantVisaFraiStage()+frais.getMontantAssurranceFraiStage();
-     fraisTotalStageInfo.setText(" "+total);
+
+    public void refreshInfosStageStage() {
+        numStageInfo.setText(" " + StageDPGR.selectedStage.getIdStage());
+        int idStagiaire = persistance.PersistManager.getDemandeOfStage(StageDPGR.selectedStage.getIdStage()).getIdStagiaire();
+
+        concerneStageInfo.setText(" " + persistance.PersistManager.findStagiaireById(idStagiaire).getNomStagiaire() + " " + persistance.PersistManager.findStagiaireById(idStagiaire).getPrenomStagiaire());
+
+        FraisStage frais = persistance.PersistManager.getSesFrais(StageDPGR.selectedStage.getIdStage());
+        fraissejourStageInfo.setText("" + frais.getMontantSejourFraiStage());
+        fraisTransportStageInfo.setText("" + frais.getMontantSejourFraiStage());
+        fraisVisaStageInfo.setText("" + frais.getMontantVisaFraiStage());
+        fraisAssStageInfo.setText("" + frais.getMontantAssurranceFraiStage());
+        int total = frais.getMontantSejourFraiStage() + frais.getMontantSejourFraiStage() + frais.getMontantVisaFraiStage() + frais.getMontantAssurranceFraiStage();
+        fraisTotalStageInfo.setText(" " + total);
     }
 }
