@@ -43,7 +43,7 @@ public class ModifierDemandeStageController implements Initializable {
     DatePicker dateDemande, dateDebut, dateFin;
 
     @FXML
-    TextField  fraisSejour, fraisTransport, fraisAssurance, fraisVisa;
+    TextField fraisSejour, fraisTransport, fraisAssurance, fraisVisa;
 
     @FXML
     TextArea objective, environ, mission;
@@ -69,9 +69,8 @@ public class ModifierDemandeStageController implements Initializable {
         for (LieuStage l : lieuList) {
             lieu.getItems().add(l.getPaysLieuStage() + " : " + l.getVilleLieuStage());
         }
-        
-       // Lieu lieuTmp = persistance.PersistManager.findLieuStageById(idLieuStage);
 
+       // Lieu lieuTmp = persistance.PersistManager.findLieuStageById(idLieuStage);
         lieu.getSelectionModel().select(null);
         //  FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
         FraisStage fraisStage = persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage());
@@ -87,7 +86,7 @@ public class ModifierDemandeStageController implements Initializable {
         mission.setText(st.getMissionStage());
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-     
+
         dateDebut.setValue(LocalDate.parse(DateFormatter.formatter.format(st.getDateDebutStage()), dateTimeFormatter));
         dateFin.setValue(LocalDate.parse(DateFormatter.formatter.format(st.getDateFinStage()), dateTimeFormatter));
 
