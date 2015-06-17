@@ -408,6 +408,11 @@ public class FenetrePrincipaleController implements Initializable {
             @Override
             public void handle(MouseEvent event) {
                 StageDPGR.selectedStagiaire = (StagiairePres) tableStagiares.getSelectionModel().getSelectedItem();
+                if (StageDPGR.selectedStagiaire == null) {
+                    
+                    StageDPGR.selectedStagiaire = (StagiairePres) tableStagiares.getItems().get(0);
+
+                }
                 FenetrePrincipaleController.this.refreshInfosStagiaire();
             }
         });
