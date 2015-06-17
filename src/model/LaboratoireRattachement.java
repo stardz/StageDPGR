@@ -31,6 +31,13 @@ public class LaboratoireRattachement implements Serializable {
     public LaboratoireRattachement() {
 
     }
+
+    public LaboratoireRattachement(String nomLabo, Integer idLabo) {
+        this.nomLabo = nomLabo;
+        this.idLabo = idLabo;
+    }
+    
+    
    
     public String getNomLabo() {
         return this.nomLabo;

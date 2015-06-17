@@ -126,7 +126,7 @@ public class PersistManager {
                entityManager.remove(affLaboRemove);
                dpl=findLaboById(it.getIdLabo());
                toBeRemoved=entityManager.merge(dpl);
-               entityManager.remove(toBeRemoved);
+             //  entityManager.remove(toBeRemoved);
             }
         }    
         entityManager.getTransaction().commit();
@@ -211,7 +211,7 @@ public class PersistManager {
                entityManager.remove(avDiplomeRemove);
                dpl=findDiplomeById(it.getIdDiplome());
                toBeRemoved=entityManager.merge(dpl);
-               entityManager.remove(toBeRemoved);
+            //   entityManager.remove(toBeRemoved);
             }
         }    
         entityManager.getTransaction().commit();
@@ -245,7 +245,7 @@ public class PersistManager {
                entityManager.remove(avGradeRemove);
                dpl=findGradeById(it.getIdGrade());
                toBeRemoved=entityManager.merge(dpl);
-               entityManager.remove(toBeRemoved);
+             //  entityManager.remove(toBeRemoved);
             }
         }    
         entityManager.getTransaction().commit();
@@ -313,7 +313,7 @@ public class PersistManager {
                entityManager.remove(avFonctionRemove);
                dpl=findGradeById(it.getIdFonction());
                toBeRemoved=entityManager.merge(dpl);
-               entityManager.remove(toBeRemoved);
+          //     entityManager.remove(toBeRemoved);
             }
         }    
         entityManager.getTransaction().commit();
@@ -399,9 +399,11 @@ public class PersistManager {
         }
         return result;
     }
+    
     /*
     Frais stage
     */
+    
     public static FraisStage getSesFrais(int idStage) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -414,6 +416,7 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         return fraisStage;
     }
+    
     /*
      Manifestation
      */

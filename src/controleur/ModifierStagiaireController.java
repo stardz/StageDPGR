@@ -7,6 +7,8 @@ package controleur;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -36,65 +39,73 @@ public class ModifierStagiaireController implements Initializable {
     private TextField email, nom, prenom, tel;
 
     @FXML
-    private MenuButton grade, labo, fonction, diplome;
+    private ComboBox<String> grade, labo, fonction, diplome;
     private Stagiaire stagiaire;
 
     /**
      * Initializes the controller class.
      */
+    List<Grade> grades;
+    List<Fonction> fonctions;
+    List<Diplome> diplomes;
+    List<LaboratoireRattachement> labos;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-      /*  grade.getItems().addAll("Enseignant", "Enseignant chercheur", "Ingénieure");
-         labo.getItems().addAll("Labo ESI");
-         fonction.getItems().addAll("Enseignant");
-         diplome.getItems().addAll("Ingeniorat", "Doctorat");
 
-         grade.getSelectionModel().selectFirst();
-         labo.getSelectionModel().selectFirst();
-         fonction.getSelectionModel().selectFirst();
-         diplome.getSelectionModel().selectFirst();
-         */
-        
         email.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
         nom.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
         prenom.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
         tel.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
 
-        List<Grade> grades = persistance.PersistManager.findAllGrades();
+        grades = persistance.PersistManager.findAllGrades();
 
         for (Grade gradeSelected : grades) {
 
-            grade.getItems().add(new CheckMenuItem(gradeSelected.getLibelleGrade()));
+            grade.getItems().add((gradeSelected.getLibelleGrade()));
 
         }
 
-        List<LaboratoireRattachement> labos;
         labos = persistance.PersistManager.findAllLabo();
 
         for (LaboratoireRattachement laboSelected : labos) {
 
-            labo.getItems().add(new CheckMenuItem(laboSelected.getNomLabo()));
+            labo.getItems().add(laboSelected.getNomLabo());
 
         }
-        List<Fonction> fonctions;
         fonctions = persistance.PersistManager.findAllFonction();
 
         for (Fonction fonctionSelected : fonctions) {
 
-            fonction.getItems().add(new CheckMenuItem(fonctionSelected.getLibelleFonction()));
+            fonction.getItems().add(fonctionSelected.getLibelleFonction());
 
         }
 
-        List<Diplome> diplomes;
         diplomes = persistance.PersistManager.findAllDiplome();
 
         for (Diplome diplomeSelected : diplomes) {
 
-            diplome.getItems().add(new CheckMenuItem(diplomeSelected.getLibelleDeplome()));
+            diplome.getItems().add(diplomeSelected.getLibelleDeplome());
 
         }
+        System.out.println("id stagiaire " + StageDPGR.selectedStagiaire.getIdStagiaire());
+        Diplome diplomeTmp = persistance.PersistManager.getSesDiplome(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        diplome.getSelectionModel().select(diplomeTmp.getLibelleDeplome());
 
+        Grade gradeTmp = persistance.PersistManager.getSesGrade(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        grade.getSelectionModel().select(gradeTmp.getLibelleGrade());
+
+        Fonction fonctionTmp = persistance.PersistManager.getSesFonction(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        fonction.getSelectionModel().select(fonctionTmp.getLibelleFonction());
+
+        LaboratoireRattachement laboTmp = persistance.PersistManager.getSesLabo(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0);
+        labo.getSelectionModel().select(laboTmp.getNomLabo());
+
+        /* grade.getSelectionModel().selectFirst();
+         labo.getSelectionModel().selectFirst();
+         fonction.getSelectionModel().selectFirst();
+         diplome.getSelectionModel().selectFirst();
+         */
     }
 
     @FXML
@@ -103,6 +114,30 @@ public class ModifierStagiaireController implements Initializable {
         stagiaire = new Stagiaire(prenom.getText(), tel.getText(), nom.getText(), email.getText(), null, null, null, null);
         stagiaire.setIdStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
         persistance.PersistManager.updateStagiaire(stagiaire);
+///////////////
+        Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
+
+        persistance.PersistManager.deleteSesDiplomes(stagiaire.getIdStagiaire());
+
+        persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+///////////////
+        LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
+
+        persistance.PersistManager.deleteSesLabo(stagiaire.getIdStagiaire());
+
+        persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+///////////////
+        Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
+
+        persistance.PersistManager.deleteSesGrade(stagiaire.getIdStagiaire());
+
+        persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+/////////////
+        Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
+
+        persistance.PersistManager.deleteSesFonction(stagiaire.getIdStagiaire());
+
+        persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
         StageDPGR.currentTab = 0;
 

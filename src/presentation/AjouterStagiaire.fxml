@@ -105,25 +105,9 @@
             <Font name="Tw Cen MT" size="14.0" />
          </font>
       </Text>
-      <MenuButton fx:id="grade" layoutX="476.0" layoutY="173.0" mnemonicParsing="false" text="">
-        <items>
-      
-        </items>
-      </MenuButton>
-      <MenuButton fx:id="labo" layoutX="363.0" layoutY="215.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="">
-         <items>
-
-         </items>
-      </MenuButton>
-      <MenuButton fx:id="fonction" layoutX="363.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="">
-         <items>
-  
-         </items>
-      </MenuButton>
-      <MenuButton fx:id="diplome" layoutX="363.0" layoutY="293.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="">
-         <items>
-          
-         </items>
-      </MenuButton>
+      <ComboBox fx:id="labo" layoutX="363.0" layoutY="215.0" prefHeight="25.0" prefWidth="212.0" />
+      <ComboBox fx:id="fonction" layoutX="363.0" layoutY="254.0" prefHeight="25.0" prefWidth="212.0" />
+      <ComboBox fx:id="diplome" layoutX="363.0" layoutY="293.0" prefHeight="25.0" prefWidth="212.0" />
+      <ComboBox fx:id="grade" layoutX="465.0" layoutY="173.0" prefHeight="25.0" prefWidth="111.0" />
    </children>
 </AnchorPane>

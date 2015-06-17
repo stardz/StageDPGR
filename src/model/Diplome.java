@@ -31,7 +31,13 @@ public class Diplome implements Serializable {
     public Diplome() {
 
     }
+
+    public Diplome(Integer idDiplome, String libelleDeplome) {
+        this.idDiplome = idDiplome;
+        this.libelleDeplome = libelleDeplome;
+    }
    
+    
     public Integer getIdDiplome() {
         return this.idDiplome;
     }
