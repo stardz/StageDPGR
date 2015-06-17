@@ -66,7 +66,7 @@ public class PersistManager {
         st.setPrenomStagiaire(stagiaire.getPrenomStagiaire());
         st.setEmailStagiaire(stagiaire.getEmailStagiaire());
         st.setTelStagiaire(stagiaire.getTelStagiaire());
-        entityManager.persist(stagiaire);
+       // entityManager.persist(stagiaire);
         entityManager.getTransaction().commit();
         entityManager.close();
     }
@@ -142,7 +142,7 @@ public class PersistManager {
         }
         return result;
     }
-
+    
     public static void affectDeplome(int idDimplome, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -172,7 +172,30 @@ public class PersistManager {
         }
         return result;
     }
-
+   public static void deleteSesDiplomes(int idStagiaire){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<AvoirDiplome> query = entityManager.createQuery("SELECT c FROM AvoirDiplome c", AvoirDiplome.class);
+        List<AvoirDiplome> avoirDiplomeListe = query.getResultList();
+        AvoirDiplome avDiplome;
+        AvoirDiplome avDiplomeRemove;
+        Diplome toBeRemoved;
+        Diplome dpl;
+        //List<Diplome> result = new ArrayList<Diplome>();
+        for (AvoirDiplome it : avoirDiplomeListe) {
+            if (it.getIdStagiaire() == idStagiaire) {
+               
+               avDiplomeRemove=entityManager.merge(it); 
+               entityManager.remove(avDiplomeRemove);
+               dpl=findDiplomeById(it.getIdDiplome());
+               toBeRemoved=entityManager.merge(dpl);
+               entityManager.remove(toBeRemoved);
+            }
+        }    
+        entityManager.getTransaction().commit();
+        entityManager.close();
+   }
     public static void affectGrade(int idGrade, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
