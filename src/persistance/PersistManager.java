@@ -109,7 +109,29 @@ public class PersistManager {
         }
         return result;
     }
-
+    public static void deleteSesLabo(int idStagiaire){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<AffecteLabo> query = entityManager.createQuery("SELECT c FROM AffecteLabo c", AffecteLabo.class);
+        List<AffecteLabo> avoirLaboListe = query.getResultList();
+        AffecteLabo affLabo;
+        AffecteLabo affLaboRemove;
+        LaboratoireRattachement toBeRemoved;
+        LaboratoireRattachement dpl;
+        for (AffecteLabo it : avoirLaboListe) {
+            if (it.getIdStagiaire() == idStagiaire) {
+               
+               affLaboRemove=entityManager.merge(it); 
+               entityManager.remove(affLaboRemove);
+               dpl=findLaboById(it.getIdLabo());
+               toBeRemoved=entityManager.merge(dpl);
+               entityManager.remove(toBeRemoved);
+            }
+        }    
+        entityManager.getTransaction().commit();
+        entityManager.close();
+   }
     public static void affectEncadrant(int idEncadrant, int idStagiaire, Date dateEncad, String sujetThese, String travAccomplis, String objectifs) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -182,7 +204,6 @@ public class PersistManager {
         AvoirDiplome avDiplomeRemove;
         Diplome toBeRemoved;
         Diplome dpl;
-        //List<Diplome> result = new ArrayList<Diplome>();
         for (AvoirDiplome it : avoirDiplomeListe) {
             if (it.getIdStagiaire() == idStagiaire) {
                
@@ -208,7 +229,28 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
-
+   public static void deleteSesGrade(int idStagiaire){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<AvoirGrade> query = entityManager.createQuery("SELECT c FROM AvoirGrade c", AvoirGrade.class);
+        List<AvoirGrade> avoirGradeListe = query.getResultList();
+        AvoirGrade avGrade;
+        AvoirGrade avGradeRemove;
+        Grade toBeRemoved;
+        Grade dpl;
+        for (AvoirGrade it : avoirGradeListe) {
+            if (it.getIdStagiaire() == idStagiaire) {
+               avGradeRemove=entityManager.merge(it); 
+               entityManager.remove(avGradeRemove);
+               dpl=findGradeById(it.getIdGrade());
+               toBeRemoved=entityManager.merge(dpl);
+               entityManager.remove(toBeRemoved);
+            }
+        }    
+        entityManager.getTransaction().commit();
+        entityManager.close();
+   }
     public static List<Grade> getSesGrade(int idStagiaire) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -225,7 +267,7 @@ public class PersistManager {
         }
         return result;
     }
-
+    
     public static void affectFonction(int idFonction, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -255,6 +297,28 @@ public class PersistManager {
         }
         return result;
     }
+    public static void deleteSesFonction(int idStagiaire){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<AvoirFonction> query = entityManager.createQuery("SELECT c FROM AvoirFonction c", AvoirFonction.class);
+        List<AvoirFonction> avoirFonctionListe = query.getResultList();
+        AvoirFonction avFonction;
+        AvoirFonction avFonctionRemove;
+        Grade toBeRemoved;
+        Grade dpl;
+        for (AvoirFonction it : avoirFonctionListe) {
+            if (it.getIdStagiaire() == idStagiaire) {
+               avFonctionRemove=entityManager.merge(it); 
+               entityManager.remove(avFonctionRemove);
+               dpl=findGradeById(it.getIdFonction());
+               toBeRemoved=entityManager.merge(dpl);
+               entityManager.remove(toBeRemoved);
+            }
+        }    
+        entityManager.getTransaction().commit();
+        entityManager.close();
+   }
     /*
      Stages
      */
