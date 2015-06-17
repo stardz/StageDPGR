@@ -88,10 +88,8 @@ public class ModifierDemandeStageController implements Initializable {
             int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
 
       //      persistance.PersistManager.updateAvoirFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
-          //  persistance.PersistManager.affectFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
-
+            //  persistance.PersistManager.affectFraisStage(stage.getIdStage(), fraisStage.getIdFraiStage(), total);
           //  persistance.PersistManager.affectDemandeStage(stagiaireList.get(stagiaire.getSelectionModel().getSelectedIndex()).getIdStagiaire(), stage.getIdStage(), DateFormatter.formatter.parse(dateDemande.getValue().toString()));
-
         } catch (ParseException ex) {
             Logger.getLogger(AjouterDemandeStageController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,6 +100,12 @@ public class ModifierDemandeStageController implements Initializable {
 
         StageDPGR.refreshRoot1();
         StageDPGR.stage2.close();
+    }
+
+    @FXML
+    private void annuler(ActionEvent e) {
+        StageDPGR.stage2.close();
+
     }
 
 }

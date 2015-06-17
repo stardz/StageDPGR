@@ -105,6 +105,7 @@ public class AjouterDemandeStageController implements Initializable {
 
     @FXML
     private void annuler(ActionEvent e) {
+        StageDPGR.stage2.close();
 
     }
 
