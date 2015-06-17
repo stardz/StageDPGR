@@ -697,6 +697,14 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.refreshRoot1();
     }
     @FXML
+    private void showValiderDemande(ActionEvent event) throws IOException {
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/ValiderDemande.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show();
+    }
+    
+    
+    @FXML
     private void addZone(ActionEvent event) throws IOException {
         if(fieldZoneConf.getText()!=null){
             ZoneType zone=new ZoneType();

@@ -218,7 +218,7 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="modifierZone" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider la demande" textFill="WHITE">
+                        <Button fx:id="modifierZone" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" onAction="#showValiderDemande" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Valider la demande" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
