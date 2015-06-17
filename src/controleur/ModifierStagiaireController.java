@@ -101,7 +101,6 @@ public class ModifierStagiaireController implements Initializable {
          LaboratoireRattachement laboTmp = persistance.PersistManager.getSesLabo(StageDPGR.selectedDemandeStage.getIdStagiaire()).get(0);
          labo.getSelectionModel().select(laboTmp.getNomLabo());
          */
-        
         grade.getSelectionModel().selectFirst();
         labo.getSelectionModel().selectFirst();
         fonction.getSelectionModel().selectFirst();
@@ -115,29 +114,30 @@ public class ModifierStagiaireController implements Initializable {
         stagiaire = new Stagiaire(prenom.getText(), tel.getText(), nom.getText(), email.getText(), null, null, null, null);
         stagiaire.setIdStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
         persistance.PersistManager.updateStagiaire(stagiaire);
-
+///////////////
         Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
 
         persistance.PersistManager.deleteSesDiplomes(stagiaire.getIdStagiaire());
 
         persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+///////////////
+        LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
 
-        /*LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
+        persistance.PersistManager.deleteSesLabo(stagiaire.getIdStagiaire());
 
-         persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+        persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+///////////////
+        Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
 
-         Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
+        persistance.PersistManager.deleteSesGrade(stagiaire.getIdStagiaire());
 
-         persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+        persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+/////////////
+        Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
 
-         Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
+        persistance.PersistManager.deleteSesFonction(stagiaire.getIdStagiaire());
 
-         persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
-
-         Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
-
-         persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
-         */
+        persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
         StageDPGR.currentTab = 0;
 
