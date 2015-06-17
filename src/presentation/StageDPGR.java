@@ -35,6 +35,7 @@ public class StageDPGR extends Application {
     public static UtilisateurPres selectedUtilisateur;
     public static StagiairePres selectedStagiaire;
     public static DemandeStagePres selectedDemandeStage;
+    public static Utilisateur utilisateurLogged;
     @Override
     public void start(Stage stage) throws Exception {
         root = FXMLLoader.load(getClass().getResource("Authentification.fxml"));
