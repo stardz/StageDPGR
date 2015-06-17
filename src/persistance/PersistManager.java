@@ -70,6 +70,16 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    public static void deleteStagiaire(int idStagiaire){
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+       Stagiaire stagiaire =findStagiaireById(idStagiaire);
+      Stagiaire toBeRemoved = entityManager.merge(stagiaire);
+       entityManager.remove(toBeRemoved);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
     public static void affectLabo(int idLabo, int idStagiaire, Date date) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -669,6 +679,18 @@ public class PersistManager {
         entityManager.getTransaction().begin();
         entityManager.persist(fraisStage);
         entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+    public static void affectFraisStage(int idStage,int idFraisStage,int totalFrais){
+       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        AvoirFraiStage avFraisStage=new AvoirFraiStage();
+        avFraisStage.setIdFraiStage(idFraisStage);
+        avFraisStage.setIdStage(idStage);
+        avFraisStage.setTotalFraisStage(totalFrais);
+        entityManager.persist(avFraisStage);
+       entityManager.getTransaction().commit();
         entityManager.close();
     }
 

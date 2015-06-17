@@ -37,19 +37,19 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="supprimerStagiaire" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
+                        <Button fx:id="supprimerStagiaire" layoutX="21.0" layoutY="263.0" mnemonicParsing="false" onAction="#showStagiareSupprimer" prefHeight="48.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Supprimer" textFill="WHITE">
                             
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="modifierPlace" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Modifier placé" textFill="WHITE">
+                        <Button fx:id="modifierPlace" layoutX="21.0" layoutY="381.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="252.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Net yet" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Button>
-                        <Button fx:id="detailStagiaire" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Détails sur le stagiaires" textFill="WHITE">
+                        <Button fx:id="detailStagiaire" layoutX="22.0" layoutY="319.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="251.0" style="-fx-background-color: #2980b9; -fx-border-color: #2980b9;" text="Not yet" textFill="WHITE">
                            
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -265,9 +265,12 @@
                               </Label>
                            </children>
                         </Pane>
-                        <ImageView fx:id="back3" fitHeight="34.0" fitWidth="37.0" layoutX="14.0" layoutY="591.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="back21" fitHeight="63.0" fitWidth="119.0" layoutX="117.0" layoutY="532.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                            <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/6_social_reply.png" />
+                              <Image url="@../icons/logout.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -883,11 +886,6 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="206.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../LynxTrak/LynxTrak/src/solit/valider.png" />
-                           </image>
-                        </ImageView>
                         <Label layoutX="18.0" layoutY="318.0" prefHeight="49.0" prefWidth="234.0" text="Profil :" textFill="WHITE">
                            <font>
                               <Font name="Tw Cen MT" size="20.0" />
@@ -942,6 +940,14 @@
                               </RadioButton>
                            </children>
                         </Group>
+                        <ImageView fx:id="back22" fitHeight="63.0" fitWidth="119.0" layoutX="82.0" layoutY="544.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../icons/logout.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </Pane>
                   <SplitPane dividerPositions="0.42362204724409447" layoutX="264.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="637.0" prefWidth="991.0">
@@ -1071,7 +1077,15 @@
                                  <font>
                                     <Font name="Tw Cen MT" size="20.0" />
                                  </font>
-                              </Button> </children>
+                              </Button>
+                        <ImageView fx:id="back23" fitHeight="63.0" fitWidth="119.0" layoutX="112.0" layoutY="492.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../icons/logout.png" />
+                           </image>
+                        </ImageView> </children>
                   </Pane>
                   <Pane layoutX="355.0" layoutY="420.0" prefHeight="179.0" prefWidth="813.0" style="-fx-background-color: #E3E3E3;">
                      <children>
@@ -1242,9 +1256,9 @@
                         <DropShadow />
                      </effect>
                   </Pane>
-                  <Pane layoutX="73.0" layoutY="357.0" prefHeight="264.0" prefWidth="525.0" style="-fx-background-color: #22A7F0;">
+                  <Pane layoutX="118.0" layoutY="359.0" prefHeight="262.0" prefWidth="480.0" style="-fx-background-color: #22A7F0;">
                      <children>
-                        <Pane layoutY="36.0" prefHeight="54.0" prefWidth="524.0" style="-fx-background-color: #2C3E50;">
+                        <Pane layoutY="36.0" prefHeight="54.0" prefWidth="480.0" style="-fx-background-color: #2C3E50;">
                            <children>
                               <Label layoutX="201.0" layoutY="12.0" text="Lieux de Stage" textFill="WHITE">
                                  <font>
@@ -1264,7 +1278,7 @@
                               <Font name="Tw Cen MT" size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="affctedZoneConf" layoutX="274.0" layoutY="147.0" prefHeight="35.0" prefWidth="234.0" promptText="Affecter a cette zone" style="-fx-background-color: #DFDFDF;" />
+                        <ComboBox fx:id="affctedZoneConf" layoutX="274.0" layoutY="147.0" prefHeight="35.0" prefWidth="193.0" promptText="Affecter a cette zone" style="-fx-background-color: #DFDFDF;" />
                      </children>
                      <effect>
                         <DropShadow />
@@ -1325,6 +1339,21 @@
                      <effect>
                         <DropShadow />
                      </effect>
+                  </Pane>
+                  <Pane layoutX="14.0" layoutY="548.0" prefHeight="73.0" prefWidth="79.0" style="-fx-background-color: #22A7F0;">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <children>
+                        <ImageView fx:id="back231" fitHeight="63.0" fitWidth="119.0" layoutX="8.0" layoutY="5.0" onMouseClicked="#logOut" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../icons/logout.png" />
+                           </image>
+                        </ImageView>
+                     </children>
                   </Pane>
                </children>
             </AnchorPane>

@@ -21,11 +21,11 @@ import presentation.StageDPGR;
 /**
  * FXML Controller class
  *
- * @author B-Zakaria
+ * @author Oo
  */
-public class ConfirmerSupController implements Initializable {
+public class ConfirmerSupStagiaireController implements Initializable {
 
-    /**
+   /**
      * Initializes the controller class.
      */
     @FXML 
@@ -37,13 +37,13 @@ public class ConfirmerSupController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        nomCompteSupprimer.setText(StageDPGR.selectedStagiaire.getNomStagiaire()+"  "+StageDPGR.selectedStagiaire.getPrenomStagiaire());
+        nomCompteSupprimer.setText(StageDPGR.selectedStagiaire.getNomStagiaire()+" "+StageDPGR.selectedStagiaire.getPrenomStagiaire());
     }  
     
     @FXML 
     public void confirmer(){
-        persistance.PersistManager.deleteUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
-        StageDPGR.currentTab=6;
+      //  persistance.PersistManager.deleteUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+        StageDPGR.currentTab=0;
         try {
             StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         } catch (IOException ex) {
@@ -56,6 +56,6 @@ public class ConfirmerSupController implements Initializable {
     public void annuler(){
         // close seconde stage
         StageDPGR.stage2.close();
-    }
+    }   
     
 }
