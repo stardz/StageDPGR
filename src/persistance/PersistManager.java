@@ -72,11 +72,12 @@ public class PersistManager {
         entityManager.close();
     }
     public static void deleteStagiaire(int idStagiaire){
-         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-       Stagiaire stagiaire =findStagiaireById(idStagiaire);
-      Stagiaire toBeRemoved = entityManager.merge(stagiaire);
+       model.Stagiaire stagiaire = null;
+        stagiaire = entityManager.find(Stagiaire.class, idStagiaire);
+      model.Stagiaire toBeRemoved = entityManager.merge(stagiaire);
        entityManager.remove(toBeRemoved);
         entityManager.getTransaction().commit();
         entityManager.close();

@@ -46,7 +46,7 @@ public class AuthentificationController implements Initializable {
                 try {
                     StageDPGR.utilisateurLogged = usr;
                     StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
-
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.*?>
 <AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="246.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleur.AuthentificationController">
     <children>
         <ImageView fitHeight="100.0" fitWidth="140.0" layoutX="54.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
@@ -21,6 +21,9 @@
             <font>
                 <Font name="Tw Cen MT" size="20.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
       <Label layoutX="72.0" layoutY="378.0" text="tous droits réservés" />
       <Label layoutX="92.0" layoutY="400.0" text="2014-2015" />
