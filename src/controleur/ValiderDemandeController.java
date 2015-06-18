@@ -16,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import model.DemandeStage;
+import persistance.CKey;
 import presentation.StageDPGR;
 
 /**
@@ -45,7 +47,24 @@ public class ValiderDemandeController implements Initializable {
 
     @FXML
     public void confirmer() {
-      //  persistance.PersistManager.deleteUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+        int res=5;
+        DemandeStage dmd=persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(),StageDPGR.selectedDemandeStage.getIdStagiaire()));
+        if(StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")){
+            res=dmd.validerAut();
+        }else if(StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("DADPGR")){
+            res=dmd.validerDA();
+        }else if(StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("MembreCS")){
+            res=dmd.validerCS();
+        }
+        if(res==0){
+            nomCompteSupprimer.setText("C'est déja validé");
+            return;
+        }
+        else if(res==-1){
+            nomCompteSupprimer.setText("Vous n'avez pas encore le droit!");
+            return;
+        }
+        persistance.PersistManager.updateDemandeStage(dmd);
         StageDPGR.currentTab = 1;
         try {
             StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));

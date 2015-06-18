@@ -532,6 +532,20 @@ public class PersistManager {
         entityManager.close();
         return dmdStage;
     }
+    public static void updateDemandeStage(DemandeStage dmd){
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c where c.idStage=:arg1 AND c.idStagiaire=:arg2", DemandeStage.class).setParameter("arg1",dmd.getIdStage());
+        query.setParameter("arg2",dmd.getIdStagiaire());
+        List<DemandeStage> demandeStages = query.getResultList();
+        DemandeStage dmdStage=demandeStages.get(demandeStages.size()-1);
+       dmdStage.setAutorisationDeStage(dmd.getAutorisationDeStage());
+       dmdStage.setAvisCsStage(dmd.getAvisCsStage());
+       dmdStage.setAvisDadpgrStage(dmd.getAvisDadpgrStage());
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
     /*
      Pvs
      */
