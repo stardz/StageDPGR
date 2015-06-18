@@ -39,22 +39,24 @@ public class ConfirmerSupDemandeStageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        nomCompteSupprimer.setText(StageDPGR.selectedStagiaire.getNomStagiaire() + " " + StageDPGR.selectedStagiaire.getPrenomStagiaire());
 
+        // nomCompteSupprimer.setText(StageDPGR.selectedDemandeStage.getIdStage()+ " " + StageDPGR.selectedStagiaire.getPrenomStagiaire());
     }
 
     @FXML
     public void confirmer() {
 
-        List<DemandeStage> listDemande = persistance.PersistManager.getSesDemandeStage(StageDPGR.selectedStagiaire.getIdStagiaire());
+      //  List<DemandeStage> listDemande = persistance.PersistManager.getSesDemandeStage(StageDPGR.selectedStagiaire.getIdStagiaire());
 
-        for (DemandeStage demande : listDemande) {
-            persistance.PersistManager.deleteDemandeStage(new CKey(demande.getIdStage(), StageDPGR.selectedStagiaire.getIdStagiaire()));
+        /*for (DemandeStage demande : listDemande) {
+         persistance.PersistManager.deleteDemandeStage(new CKey(demande.getIdStage(), StageDPGR.selectedStagiaire.getIdStagiaire()));
 
-        }
+         }
+         */
+        persistance.PersistManager.deleteDemandeStage(new CKey(StageDPGR.selectedDemandeStage.getIdStage(), StageDPGR.selectedDemandeStage.getIdStagiaire()));
+
+        StageDPGR.currentTab = 1;
         
-        StageDPGR.currentTab = 0;
         try {
             StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         } catch (IOException ex) {

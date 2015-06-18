@@ -468,6 +468,7 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    
     public static void deleteDemandeStage(CKey cKey){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -481,6 +482,7 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    
     public static List<DemandeStage> findAllDemandeStages() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

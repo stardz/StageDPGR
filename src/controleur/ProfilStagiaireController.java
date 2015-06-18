@@ -42,7 +42,7 @@ public class ProfilStagiaireController implements Initializable {
     @FXML
     private Label profilFonction;
     @FXML
-    private Label profilGrade ;
+    private Label profilGrade;
     @FXML
     private Label profilNBStages;
     @FXML
@@ -56,16 +56,21 @@ public class ProfilStagiaireController implements Initializable {
     @FXML
     private Label profilNBMFRefusee;
     @FXML
-    private TableView tableStagesMF ;
+    private TableView tableStagesMF;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // System.out.println(" aa "+nomEtPrenomProfil.getText());
-        nomEtPrenomProfil.setText("Profile du Stagiaire :"+StageDPGR.selectedStagiaire.getNomStagiaire()+" "+StageDPGR.selectedStagiaire.getPrenomStagiaire());
+        nomEtPrenomProfil.setText("Profile du Stagiaire :" + StageDPGR.selectedStagiaire.getNomStagiaire() + " " + StageDPGR.selectedStagiaire.getPrenomStagiaire());
         profilNom.setText(StageDPGR.selectedStagiaire.getNomStagiaire());
         profilPrenom.setText(StageDPGR.selectedStagiaire.getPrenomStagiaire());
         profilEmail.setText(StageDPGR.selectedStagiaire.getEmailStagiaire());
         profilTel.setText(StageDPGR.selectedStagiaire.getTelStagiaire());
+        profilLabo.setText(persistance.PersistManager.getSesLabo(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0).getNomLabo());
+        profilFonction.setText(persistance.PersistManager.getSesFonction(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0).getLibelleFonction());
+        profilGrade.setText(persistance.PersistManager.getSesGrade(StageDPGR.selectedStagiaire.getIdStagiaire()).get(0).getLibelleGrade());
+        profilNBStages.setText(persistance.PersistManager.getSesDemandeStage(StageDPGR.selectedStagiaire.getIdStagiaire()).size() + "");
+
     }
 
 }

@@ -12,14 +12,14 @@
    <children>
       <AnchorPane id="AnchorPane" prefHeight="169.0" prefWidth="426.0" style="-fx-background-color: #ecf0f1;">
          <children>
-            <Text fx:id="nomCompteSupprimer" layoutX="155.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anonyme">
+            <Text fx:id="nomCompteSupprimer" layoutX="71.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supprimer la demande">
                <font>
                   <Font name="Tw Cen MT" size="32.0" />
                </font>
             </Text>
             <Pane layoutY="14.0" prefHeight="39.0" prefWidth="426.0" style="-fx-background-color: #2C3E50;">
                <children>
-                  <Label layoutX="14.0" layoutY="5.0" text="Confirmer le suppression du compte :" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="5.0" text="Confirmer le suppression :" textFill="WHITE">
                      <font>
                         <Font name="Tw Cen MT" size="26.0" />
                      </font>
