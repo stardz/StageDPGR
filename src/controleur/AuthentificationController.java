@@ -39,19 +39,19 @@ public class AuthentificationController implements Initializable {
     private void connexion(ActionEvent event) {
        
             Utilisateur usr = persistance.PersistManager.getUtilisateurByLogin(nomUtilisateur.getText());
-            if (usr == null) {
-                nomUtilisateur.setEffect(new DropShadow(10, Color.RED));
-            } else if (usr.getMpUtilisateur().equals(persistance.PersistManager.cryptWithMD5(motdePasse.getText()))) {
-                try {
-                    StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
-                    StageDPGR.utilisateurLogged = usr;
-                } catch (IOException ex) {
-                    Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                StageDPGR.refreshRoot1();
-            } else {
-                motdePasse.setEffect(new DropShadow(10, Color.RED));
+        if(usr == null){
+            nomUtilisateur.setEffect(new DropShadow(10, Color.RED));
+        }else if (usr.getMpUtilisateur().equals(persistance.PersistManager.cryptWithMD5(motdePasse.getText()))) {
+            try {
+                StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+                StageDPGR.utilisateurLogged = usr;
+            } catch (IOException ex) {
+                Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            StageDPGR.refreshRoot1();
+        }else{
+               motdePasse.setEffect(new DropShadow(10, Color.RED));
+        }
 
          
     }

@@ -59,7 +59,7 @@ public class insertUtilisateurController implements Initializable {
         Utilisateur u=new Utilisateur();
         u.setLoginUtilisateur(psedou.getText());
         u.setEtatCompte("actif");
-        u.setMpUtilisateur(persistance.PersistManager.cryptWithMD5(motPasse.getText()));
+        u.setMpUtilisateur(motPasse.getText());
         u.setNomUtilisateur(nom.getText());
         u.setPrenomUtilisateur(prenom.getText());
         u.setProfilUtilisateur(profil.getValue().toString());

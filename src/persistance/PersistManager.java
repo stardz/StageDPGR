@@ -10,6 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -1048,7 +1049,8 @@ public class PersistManager {
         }
         return sb.toString();
     } catch (NoSuchAlgorithmException ex) {
-           // Logger.getLogger(CryptWithMD5.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+//  Logger.getLogger(CryptWithMD5.class.getName()).log(Level.SEVERE, null, ex);
     }
         return null;
    }

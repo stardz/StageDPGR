@@ -116,4 +116,35 @@ public class DemandeStage implements Serializable {
     public void setAvisCsStage(String avisCsStage) {
         this.avisCsStage = avisCsStage;
     }
+    public float getProgres(){
+        if(this.getAvisDadpgrStage().equals("OK")){
+             if(this.getAvisCsStage().equals("OK")){
+                 if(this.getAutorisationDeStage().equals("OK")) return 1;
+                 return (float) 0.66;
+             }
+             return (float) 0.33;
+        }
+        return 0;
+    }
+    public int validerDA(){
+        if(this.getAvisDadpgrStage().equals("OK"))return 0;
+        this.setAvisDadpgrStage("OK");
+        return 1;
+    }
+    public int validerCS(){
+        if(this.getAvisCsStage().equals("OK"))return 0;
+        if(this.getAvisDadpgrStage().equals("OK")){
+            this.setAvisCsStage("OK");
+            return 1;
+        }
+        return -1;
+    }
+    public int validerAut(){
+        if(this.getAutorisationDeStage().equals("OK"))return 0;
+        if(this.getAvisDadpgrStage().equals("OK")&&this.getAvisCsStage().equals("OK")){
+            this.setAutorisationDeStage("OK");
+            return 1;
+        }
+        return -1;
+    }
 }
