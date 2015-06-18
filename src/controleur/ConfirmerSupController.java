@@ -44,7 +44,12 @@ public class ConfirmerSupController implements Initializable {
 
     @FXML
     public void confirmer() {
-        persistance.PersistManager.deleteUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
+        persistance.PersistManager.deleteSesDiplomes(StageDPGR.selectedStagiaire.getIdStagiaire());
+        persistance.PersistManager.deleteSesLabo(StageDPGR.selectedStagiaire.getIdStagiaire());
+        persistance.PersistManager.deleteSesGrade(StageDPGR.selectedStagiaire.getIdStagiaire());
+        persistance.PersistManager.deleteSesFonction(StageDPGR.selectedStagiaire.getIdStagiaire());
+        //persistance.PersistManager.del
+        persistance.PersistManager.deleteStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
         StageDPGR.currentTab = 5;
         try {
             StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));

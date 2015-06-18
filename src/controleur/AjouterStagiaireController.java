@@ -127,10 +127,10 @@ public class AjouterStagiaireController implements Initializable {
             tel.setStyle(" -fx-background-color: #ff6d6d");
         }
         if (Regex.isEmail(email.getText())) {
-            tel.setStyle(" -fx-background-color: #9eee48");
+            email.setStyle(" -fx-background-color: #9eee48");
         } else {
             arreter = true;
-            tel.setStyle(" -fx-background-color: #ff6d6d");
+            email.setStyle(" -fx-background-color: #ff6d6d");
         }
         if (!arreter) {
             Stagiaire stagiaire;

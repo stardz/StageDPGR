@@ -289,7 +289,6 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     private void showStagiareSupprimer(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confirmerSupStagiaire.fxml"));
-        persistance.PersistManager.deleteStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
         StageDPGR.refreshRoot2();
         StageDPGR.stage2.show();
     }
