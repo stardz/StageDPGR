@@ -57,6 +57,7 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    
     public static void updateStagiaire(Stagiaire stagiaire) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -71,6 +72,7 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+    
     public static void deleteStagiaire(int idStagiaire){
          EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();

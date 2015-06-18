@@ -286,6 +286,13 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.stage2.show();
     }
 
+     @FXML
+    private void showDemandeSupprimer(ActionEvent event) throws IOException {
+        StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confirmerSupDemandeStage.fxml"));
+        StageDPGR.refreshRoot2();
+        StageDPGR.stage2.show();
+    }
+    
     @FXML
     private void showStagiareSupprimer(ActionEvent event) throws IOException {
         StageDPGR.root2 = FXMLLoader.load(getClass().getResource("/presentation/confirmerSupStagiaire.fxml"));

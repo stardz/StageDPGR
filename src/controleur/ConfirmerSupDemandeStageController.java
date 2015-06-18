@@ -23,13 +23,10 @@ import presentation.StageDPGR;
 /**
  * FXML Controller class
  *
- * @author Oo
+ * @author oSunshine
  */
-public class ConfirmerSupStagiaireController implements Initializable {
+public class ConfirmerSupDemandeStageController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
     @FXML
     Button confirmer;
     @FXML
@@ -37,26 +34,26 @@ public class ConfirmerSupStagiaireController implements Initializable {
     @FXML
     Text nomCompteSupprimer;
 
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         nomCompteSupprimer.setText(StageDPGR.selectedStagiaire.getNomStagiaire() + " " + StageDPGR.selectedStagiaire.getPrenomStagiaire());
+
     }
 
     @FXML
     public void confirmer() {
-        persistance.PersistManager.deleteSesDiplomes(StageDPGR.selectedStagiaire.getIdStagiaire());
-        persistance.PersistManager.deleteSesLabo(StageDPGR.selectedStagiaire.getIdStagiaire());
-        persistance.PersistManager.deleteSesGrade(StageDPGR.selectedStagiaire.getIdStagiaire());
-        persistance.PersistManager.deleteSesFonction(StageDPGR.selectedStagiaire.getIdStagiaire());
+
         List<DemandeStage> listDemande = persistance.PersistManager.getSesDemandeStage(StageDPGR.selectedStagiaire.getIdStagiaire());
-        System.out.println("iddddddddd " + StageDPGR.selectedStagiaire.getIdStagiaire());
+
         for (DemandeStage demande : listDemande) {
             persistance.PersistManager.deleteDemandeStage(new CKey(demande.getIdStage(), StageDPGR.selectedStagiaire.getIdStagiaire()));
 
         }
-
-        persistance.PersistManager.deleteStagiaire(StageDPGR.selectedStagiaire.getIdStagiaire());
+        
         StageDPGR.currentTab = 0;
         try {
             StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
@@ -72,5 +69,4 @@ public class ConfirmerSupStagiaireController implements Initializable {
         // close seconde stage
         StageDPGR.stage2.close();
     }
-
 }
