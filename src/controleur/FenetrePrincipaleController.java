@@ -23,6 +23,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -160,10 +161,10 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     private PieChart pieChartdemandeursVsPasDemandeurs;
     @FXML
-    private LineChart lineChartEvolutionBudget;
+    private LineChart<Number,Number> lineChartEvolutionBudget;
     @FXML
 
-    private BarChart<String, Number> barChartStages;
+    private BarChart<String, Number> barChartEtatStages;
     @FXML
     private ToggleGroup groupTypes;
     @FXML
@@ -814,7 +815,7 @@ public class FenetrePrincipaleController implements Initializable {
     
     
     public void statistiques(){
-      /*  int nbDemandeRefusee = 3 ;
+        int nbDemandeRefusee = 3 ;
         int nbDemandeAcceptee = 7 ;
         int totalDemande = nbDemandeAcceptee + nbDemandeRefusee ;
         nbDemandes.setText(((Integer) totalDemande).toString());
@@ -836,12 +837,12 @@ public class FenetrePrincipaleController implements Initializable {
         caption.setTextFill(Color.DARKORANGE);
         caption.setStyle("-fx-font: 24 arial;");
         // children.add(caption);
-       if(((Pane) StageDPGR.root).getChildren()!=null){
+     /*  if(((Pane) StageDPGR.root).getChildren()!=null){
             ((Pane) StageDPGR.root).getChildren().add(caption);
         }
         else{
             System.err.println("erroror");
-        }
+        }*/
          
 
 
@@ -884,9 +885,33 @@ public class FenetrePrincipaleController implements Initializable {
         series1.getData().add(new XYChart.Data("Stage en attente", nbStagesRefuse));
         
 
-        barChartStages.getData().add(series1);
-        barChartStages.setLegendVisible(false);
-        barChartStages.setCategoryGap(50);
-        */        
+        barChartEtatStages.getData().add(series1);
+        barChartEtatStages.setLegendVisible(false);
+        barChartEtatStages.setCategoryGap(50);
+        
+        
+        ///// Line chart
+        
+                final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        xAxis.setLabel("année");
+        
+        
+     //  lineChartEvolutionBudget.getProperties(x)
+        
+        lineChartEvolutionBudget = new LineChart<Number,Number>(xAxis,yAxis);
+        //defining a series
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Budget");
+        //populating the series with data
+        series.getData().add(new XYChart.Data(2010, 23));
+        series.getData().add(new XYChart.Data(2011, 14));
+        series.getData().add(new XYChart.Data(2012, 15));
+        series.getData().add(new XYChart.Data(2013, 24));
+        series.getData().add(new XYChart.Data(2014, 34));
+        series.getData().add(new XYChart.Data(2015, 36));
+
+        lineChartEvolutionBudget.getData().add(series);
+                
     }
 }
