@@ -11,6 +11,13 @@ public class Regex {
     public static String nominal_regex = "^([A-Za-z]+ *)+$";
     public static String int_format = "^[0-9]{1,}[0-9]*$";
     public static String inte_format = "^[0-9]*$";
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX
+            = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static boolean isEmail(String emailStr) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
+    }
 
     public static boolean verifNominal(String nom_prenom) {
         Pattern p = Pattern.compile(nominal_regex);
@@ -22,12 +29,10 @@ public class Regex {
 
     public static boolean isInteger(String text) {
         return Pattern.matches("^[0-9]+$", text);
-
     }
 
     public static boolean isAdresse(String text) {
         return Pattern.matches("^[0-9A-Za-z °]+$", text);
-
     }
 
     public static boolean dateValid(String date, String format) {

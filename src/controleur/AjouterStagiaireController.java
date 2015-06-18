@@ -126,34 +126,41 @@ public class AjouterStagiaireController implements Initializable {
             arreter = true;
             tel.setStyle(" -fx-background-color: #ff6d6d");
         }
-        Stagiaire stagiaire;
-        stagiaire = new Stagiaire(prenom.getText(), tel.getText(), nom.getText(), email.getText(), null, null, null, null);
-        stagiaire.setIdStagiaire(persistance.PersistManager.findAllStagiaires().size() + 1);
-        persistance.PersistManager.insertStagiaire(stagiaire);
+        if (Regex.isEmail(email.getText())) {
+            tel.setStyle(" -fx-background-color: #9eee48");
+        } else {
+            arreter = true;
+            tel.setStyle(" -fx-background-color: #ff6d6d");
+        }
+        if (!arreter) {
+            Stagiaire stagiaire;
+            stagiaire = new Stagiaire(prenom.getText(), tel.getText(), nom.getText(), email.getText(), null, null, null, null);
+            stagiaire.setIdStagiaire(persistance.PersistManager.findAllStagiaires().size() + 1);
+            persistance.PersistManager.insertStagiaire(stagiaire);
 
-        LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
+            LaboratoireRattachement lab = labos.get(labo.getSelectionModel().getSelectedIndex());
 
-        persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+            persistance.PersistManager.affectLabo(lab.getIdLabo(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
-        Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
+            Diplome dip = diplomes.get(diplome.getSelectionModel().getSelectedIndex());
 
-        persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+            persistance.PersistManager.affectDeplome(dip.getIdDiplome(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
-        Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
+            Grade gr = grades.get(grade.getSelectionModel().getSelectedIndex());
 
-        persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+            persistance.PersistManager.affectGrade(gr.getIdGrade(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
-        Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
+            Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
 
-        persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
+            persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
 
-        StageDPGR.currentTab = 0;
+            StageDPGR.currentTab = 0;
 
-        StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+            StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
 
-        StageDPGR.refreshRoot1();
-        StageDPGR.stage2.close();
-
+            StageDPGR.refreshRoot1();
+            StageDPGR.stage2.close();
+        }
     }
 
     @FXML
