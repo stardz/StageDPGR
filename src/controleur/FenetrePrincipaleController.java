@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -83,7 +84,7 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     Label libelleCompte5;
     @FXML
-    Label loggedIn;
+    Label loggedIn, loggedIn1, loggedIn2, loggedIn3, loggedIn4;
 
     // Libele gestion des stagiaires
     @FXML
@@ -193,6 +194,9 @@ public class FenetrePrincipaleController implements Initializable {
     TextField fieldZoneConf;
     @FXML
     TextField fieldLieuConf;
+
+    @FXML
+    Button validerDemande, ajouterStagiaire, modifierStagiaire, supprimerStagiaire, creerDemande, modifierDemande, supprimerDemande;
     /*
      Actions comptes
      */
@@ -326,17 +330,13 @@ public class FenetrePrincipaleController implements Initializable {
         progresDemandeStage.setProgress(0);
 
         loggedIn.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+        loggedIn1.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+
+        loggedIn2.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+        loggedIn3.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+        loggedIn4.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+
         //set Current Tab
-
-        if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("DADPGR")) {
-
-        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("MembreCS")) {
-            budget
-
-        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")) {
-
-        }
-
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(StageDPGR.currentTab);
         /*
@@ -531,6 +531,34 @@ public class FenetrePrincipaleController implements Initializable {
         });
         // Remplissage des configs
         remplirConfiguration();
+
+        if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Admin")) {
+
+            validerDemande.setDisable(true);
+            tabBudget.setDisable(true);
+            tabStatistiques.setDisable(true);
+
+        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("MembreCS")) {
+
+            ajouterStagiaire.setDisable(true);
+            modifierStagiaire.setDisable(true);
+            supprimerStagiaire.setDisable(true);
+            creerDemande.setDisable(true);
+            modifierDemande.setDisable(true);
+            supprimerDemande.setDisable(true);
+            tabBudget.setDisable(true);
+            tabStatistiques.setDisable(true);
+            tabComptes.setDisable(true);
+            tabConfiguration.setDisable(true);
+
+        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")) {
+
+            tabBudget.setDisable(true);
+            tabStatistiques.setDisable(true);
+            tabComptes.setDisable(true);
+            tabConfiguration.setDisable(true);
+
+        }
     }
 
     @FXML

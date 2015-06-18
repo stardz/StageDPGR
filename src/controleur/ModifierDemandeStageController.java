@@ -70,7 +70,7 @@ public class ModifierDemandeStageController implements Initializable {
             lieu.getItems().add(l.getPaysLieuStage() + " : " + l.getVilleLieuStage());
         }
 
-       // Lieu lieuTmp = persistance.PersistManager.findLieuStageById(idLieuStage);
+        // Lieu lieuTmp = persistance.PersistManager.findLieuStageById(idLieuStage);
         lieu.getSelectionModel().select(null);
         //  FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
         FraisStage fraisStage = persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage());
@@ -94,31 +94,85 @@ public class ModifierDemandeStageController implements Initializable {
 
     @FXML
     private void valider(ActionEvent e) throws IOException {
+
+        boolean arreter = false;
+
         try {
+            if (Regex.dateValid(DateFormatter.formatter.format(DateFormatter.formatter.parse(dateDemande.getValue().toString())), "yyyy-mm-dd")) {
+                dateDemande.setStyle(" -fx-background-color: #9eee48");
 
-            Stage stage = new Stage(DateFormatter.formatter.parse(dateFin.getValue().toString()), objective.getText(), lieuList.get(lieu.getSelectionModel().getSelectedIndex()), DateFormatter.formatter.parse(dateDebut.getValue().toString()), environ.getText(), mission.getText());
+            } else {
+                arreter = true;
+                dateDemande.setStyle(" -fx-background-color: #ff6d6d");
+            }
+            if (Regex.dateValid(DateFormatter.formatter.format(DateFormatter.formatter.parse(dateDebut.getValue().toString())), "yyyy-mm-dd")) {
+                dateDebut.setStyle(" -fx-background-color: #9eee48");
 
-            stage.setIdStage(StageDPGR.selectedDemandeStage.getIdStage());
+            } else {
+                arreter = true;
+                dateDebut.setStyle(" -fx-background-color: #ff6d6d");
+            }
+            if (Regex.dateValid(DateFormatter.formatter.format(DateFormatter.formatter.parse(dateFin.getValue().toString())), "yyyy-mm-dd")) {
+                dateFin.setStyle(" -fx-background-color: #9eee48");
 
-            persistance.PersistManager.updateStage(stage);
+            } else {
+                arreter = true;
+                dateFin.setStyle(" -fx-background-color: #ff6d6d");
+            }
+            if (Regex.isInteger(fraisSejour.getText())) {
+                fraisSejour.setStyle(" -fx-background-color: #9eee48");
 
-            FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+            } else {
+                arreter = true;
+                fraisSejour.setStyle(" -fx-background-color: #ff6d6d");
+            }
+            if (Regex.isInteger(fraisTransport.getText())) {
+                fraisTransport.setStyle(" -fx-background-color: #9eee48");
 
-            persistance.PersistManager.updateFraisStage(fraisStage);
+            } else {
+                arreter = true;
+                fraisTransport.setStyle(" -fx-background-color: #ff6d6d");
+            }
+            if (Regex.isInteger(fraisAssurance.getText())) {
+                fraisAssurance.setStyle(" -fx-background-color: #9eee48");
 
-            int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
+            } else {
+                arreter = true;
+                fraisAssurance.setStyle(" -fx-background-color: #ff6d6d");
+            }
+            if (Regex.isInteger(fraisVisa.getText())) {
+                fraisVisa.setStyle(" -fx-background-color: #9eee48");
 
+            } else {
+                arreter = true;
+                fraisVisa.setStyle(" -fx-background-color: #ff6d6d");
+            }
+
+            if (!arreter) {
+                Stage stage = new Stage(DateFormatter.formatter.parse(dateFin.getValue().toString()), objective.getText(), lieuList.get(lieu.getSelectionModel().getSelectedIndex()), DateFormatter.formatter.parse(dateDebut.getValue().toString()), environ.getText(), mission.getText());
+
+                stage.setIdStage(StageDPGR.selectedDemandeStage.getIdStage());
+
+                persistance.PersistManager.updateStage(stage);
+
+                FraisStage fraisStage = new FraisStage(persistance.PersistManager.getSesFrais(StageDPGR.selectedDemandeStage.getIdStage()).getIdFraiStage(), Integer.parseInt(fraisTransport.getText()), Integer.parseInt(fraisVisa.getText()), Integer.parseInt(fraisAssurance.getText()), Integer.parseInt(fraisSejour.getText()));
+
+                persistance.PersistManager.updateFraisStage(fraisStage);
+
+                int total = Integer.parseInt(fraisVisa.getText()) + Integer.parseInt(fraisTransport.getText()) + Integer.parseInt(fraisAssurance.getText()) + Integer.parseInt(fraisSejour.getText());
+
+                StageDPGR.currentTab = 1;
+
+                StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+
+                StageDPGR.refreshRoot1();
+                StageDPGR.stage2.close();
+
+            }
             //persistance.PersistManager.updateDemandeStage(stagiaireList.get(stagiaire.getSelectionModel().getSelectedIndex()).getIdStagiaire(), stage.getIdStage(), DateFormatter.formatter.parse(dateDemande.getValue().toString()));
         } catch (ParseException ex) {
             Logger.getLogger(AjouterDemandeStageController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        StageDPGR.currentTab = 1;
-
-        StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
-
-        StageDPGR.refreshRoot1();
-        StageDPGR.stage2.close();
     }
 
     @FXML
