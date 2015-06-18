@@ -72,11 +72,12 @@ public class PersistManager {
         entityManager.close();
     }
     public static void deleteStagiaire(int idStagiaire){
-         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("DEFAULT_PU");
+         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-       Stagiaire stagiaire =findStagiaireById(idStagiaire);
-      Stagiaire toBeRemoved = entityManager.merge(stagiaire);
+       model.Stagiaire stagiaire = null;
+        stagiaire = entityManager.find(Stagiaire.class, idStagiaire);
+      model.Stagiaire toBeRemoved = entityManager.merge(stagiaire);
        entityManager.remove(toBeRemoved);
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -410,7 +411,8 @@ public class PersistManager {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
          TypedQuery<AvoirFraiStage> query = entityManager.createQuery("SELECT c FROM AvoirFraiStage c where c.idStage=:arg1", AvoirFraiStage.class).setParameter("arg1",idStage);
-        List<AvoirFraiStage> avFraiStage = query.getResultList();
+        List<AvoirFraiStage> avFraiStage = null;
+        avFraiStage=query.getResultList();
             
 //   AvoirFraiStage avFraiStage=entityManager.find(AvoirFraiStage.class,new CKey(idStage, idStage));
         FraisStage fraisStage=entityManager.find(FraisStage.class,avFraiStage.get(avFraiStage.size()-1).getIdFraiStage());

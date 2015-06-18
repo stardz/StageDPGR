@@ -49,7 +49,7 @@ public class ValiderDemandeController implements Initializable {
     public void confirmer() {
         int res=5;
         DemandeStage dmd=persistance.PersistManager.findDemandeStageByIds(new CKey(StageDPGR.selectedDemandeStage.getIdStage(),StageDPGR.selectedDemandeStage.getIdStagiaire()));
-        if(StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")){
+        if(StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")||StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Admin")){
             res=dmd.validerAut();
         }else if(StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("DADPGR")){
             res=dmd.validerDA();
