@@ -18,9 +18,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -33,6 +37,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import model.DemandeStage;
 import model.Diplome;
 import model.Fonction;
@@ -153,7 +159,7 @@ public class FenetrePrincipaleController implements Initializable {
     private LineChart lineChartEvolutionBudget;
     @FXML
 
-    private BarChart barChartStages;
+    private BarChart<String, Number> barChartStages;
     @FXML
     private ToggleGroup groupTypes;
     @FXML
@@ -299,14 +305,21 @@ public class FenetrePrincipaleController implements Initializable {
                 System.out.println("============" + str);
                 if (valeurFiltrePointage.getText().equals(str)) {
                     dataStage.add(new StagePres(it));
-                    if (it.getIdStage() != 1) {
-                        estimateur += persistance.PersistManager.getSesFrais(it.getIdStage()).getTotalCout();
-                    }
+                     estimateur += persistance.PersistManager.findFraisStageById(it.getIdStage()).getTotalCout();
+                    
                 }
             }
         }
         //Remplissage
         tableStages.setItems(dataStage);
+        //Sélection d'une cellule
+        tableStages.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                StageDPGR.selectedStage = (StagePres) tableStages.getSelectionModel().getSelectedItem();
+                FenetrePrincipaleController.this.refreshInfosStageStage();
+            }
+        });
         // tableStages.getColumns().addAll(idStageCol,dateDStageCol,dateFStageCol,envStageCol,missionStageCol,objStageCol);
 
         estimatorResult.setText(estimateur + "");
@@ -317,6 +330,7 @@ public class FenetrePrincipaleController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        statistiques();
         // filtres disponibles
         comboFiltre.getItems().add("Année");
         // TODO
@@ -641,6 +655,7 @@ public class FenetrePrincipaleController implements Initializable {
     }
 
     public void refreshInfosStageStage() {
+       if(StageDPGR.selectedStage==null)return;
         numStageInfo.setText(" " + StageDPGR.selectedStage.getIdStage());
 
         int idStagiaire = persistance.PersistManager.getDemandeOfStage(StageDPGR.selectedStage.getIdStage()).getIdStagiaire();
@@ -649,11 +664,12 @@ public class FenetrePrincipaleController implements Initializable {
 
         FraisStage frais = persistance.PersistManager.getSesFrais(StageDPGR.selectedStage.getIdStage());
         fraissejourStageInfo.setText("" + frais.getMontantSejourFraiStage());
-        fraisTransportStageInfo.setText("" + frais.getMontantSejourFraiStage());
+        fraisTransportStageInfo.setText("" + frais.getMontantTransportFraiStage());
         fraisVisaStageInfo.setText("" + frais.getMontantVisaFraiStage());
         fraisAssStageInfo.setText("" + frais.getMontantAssurranceFraiStage());
-        int total = frais.getMontantSejourFraiStage() + frais.getMontantSejourFraiStage() + frais.getMontantVisaFraiStage() + frais.getMontantAssurranceFraiStage();
-        fraisTotalStageInfo.setText(" " + total);
+        int t=frais.getTotalCout();
+      //  int total = frais.getMontantSejourFraiStage() + frais.getMontantSejourFraiStage() + frais.getMontantVisaFraiStage() + frais.getMontantAssurranceFraiStage();
+        fraisTotalStageInfo.setText(" " + t);
     }
     /*
      Configuration methodes
@@ -733,5 +749,104 @@ public class FenetrePrincipaleController implements Initializable {
         StageDPGR.currentTab = 7;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public void statistiques(){
+      /*  int nbDemandeRefusee = 3 ;
+        int nbDemandeAcceptee = 7 ;
+        int totalDemande = nbDemandeAcceptee + nbDemandeRefusee ;
+        nbDemandes.setText(((Integer) totalDemande).toString());
+        pieChartAccVsRefuse.getData().add(new PieChart.Data("Acceptée", nbDemandeAcceptee))  ;
+        pieChartAccVsRefuse.getData().add(new PieChart.Data("Refusée", nbDemandeRefusee))  ;
+        pieChartAccVsRefuse.setLegendSide(Side.LEFT);
+        
+        int nbDemandeurDoctorant = 15 ;
+        int nbDemandeurEns = 5 ;
+        int totalDemandeur = nbDemandeurDoctorant + nbDemandeurEns ;
+         nbDemandeurs.setText(((Integer) totalDemandeur).toString());
+        pieChartdemandeursVsPasDemandeurs.getData().add(new PieChart.Data("Doctorant", nbDemandeurDoctorant))  ;
+        pieChartdemandeursVsPasDemandeurs.getData().add(new PieChart.Data("Enseignant chercheur", nbDemandeurEns))  ;
+       pieChartdemandeursVsPasDemandeurs.setLabelLineLength(10);
+        pieChartdemandeursVsPasDemandeurs.setLegendSide(Side.LEFT);
+      
+         final Label caption;
+        caption = new Label("");
+        caption.setTextFill(Color.DARKORANGE);
+        caption.setStyle("-fx-font: 24 arial;");
+        // children.add(caption);
+       if(((Pane) StageDPGR.root).getChildren()!=null){
+            ((Pane) StageDPGR.root).getChildren().add(caption);
+        }
+        else{
+            System.err.println("erroror");
+        }
+         
+
+
+        for (final PieChart.Data data : pieChartAccVsRefuse.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+                    new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent e) {
+                           System.out.println(String.valueOf(data.getPieValue()) + "%");
+                            
+                            caption.setTranslateX(e.getSceneX());
+                            caption.setTranslateY(e.getSceneY());
+                             caption.setText(String.valueOf(data.getPieValue()) + "%") ;
+                             
+                          
+                                   
+                        }
+                    });
+        }
+                for (final PieChart.Data data : pieChartdemandeursVsPasDemandeurs.getData()) {
+            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED,
+                    new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent e) {
+                            System.out.println(String.valueOf(data.getPieValue()) + "%");
+                            caption.setText(String.valueOf(data.getPieValue()) + "%");
+                            caption.setTranslateX(e.getSceneX());
+                            caption.setTranslateY(e.getSceneY());
+                            
+                        }
+                    });
+        }
+        
+                XYChart.Series series1 = new XYChart.Series();
+        int nbStagesRefuse = 5 ;
+        int nbStagesAccepte = 8  ;
+        int nbStagesEnAttente = 14 ;
+        series1.getData().add(new XYChart.Data("Stage validé", nbStagesAccepte));
+        series1.getData().add(new XYChart.Data("Stage réfusé", nbStagesEnAttente));
+        series1.getData().add(new XYChart.Data("Stage en attente", nbStagesRefuse));
+        
+
+        barChartStages.getData().add(series1);
+        barChartStages.setLegendVisible(false);
+        barChartStages.setCategoryGap(50);
+        */        
     }
 }

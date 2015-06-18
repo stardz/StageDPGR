@@ -410,7 +410,8 @@ public class PersistManager {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
          TypedQuery<AvoirFraiStage> query = entityManager.createQuery("SELECT c FROM AvoirFraiStage c where c.idStage=:arg1", AvoirFraiStage.class).setParameter("arg1",idStage);
-        List<AvoirFraiStage> avFraiStage = query.getResultList();
+        List<AvoirFraiStage> avFraiStage = null;
+        avFraiStage=query.getResultList();
             
 //   AvoirFraiStage avFraiStage=entityManager.find(AvoirFraiStage.class,new CKey(idStage, idStage));
         FraisStage fraisStage=entityManager.find(FraisStage.class,avFraiStage.get(avFraiStage.size()-1).getIdFraiStage());
