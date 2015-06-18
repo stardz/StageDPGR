@@ -42,7 +42,7 @@ public class AuthentificationController implements Initializable {
         if (usr == null) {
             nomUtilisateur.setEffect(new DropShadow(10, Color.RED));
         } else if (usr.getMpUtilisateur().equals(persistance.PersistManager.cryptWithMD5(motdePasse.getText()))) {
-            if (!usr.getEtatCompte().equals("Actif")) {
+            if (usr.getEtatCompte().equals("actif")) {
                 try {
                     StageDPGR.utilisateurLogged = usr;
                     StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
