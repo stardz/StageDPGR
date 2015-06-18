@@ -99,6 +99,33 @@ public class AjouterStagiaireController implements Initializable {
     @FXML
     public void valider(ActionEvent e) throws IOException {
 
+        boolean arreter = false;
+        // email, nom, prenom, tel
+        if (Regex.verifNominal(nom.getText())) {
+
+            nom.setStyle(" -fx-background-color: #9eee48");
+
+        } else {
+            arreter = true;
+            nom.setStyle(" -fx-background-color: #ff6d6d");
+        }
+        if (Regex.verifNominal(prenom.getText())) {
+
+            prenom.setStyle(" -fx-background-color: #9eee48");
+
+        } else {
+            arreter = true;
+            prenom.setStyle(" -fx-background-color: #ff6d6d");
+        }
+
+        if (Regex.isInteger(tel.getText())) {
+
+            tel.setStyle(" -fx-background-color: #9eee48");
+
+        } else {
+            arreter = true;
+            tel.setStyle(" -fx-background-color: #ff6d6d");
+        }
         Stagiaire stagiaire;
         stagiaire = new Stagiaire(prenom.getText(), tel.getText(), nom.getText(), email.getText(), null, null, null, null);
         stagiaire.setIdStagiaire(persistance.PersistManager.findAllStagiaires().size() + 1);
@@ -119,7 +146,7 @@ public class AjouterStagiaireController implements Initializable {
         Fonction fct = fonctions.get(fonction.getSelectionModel().getSelectedIndex());
 
         persistance.PersistManager.affectFonction(fct.getIdFonction(), stagiaire.getIdStagiaire(), Date.valueOf(LocalDate.now()));
-       
+
         StageDPGR.currentTab = 0;
 
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));

@@ -76,6 +76,9 @@ public class FenetrePrincipaleController implements Initializable {
     TableView tableStages;
 
     @FXML
+    Tab tabBudget, gestionStagiaire, gestionDemandeStage, gestionManifestation, tabStatistiques, tabComptes, tabConfiguration;
+
+    @FXML
     Label libelleCompte1;
     @FXML
     Label libelleCompte2;
@@ -86,7 +89,7 @@ public class FenetrePrincipaleController implements Initializable {
     @FXML
     Label libelleCompte5;
     @FXML
-    Label loggedIn;
+    Label loggedIn, loggedIn1, loggedIn2, loggedIn3, loggedIn4;
 
     // Libele gestion des stagiaires
     @FXML
@@ -196,6 +199,9 @@ public class FenetrePrincipaleController implements Initializable {
     TextField fieldZoneConf;
     @FXML
     TextField fieldLieuConf;
+
+    @FXML
+    Button validerDemande, ajouterStagiaire, modifierStagiaire, supprimerStagiaire, creerDemande, modifierDemande, supprimerDemande;
     /*
      Actions comptes
      */
@@ -335,10 +341,15 @@ public class FenetrePrincipaleController implements Initializable {
         comboFiltre.getItems().add("Année");
         // TODO
         progresDemandeStage.setProgress(0);
-        
-        loggedIn.setText("Logged "+StageDPGR.utilisateurLogged.getProfilUtilisateur());
+
+        loggedIn.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+        loggedIn1.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+
+        loggedIn2.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+        loggedIn3.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+        loggedIn4.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
+
         //set Current Tab
-        
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(StageDPGR.currentTab);
         /*
@@ -533,6 +544,34 @@ public class FenetrePrincipaleController implements Initializable {
         });
         // Remplissage des configs
         remplirConfiguration();
+
+        if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Admin")) {
+
+            validerDemande.setDisable(true);
+            tabBudget.setDisable(true);
+            tabStatistiques.setDisable(true);
+
+        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("MembreCS")) {
+
+            ajouterStagiaire.setDisable(true);
+            modifierStagiaire.setDisable(true);
+            supprimerStagiaire.setDisable(true);
+            creerDemande.setDisable(true);
+            modifierDemande.setDisable(true);
+            supprimerDemande.setDisable(true);
+            tabBudget.setDisable(true);
+            tabStatistiques.setDisable(true);
+            tabComptes.setDisable(true);
+            tabConfiguration.setDisable(true);
+
+        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")) {
+
+            tabBudget.setDisable(true);
+            tabStatistiques.setDisable(true);
+            tabComptes.setDisable(true);
+            tabConfiguration.setDisable(true);
+
+        }
     }
 
     @FXML
@@ -684,7 +723,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertGrade(grde);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -698,7 +737,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertFonction(fonction);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -712,7 +751,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertDiplome(diplome);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -726,7 +765,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertLabo(labo);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -746,7 +785,7 @@ public class FenetrePrincipaleController implements Initializable {
             zone.setNomZone(fieldZoneConf.getText());
             persistance.PersistManager.insertZone(zone);
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }

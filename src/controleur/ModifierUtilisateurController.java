@@ -67,7 +67,7 @@ public class ModifierUtilisateurController implements Initializable {
         u.setPrenomUtilisateur(prenom.getText());
         u.setProfilUtilisateur(profil.getValue().toString());
         persistance.PersistManager.updateUtilisateur(u);
-        StageDPGR.currentTab=6;
+        StageDPGR.currentTab=5;
         StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
         StageDPGR.stage2.close();

@@ -45,7 +45,6 @@ public class insertUtilisateurController implements Initializable {
     Button valider;
     @FXML
     Button annuler;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -53,24 +52,27 @@ public class insertUtilisateurController implements Initializable {
         profil.getItems().add("Agent");
         profil.getItems().add("DADPGR");
         profil.getItems().add("MembreCS");
+        profil.getItems().add("Admin");
     }
+
     @FXML
-    private void valider(ActionEvent event) throws IOException{
-        Utilisateur u=new Utilisateur();
+    private void valider(ActionEvent event) throws IOException {
+        Utilisateur u = new Utilisateur();
         u.setLoginUtilisateur(psedou.getText());
         u.setEtatCompte("actif");
         u.setMpUtilisateur(motPasse.getText());
         u.setNomUtilisateur(nom.getText());
         u.setPrenomUtilisateur(prenom.getText());
         u.setProfilUtilisateur(profil.getValue().toString());
-        StageDPGR.currentTab=6;
+        StageDPGR.currentTab = 5;
         persistance.PersistManager.insertUtilisateur(u);
-        StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
+        StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
         StageDPGR.stage2.close();
     }
+
     @FXML
-    private void annuler(ActionEvent event) throws IOException{
+    private void annuler(ActionEvent event) throws IOException {
         // close seconde stage
         StageDPGR.stage2.close();
     }
