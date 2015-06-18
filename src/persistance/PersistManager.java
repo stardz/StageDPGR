@@ -466,7 +466,19 @@ public class PersistManager {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
-
+    public static void deleteDemandeStage(CKey cKey){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        TypedQuery<DemandeStage> query = entityManager.createQuery("SELECT c FROM DemandeStage c where c.idStage=:arg1 AND c.idStagiaire=:arg2", DemandeStage.class).setParameter("arg1",cKey.key1);
+        query.setParameter("arg2", cKey.key2);
+        List<DemandeStage> demandeStages = query.getResultList();
+        DemandeStage dmdStage=demandeStages.get(demandeStages.size()-1);
+        DemandeStage toBeRemoved = entityManager.merge(dmdStage);
+        entityManager.remove(toBeRemoved);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
     public static List<DemandeStage> findAllDemandeStages() {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ProjetPU");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
