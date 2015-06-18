@@ -41,7 +41,7 @@ public class StageDPGR extends Application {
     public static Utilisateur utilisateurLogged;
     @Override
     public void start(Stage stage) throws Exception {
-        root = FXMLLoader.load(getClass().getResource("FenetrePrincipale.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Authentification.fxml"));
 
         scene = new Scene(root);
         StageDPGR.stage = stage;
