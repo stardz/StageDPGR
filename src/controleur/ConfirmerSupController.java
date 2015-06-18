@@ -45,7 +45,7 @@ public class ConfirmerSupController implements Initializable {
     @FXML
     public void confirmer() {
         persistance.PersistManager.deleteUtilisateur(StageDPGR.selectedUtilisateur.getLoginUtilisateur());
-        StageDPGR.currentTab = 6;
+        StageDPGR.currentTab = 5;
         try {
             StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         } catch (IOException ex) {

@@ -70,6 +70,9 @@ public class FenetrePrincipaleController implements Initializable {
     TableView tableStages;
 
     @FXML
+    Tab tabBudget, gestionStagiaire, gestionDemandeStage, gestionManifestation, tabStatistiques, tabComptes, tabConfiguration;
+
+    @FXML
     Label libelleCompte1;
     @FXML
     Label libelleCompte2;
@@ -321,10 +324,19 @@ public class FenetrePrincipaleController implements Initializable {
         comboFiltre.getItems().add("Année");
         // TODO
         progresDemandeStage.setProgress(0);
-        
-        loggedIn.setText("Logged "+StageDPGR.utilisateurLogged.getProfilUtilisateur());
+
+        loggedIn.setText("Logged " + StageDPGR.utilisateurLogged.getProfilUtilisateur());
         //set Current Tab
-        
+
+        if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("DADPGR")) {
+
+        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("MembreCS")) {
+            budget
+
+        } else if (StageDPGR.utilisateurLogged.getProfilUtilisateur().equals("Agent")) {
+
+        }
+
         SingleSelectionModel<Tab> selectionModel = tabPane.getSelectionModel();
         selectionModel.select(StageDPGR.currentTab);
         /*
@@ -668,7 +680,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertGrade(grde);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -682,7 +694,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertFonction(fonction);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -696,7 +708,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertDiplome(diplome);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -710,7 +722,7 @@ public class FenetrePrincipaleController implements Initializable {
             persistance.PersistManager.insertLabo(labo);
 
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }
@@ -730,7 +742,7 @@ public class FenetrePrincipaleController implements Initializable {
             zone.setNomZone(fieldZoneConf.getText());
             persistance.PersistManager.insertZone(zone);
         }
-        StageDPGR.currentTab = 7;
+        StageDPGR.currentTab = 6;
         StageDPGR.root = FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
     }

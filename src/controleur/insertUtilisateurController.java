@@ -63,7 +63,7 @@ public class insertUtilisateurController implements Initializable {
         u.setNomUtilisateur(nom.getText());
         u.setPrenomUtilisateur(prenom.getText());
         u.setProfilUtilisateur(profil.getValue().toString());
-        StageDPGR.currentTab=6;
+        StageDPGR.currentTab=5;
         persistance.PersistManager.insertUtilisateur(u);
         StageDPGR.root=FXMLLoader.load(getClass().getResource("/presentation/FenetrePrincipale.fxml"));
         StageDPGR.refreshRoot1();
